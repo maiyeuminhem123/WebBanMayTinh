@@ -1,0 +1,99 @@
+﻿@model WebBanMayTinh.Models.Product
+
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .gearvn-form-container {
+        max-width: 800px;
+        margin: auto;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .gearvn-form-header {
+        background: #000;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        padding: 24px;
+        color: #fff;
+    }
+
+        .gearvn-form-header h2 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .gearvn-form-header i {
+            margin-right: 10px;
+        }
+
+    .gearvn-btn {
+        padding: 10px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+        .gearvn-btn:hover {
+            transform: translateY(-2px);
+        }
+
+    .gearvn-btn-danger {
+        background-color: #006400;
+        color: #fff;
+        border: none;
+    }
+
+    .gearvn-btn-outline {
+        border: 2px solid #b20404;
+        background: #b20404;
+        color: #fff;
+    }
+
+        .gearvn-btn-outline:hover {
+            background: #fff;
+            color: #b20404;
+        }
+
+    .delete-message {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="gearvn-form-container">
+        <div class="gearvn-form-header">
+            <h2><i class="fas fa-trash-alt"></i> Xóa Sản Phẩm</h2>
+        </div>
+        <div class="mt-4">
+            <form asp-action="DeleteConfirmed" method="post">
+                <input type="hidden" asp-for="Id" />
+                <p class="delete-message">
+                    Bạn có chắc chắn muốn xóa sản phẩm <strong>@Model.Name</strong>?
+                </p>
+                <div class="d-flex justify-content-end gap-3">
+                    <button type="submit" class="gearvn-btn gearvn-btn-danger">
+                        <i class="fas fa-trash me-2"></i>Xóa
+                    </button>
+                    <a asp-action="Index" class="gearvn-btn gearvn-btn-outline">
+                        <i class="fas fa-arrow-left me-2"></i>Quay lại
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

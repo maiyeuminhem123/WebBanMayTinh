@@ -1,0 +1,271 @@
+﻿@{
+    ViewData["Title"] = "Chính sách & Bảng giá thu cũ đổi mới";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Xác định rõ layout
+}
+
+<div class="container my-5">
+    <h1>Chính sách & Bảng giá Thu Cũ Đổi Mới</h1>
+    <style>
+        /* Dùng lại style từ các trang trước để đồng bộ */
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: fixed;
+            top: 116px; /* Dưới navbar (56px) và secondary navbar (~60px) */
+            left: 0;
+            height: calc(100vh - 116px);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .sidebar-title {
+            color: #e60000;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+            .sidebar-menu li {
+                margin-bottom: 10px;
+            }
+
+                .sidebar-menu li a {
+                    color: #333;
+                    text-decoration: none;
+                    display: block;
+                    padding: 8px 10px;
+                    transition: all 0.3s ease;
+                }
+
+                    .sidebar-menu li a:hover {
+                        background-color: #f8f9fa;
+                        color: #e60000;
+                    }
+
+                .sidebar-menu li.active a {
+                    background-color: #f0f0f0;
+                    color: #e60000;
+                    border-left: 3px solid #e60000;
+                }
+
+        .content {
+            margin-left: 270px; /* Khoảng cách để tránh sidebar */
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+            .content h2 {
+                margin-top: 30px;
+                font-size: 20px;
+                color: #333;
+            }
+
+            .content p, .content li {
+                color: #333;
+                line-height: 1.6;
+            }
+
+        .highlight {
+            color: #e60000;
+            font-weight: bold;
+        }
+
+        .policy-list, .checklist, .location-list {
+            padding-left: 20px;
+        }
+
+            .policy-list li::marker, .checklist li::marker {
+                color: #e60000;
+            }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .cta-button:hover {
+                background-color: #0056b3;
+            }
+
+        @@media (max-width: 768px) {
+            .sidebar
+
+        {
+            width: 200px;
+            transform: translateX(-200px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar.show {
+            transform: translateX(0);
+        }
+
+        .content {
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
+        }
+
+            .content.shifted {
+                margin-left: 200px;
+            }
+
+        .sidebar-toggle {
+            display: block;
+            position: fixed;
+            top: 130px;
+            left: 10px;
+            z-index: 1040;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 8px 12px;
+            color: #ffffff;
+            background-color: #e60000;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+            .sidebar-toggle:hover {
+                background-color: #cc0000;
+            }
+
+        }
+    </style>
+
+    <div class="main-content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <button class="sidebar-toggle d-md-none"><i class="fas fa-bars"></i></button>
+            <h3 class="sidebar-title">Danh mục dịch vụ</h3>
+            <ul class="sidebar-menu">
+                <li><a href="/Home/BuildPcPromotion">Xây dựng cấu hình</a></li>
+                <li><a href="/Home/TechNews">Tin công nghệ</a></li>
+                <li><a href="/Home/RepairService">Dịch vụ sửa chữa</a></li>
+                <li><a href="/Home/HomeTechnicalService">Dịch vụ kỹ thuật tại nhà</a></li>
+                <li class="active"><a href="/Home/TradeIn">Thu cũ đổi mới</a></li>
+                <li><a href="/Home/WarrantyCheck">Tra cứu bảo hành</a></li>
+                <li><a href="#">Chính sách bảo hành</a></li>
+                <li><a href="#">Thanh toán</a></li>
+                <li><a href="#">Mua hàng trả góp</a></li>
+                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+                <li><a href="#">Điều khoản dịch vụ</a></li>
+                <li><a href="#">Dịch vụ vệ sinh miễn phí</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <p><strong>TTPComputer</strong> ra mắt dịch vụ <strong>"Thu cũ đổi mới sản phẩm cũ"</strong> nhằm hỗ trợ khách hàng dễ dàng nâng cấp linh kiện với chi phí hợp lý. Chúng tôi cam kết mang đến trải nghiệm thuận tiện và giá trị tốt nhất cho khách hàng.</p>
+
+            <h2>Sản phẩm áp dụng</h2>
+            <p>Các dòng sản phẩm nằm trong chính sách thu cũ đổi mới bao gồm:</p>
+            <ul class="policy-list">
+                <li>VGA (Card đồ họa)</li>
+                <li>Mainboard (Bo mạch chủ)</li>
+                <li>CPU</li>
+            </ul>
+            <p><span class="highlight">Lưu ý:</span> Đối với Mainboard, chỉ áp dụng cho các thương hiệu <strong>Gigabyte, MSI, Asus và Asrock</strong>.</p>
+
+            <h2>Điều kiện tham gia</h2>
+            <p>GearVN <strong>chỉ thu lại sản phẩm cũ khi bạn mua sản phẩm mới tại cửa hàng</strong>. Chúng tôi chưa áp dụng dịch vụ thu mua riêng lẻ.</p>
+
+            <h2>Ưu đãi đặc biệt</h2>
+            <p>Xem chi tiết chương trình tại: <a href="#" class="highlight">Link</a></p>
+
+            <p><span class="highlight">Lưu ý:</span> Chương trình áp dụng tại tất cả các cửa hàng thuộc hệ thống GearVN.</p>
+
+            <h2>Bảng giá tham khảo</h2>
+            <p><em>Giá thu mua có thể thay đổi tùy theo biến động thị trường.</em></p>
+            <p><strong>Lưu ý:</strong></p>
+            <ul class="checklist">
+                <li>Giá chỉ mang tính tham khảo</li>
+                <li>Giá chính xác sẽ được xác định sau kiểm tra bởi bộ phận kỹ thuật</li>
+            </ul>
+
+            <h2>Quy trình thu cũ đổi mới</h2>
+            <ol class="checklist">
+                <li>Khách hàng mang sản phẩm cũ đến cửa hàng hoặc liên hệ tổng đài <strong>1900 5301</strong></li>
+                <li>Nhân viên kỹ thuật kiểm tra & định giá sản phẩm</li>
+                <li>Báo giá & tư vấn sản phẩm mới phù hợp</li>
+            </ol>
+
+            <h2>Chính sách định giá</h2>
+            <p>Giá thu mua dựa trên các yếu tố:</p>
+            <ul class="policy-list">
+                <li>Tình trạng hoạt động</li>
+                <li>Thương hiệu & model</li>
+                <li>Thời gian bảo hành còn lại</li>
+                <li>Tình trạng ngoại hình</li>
+                <li>Phụ kiện kèm theo</li>
+            </ul>
+
+            <h2>Không áp dụng thu mua cho:</h2>
+            <ul class="policy-list">
+                <li>Sản phẩm hư hỏng nặng, móp méo, cháy nổ</li>
+                <li>Sản phẩm thay thế linh kiện không đúng chuẩn</li>
+                <li>Sản phẩm không rõ tên hoặc thương hiệu</li>
+            </ul>
+
+            <h2>Liên hệ</h2>
+            <p><strong>Hotline:</strong> 1900 5301</p>
+            <p><strong>Email:</strong> <a href="mailto:cskh@gearvn.com">cskh@gearvn.com</a></p>
+
+            <h3>Cửa hàng khu vực:</h3>
+            <ul class="location-list">
+                <li><strong>Miền Bắc:</strong> 162 - 164 Thái Hà, Phường Trung Liệt, Đống Đa, Hà Nội</li>
+                <li><strong>Miền Nam:</strong> 82 Hoàng Hoa Thám, P.12, Q.Tân Bình, TP.HCM</li>
+                <li>905 Kha Vạn Cân, P.Linh Tây, TP. Thủ Đức</li>
+                <li>1081 - 1083 Trần Hưng Đạo, P.5, Q.5</li>
+            </ul>
+
+            <a href="#" class="cta-button">ĐĂNG KÝ THU CŨ NGAY</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Sidebar toggle for mobile
+        $('.sidebar-toggle').on('click', function () {
+            $('.sidebar').toggleClass('show');
+            $('.content').toggleClass('shifted');
+        });
+
+        // Đóng sidebar khi click bên ngoài trên mobile
+        $(document).on('click', function (e) {
+            if ($(window).width() <= 768 && $('.sidebar').hasClass('show') && !$('.sidebar').is(e.target) && $('.sidebar').has(e.target).length === 0 && !$('.sidebar-toggle').is(e.target)) {
+                $('.sidebar').removeClass('show');
+                $('.content').removeClass('shifted');
+            }
+        });
+    });
+</script>

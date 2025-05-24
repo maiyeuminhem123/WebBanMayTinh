@@ -1,0 +1,30 @@
+﻿@model WebBanMayTinh.Models.WarrantyResultViewModel
+
+@{
+    ViewData["Title"] = "Kết quả bảo hành";
+}
+
+<h2>Kết quả bảo hành</h2>
+
+<table class="table table-bordered">
+    <tr><th>Tên sản phẩm</th><td>@Model.Name</td></tr>
+    <tr><th>Serial</th><td>@Model.SerialNumber</td></tr>
+    <tr><th>Ngày mua</th><td>@Model.PurchaseDate.ToShortDateString()</td></tr>
+    <tr><th>Hết hạn bảo hành</th><td>@Model.WarrantyEndDate.ToShortDateString()</td></tr>
+    <tr>
+        <th>Trạng thái</th>
+        <td>
+            @if (Model.IsExpired)
+            {
+                <span class="text-danger">Hết hạn</span>
+            }
+            else
+            {
+                <span class="text-success">Còn bảo hành</span>
+            }
+        </td>
+    </tr>
+</table>
+
+<a asp-area="Customer" asp-controller="Warranty" asp-action="Check" class="btn btn-secondary">Tra cứu lại</a>
+

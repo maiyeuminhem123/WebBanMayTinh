@@ -1,0 +1,105 @@
+﻿@model WebBanMayTinh.Models.PcBuild
+
+@{
+    ViewData["Title"] = "Tin Công Nghệ";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+
+    <!-- Breadcrumb -->
+    <nav style="--bs-breadcrumb-divider: '>'; font-size: 14px;" aria-label="breadcrumb">
+        <ol class="breadcrumb bg-light px-3 py-2 rounded shadow-sm">
+            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tất cả bài viết</li>
+        </ol>
+    </nav>
+
+    <!-- Banner -->
+    <div class="mt-4">
+        <img src="~/images/banner_rtx_50.jpg" class="img-fluid rounded shadow-sm w-75" alt="Banner Tin Công Nghệ">
+    </div>
+
+    <div class="row mt-4">
+        <!-- Left Content -->
+        <div class="col-lg-9">
+            <!-- Featured Article -->
+            <div class="row g-3">
+                <div class="col-md-6 d-flex flex-column">
+                    <img src="~/images/doom-stand.jpg" class="img-fluid w-100" style="max-height: 300px; object-fit: contain;" alt="Doom Promotion">
+                    <div class="mt-2">
+                        <h6 class="fw-bold">ASUS NVIDIA GEFORCE RTX™ 50 SERIES</h6>
+                        <p class="text-muted small">Thời gian khuyến mãi: 30/04 – 21/05/2025</p>
+                        <p>
+                            Nhận DOOM: The Dark Ages Premium Edition khi mua card đồ họa GeForce RTX 50 Series.
+                            Hạn cuối điền code trên website ASUS: 13/06/2025. Giá trị code đến 20/06/2025.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex flex-column">
+                    <img src="~/images/doom-msi.jpg" class="img-fluid rounded shadow-sm w-100" style="max-height: 200px; object-fit: contain;" alt="MSI Doom Game">
+                    <div class="mt-2">
+                        <h6 class="fw-bold">MSI GEFORCE RTX™ 50 SERIES</h6>
+                        <p class="text-muted small">Thời gian khuyến mãi: 30/04 – 21/05/2025</p>
+                        <p>
+                            MSI mang đến chương trình khuyến mãi đặc biệt dành riêng cho các sản phẩm card đồ họa GeForce RTX 50 Series mới.
+                            Nhận code game DOOM: The Dark Ages Premium Edition khi mua sản phẩm MSI tham gia chương trình.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mt-4 mt-lg-0">
+            <div class="bg-danger text-white px-3 py-2 rounded-top d-flex align-items-center gap-2">
+                <i class="bi bi-fire"></i>
+                <strong>CHỦ ĐỀ HOT</strong>
+            </div>
+            <div class="bg-light border rounded-bottom p-3 shadow-sm">
+                <div class="row g-2">
+                    <div class="col-6">
+                        <a href="#" class="text-decoration-none text-dark d-block text-center">
+                            <img src="~/images/codegame.png" class="img-fluid rounded" alt="Code Game">
+                            <div class="small mt-1">Code game</div>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#" class="text-decoration-none text-dark d-block text-center">
+                            <img src="~/images/minecraft.png" class="img-fluid rounded" alt="Minecraft">
+                            <div class="small mt-1">Minecraft</div>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#" class="text-decoration-none text-dark d-block text-center">
+                            <img src="~/images/ai.png" class="img-fluid rounded" alt="AI">
+                            <div class="small mt-1">AI</div>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#" class="text-decoration-none text-dark d-block text-center">
+                            <img src="~/images/freefire.png" class="img-fluid rounded" alt="Free Fire">
+                            <div class="small mt-1">Free Fire</div>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#" class="text-decoration-none text-dark d-block text-center">
+                            <img src="~/images/roblox.png" class="img-fluid rounded" alt="Roblox">
+                            <div class="small mt-1">Roblox</div>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#" class="text-decoration-none text-dark d-block text-center">
+                            <img src="~/images/rtx50.png" class="img-fluid rounded" alt="RTX 50 Series">
+                            <div class="small mt-1">RTX 50 Series</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap icons CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />

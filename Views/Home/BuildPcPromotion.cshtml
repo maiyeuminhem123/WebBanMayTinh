@@ -1,0 +1,215 @@
+﻿@model WebBanMayTinh.Models.PcBuild
+
+@{
+    ViewData["Title"] = "Build PC Theo Ý Thích";
+    var components = ViewBag.Components as List<WebBanMayTinh.Models.Component>;
+}
+
+<div class="container my-5">
+    <h1>Build PC Theo Ý Thích</h1>
+    <p>Chọn linh kiện để xây dựng cấu hình PC của bạn. Chúng tôi sẽ tính tổng giá và hiển thị chi tiết cấu hình.</p>
+
+    <form asp-action="BuildPcPromotion" method="post" class="mb-4">
+        <!-- CPU -->
+        <div class="mb-3">
+            <label class="form-label">Chọn CPU:</label>
+            <select name="cpuId" class="form-select">
+                <option value="">-- Chọn CPU --</option>
+                @foreach (var cpu in components.Where(c => c.Type == "CPU"))
+                {
+                    <option value="@cpu.Id">@cpu.Name - @cpu.Price.ToString("#,##0") VNĐ</option>
+                }
+            </select>
+        </div>
+
+        <!-- GPU -->
+        <div class="mb-3">
+            <label class="form-label">Chọn GPU:</label>
+            <select name="gpuId" class="form-select">
+                <option value="">-- Chọn GPU --</option>
+                @foreach (var gpu in components.Where(c => c.Type == "GPU"))
+                {
+                    <option value="@gpu.Id">@gpu.Name - @gpu.Price.ToString("#,##0") VNĐ</option>
+                }
+            </select>
+        </div>
+
+        <!-- Mainboard -->
+        <div class="mb-3">
+            <label class="form-label">Chọn Mainboard:</label>
+            <select name="mainboardId" class="form-select">
+                <option value="">-- Chọn Mainboard --</option>
+                @foreach (var mainboard in components.Where(c => c.Type == "Mainboard"))
+                {
+                    <option value="@mainboard.Id">@mainboard.Name - @mainboard.Price.ToString("#,##0") VNĐ</option>
+                }
+            </select>
+        </div>
+
+        <!-- RAM -->
+        <div class="mb-3">
+            <label class="form-label">Chọn RAM:</label>
+            <select name="ramId" class="form-select">
+                <option value="">-- Chọn RAM --</option>
+                @foreach (var ram in components.Where(c => c.Type == "RAM"))
+                {
+                    <option value="@ram.Id">@ram.Name - @ram.Price.ToString("#,##0") VNĐ</option>
+                }
+            </select>
+        </div>
+
+        <!-- Storage -->
+        <div class="mb-3">
+            <label class="form-label">Chọn ổ cứng (Storage):</label>
+            <select name="storageId" class="form-select">
+                <option value="">-- Chọn ổ cứng --</option>
+                @foreach (var storage in components.Where(c => c.Type == "Storage"))
+                {
+                    <option value="@storage.Id">@storage.Name - @storage.Price.ToString("#,##0") VNĐ</option>
+                }
+            </select>
+        </div>
+
+        <!-- PSU -->
+        <div class="mb-3">
+            <label class="form-label">Chọn nguồn (PSU):</label>
+            <select name="psuId" class="form-select">
+                <option value="">-- Chọn nguồn --</option>
+                @foreach (var psu in components.Where(c => c.Type == "PSU"))
+                {
+                    <option value="@psu.Id">@psu.Name - @psu.Price.ToString("#,##0") VNĐ</option>
+                }
+            </select>
+        </div>
+
+        <!-- Case -->
+        <div class="mb-3">
+            <label class="form-label">Chọn vỏ máy (Case):</label>
+            <select name="caseId" class="form-select">
+                <option value="">-- Chọn vỏ máy --</option>
+                @foreach (var caseItem in components.Where(c => c.Type == "Case"))
+                {
+                    <option value="@caseItem.Id">@caseItem.Name - @caseItem.Price.ToString("#,##0") VNĐ</option>
+                }
+            </select>
+        </div>
+
+        <!-- Cooling -->
+        <div class="mb-3">
+            <label class="form-label">Chọn tản nhiệt (Cooling):</label>
+            <select name="coolingId" class="form-select">
+                <option value="">-- Chọn tản nhiệt --</option>
+                @foreach (var cooling in components.Where(c => c.Type == "Cooling"))
+                {
+                    <option value="@cooling.Id">@cooling.Name - @cooling.Price.ToString("#,##0") VNĐ</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Xem cấu hình</button>
+    </form>
+
+    <!-- Hiển thị cấu hình đã chọn -->
+    @if (Model.Cpu != null || Model.Gpu != null || Model.Ram != null || Model.Storage != null ||
+    Model.Mainboard != null || Model.Psu != null || Model.Case != null || Model.Cooling != null)
+    {
+        <h3>Cấu hình PC của bạn:</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Linh kiện</th>
+                    <th>Tên</th>
+                    <th>Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Cpu != null)
+                {
+                    <tr>
+                        <td>CPU</td>
+                        <td>@Model.Cpu.Name</td>
+                        <td>@Model.Cpu.Price.ToString("#,##0") VNĐ</td>
+                    </tr>
+                }
+                @if (Model.Gpu != null)
+                {
+                    <tr>
+                        <td>GPU</td>
+                        <td>@Model.Gpu.Name</td>
+                        <td>@Model.Gpu.Price.ToString("#,##0") VNĐ</td>
+                    </tr>
+                }
+                @if (Model.Mainboard != null)
+                {
+                    <tr>
+                        <td>Mainboard</td>
+                        <td>@Model.Mainboard.Name</td>
+                        <td>@Model.Mainboard.Price.ToString("#,##0") VNĐ</td>
+                    </tr>
+                }
+                @if (Model.Ram != null)
+                {
+                    <tr>
+                        <td>RAM</td>
+                        <td>@Model.Ram.Name</td>
+                        <td>@Model.Ram.Price.ToString("#,##0") VNĐ</td>
+                    </tr>
+                }
+                @if (Model.Storage != null)
+                {
+                    <tr>
+                        <td>Storage</td>
+                        <td>@Model.Storage.Name</td>
+                        <td>@Model.Storage.Price.ToString("#,##0") VNĐ</td>
+                    </tr>
+                }
+                @if (Model.Psu != null)
+                {
+                    <tr>
+                        <td>PSU</td>
+                        <td>@Model.Psu.Name</td>
+                        <td>@Model.Psu.Price.ToString("#,##0") VNĐ</td>
+                    </tr>
+                }
+                @if (Model.Case != null)
+                {
+                    <tr>
+                        <td>Case</td>
+                        <td>@Model.Case.Name</td>
+                        <td>@Model.Case.Price.ToString("#,##0") VNĐ</td>
+                    </tr>
+                }
+                @if (Model.Cooling != null)
+                {
+                    <tr>
+                        <td>Cooling</td>
+                        <td>@Model.Cooling.Name</td>
+                        <td>@Model.Cooling.Price.ToString("#,##0") VNĐ</td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="2"><strong>Tổng giá</strong></td>
+                    <td><strong>@Model.TotalPrice.ToString("#,##0") VNĐ</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Ưu đãi tặng màn hình -->
+        <div class="alert alert-success">
+            <strong>Ưu đãi đặc biệt:</strong> Tặng màn hình 240Hz khi build PC tại TTP Computer!
+        </div>
+
+        <!-- Nút thêm vào giỏ hàng (tuỳ chọn) -->
+        <form asp-controller="ShoppingCart" asp-action="AddPcBuildToCart" method="post" class="d-inline">
+            <input type="hidden" name="cpuId" value="@(Model.Cpu?.Id ?? 0)" />
+            <input type="hidden" name="gpuId" value="@(Model.Gpu?.Id ?? 0)" />
+            <input type="hidden" name="ramId" value="@(Model.Ram?.Id ?? 0)" />
+            <input type="hidden" name="storageId" value="@(Model.Storage?.Id ?? 0)" />
+            <input type="hidden" name="mainboardId" value="@(Model.Mainboard?.Id ?? 0)" />
+            <input type="hidden" name="psuId" value="@(Model.Psu?.Id ?? 0)" />
+            <input type="hidden" name="caseId" value="@(Model.Case?.Id ?? 0)" />
+            <input type="hidden" name="coolingId" value="@(Model.Cooling?.Id ?? 0)" />
+            <button type="submit" class="btn btn-success">Thêm vào giỏ hàng</button>
+        </form>
+    }
+</div>

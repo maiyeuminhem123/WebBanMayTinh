@@ -1,0 +1,235 @@
+﻿@model IEnumerable<WebBanMayTinh.Models.Product>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Đảm bảo layout này chứa sidebar
+}
+
+<style>
+    :root {
+        --primary-color: #e52836;
+        --secondary-color: #f3f4f6;
+        --dark-color: #1e293b;
+        --light-color: #ffffff;
+        --text-dark: #1e293b;
+        --text-light: #64748b;
+        --border-color: #e2e8f0;
+        --hover-color: #f8fafc;
+    }
+
+    .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+    }
+
+    .content-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+
+    .add-product-btn {
+        background-color: #228B22;
+        color: var(--light-color);
+        border: none;
+        border-radius: 0.25rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+    }
+
+        .add-product-btn:hover {
+            background-color: #1E7B1E;
+        }
+
+        .add-product-btn i {
+            margin-right: 0.5rem;
+        }
+
+    .search-container {
+        background-color: var(--light-color);
+        padding: 1rem;
+        border-radius: 0.25rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .search-input {
+        width: 100%;
+        max-width: 400px;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 0.25rem;
+    }
+
+    .products-table {
+        background-color: var(--light-color);
+        border-radius: 0.25rem;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+        .products-table th {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 0.75rem 1rem;
+        }
+
+        .products-table td {
+            padding: 0.75rem 1rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-dark);
+        }
+
+        .products-table tr:hover {
+            background-color: var(--hover-color);
+        }
+
+    .product-img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    .product-price {
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    .product-category {
+        font-size: 0.75rem;
+        background-color: var(--secondary-color);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        display: inline-block;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .action-btn {
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        display: inline-flex;
+        align-items: center;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .view-btn {
+        background-color: #228B22;
+    }
+
+        .view-btn:hover {
+            background-color: #1e7b1e;
+        }
+
+    .edit-btn {
+        background-color: #f59e0b;
+    }
+
+        .edit-btn:hover {
+            background-color: #d97706;
+        }
+
+    .delete-btn {
+        background-color: #ef4444;
+    }
+
+        .delete-btn:hover {
+            background-color: #dc2626;
+        }
+
+</style>
+
+<div class="container-fluid py-4">
+    <div class="content-header">
+        <h1 class="content-title">Quản lý sản phẩm</h1>
+        <a asp-action="Add" class="add-product-btn">
+            <i class="bi bi-plus-circle"></i> Thêm sản phẩm
+        </a>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm sản phẩm..." onkeyup="searchProducts()" />
+    </div>
+
+    <div class="products-table">
+        <table class="table mb-0" id="productTable">
+            <thead>
+                <tr>
+                    <th>Ảnh</th>
+                    <th>Tên</th>
+                    <th>Giá</th>
+                    <th>Mô tả</th>
+                    <th>Danh mục</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (!string.IsNullOrEmpty(product.ImageUrl))
+                            {
+                                <img src="@product.ImageUrl" alt="@product.Name" class="product-img" />
+                            }
+                            else
+                            {
+                                <span class="text-muted">No Image</span>
+                            }
+                        </td>
+                        <td>@product.Name</td>
+                        <td class="product-price">@product.Price.ToString("C")</td>
+                        <td>@product.Description</td>
+                        <td>
+                            <span class="product-category">@product.Category?.Name</span>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <a asp-action="Display" asp-route-id="@product.Id" class="action-btn view-btn">
+                                    <i class="bi bi-eye"></i> Xem
+                                </a>
+                                <a asp-action="Update" asp-route-id="@product.Id" class="action-btn edit-btn">
+                                    <i class="bi bi-pencil"></i> Sửa
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@product.Id" class="action-btn delete-btn">
+                                    <i class="bi bi-trash"></i> Xóa
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function searchProducts() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#productTable tbody tr');
+            rows.forEach(row => {
+                const name = row.children[1].textContent.toLowerCase();
+                const description = row.children[3].textContent.toLowerCase();
+                const category = row.children[4].textContent.toLowerCase();
+                if (name.includes(input) || description.includes(input) || category.includes(input)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+}

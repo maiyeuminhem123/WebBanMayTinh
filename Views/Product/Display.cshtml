@@ -1,0 +1,208 @@
+﻿@model WebBanMayTinh.Models.Product
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<style>
+    .product-image-wrapper {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 1rem;
+        text-align: center;
+    }
+
+        .product-image-wrapper:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image-wrapper img {
+            max-height: 400px;
+            width: 100%;
+            object-fit: contain;
+            border-radius: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+            .product-image-wrapper img:hover {
+                transform: scale(1.05);
+            }
+
+    .btn:hover {
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.15) !important;
+        transform: scale(1.05);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .list-group-item {
+        background-color: #fff;
+    }
+
+    .review-stars {
+        color: #ffc107;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <!-- Hình ảnh sản phẩm -->
+                <div class="col-md-5 d-flex align-items-center justify-content-center">
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <div class="product-image-wrapper w-100">
+                            <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="border p-5 text-center rounded-4 bg-light shadow-sm w-100">
+                            <em>Không có ảnh hiển thị</em>
+                        </div>
+                    }
+                </div>
+
+                <!-- Thông tin sản phẩm -->
+                <div class="col-md-7">
+                    <h2 class="fw-bold text-dark mb-3">@Model.Name</h2>
+                    <h4 class="fw-bold text-dark mb-3">Giá: <span class="fw-bold">@Model.Price.ToString("C", new System.Globalization.CultureInfo("vi-VN"))</span></h4>
+                    <p class="text-muted">@Model.Description</p>
+
+                    <!-- Nút -->
+                    <div class="d-flex gap-3 mb-4">
+                        <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-quantity="1" class="btn btn-success btn-lg fw-semibold shadow-sm">
+                            <i class="fas fa-cart-plus me-2"></i>Thêm vào giỏ
+                        </a>
+                        <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-quantity="1" asp-route-redirect="checkout" class="btn btn-warning btn-lg fw-semibold shadow-sm text-white">
+                            <i class="fas fa-bolt me-2"></i>Mua ngay
+                        </a>
+                    </div>
+
+                </div>
+
+                    <!-- Cấu hình -->
+                    <h5 class="text-secondary mb-3"><i class="fas fa-microchip me-2"></i>Cấu hình máy</h5>
+                    <ul class="list-group list-group-flush border rounded-3 mb-3">
+                        <li class="list-group-item"><strong>CPU:</strong> @(Model.CPU ?? "N/A")</li>
+                        <li class="list-group-item"><strong>GPU:</strong> @(Model.GPU ?? "N/A")</li>
+                        <li class="list-group-item"><strong>RAM:</strong> @(Model.RAM ?? "N/A")</li>
+                        <li class="list-group-item"><strong>Lưu trữ:</strong> @(Model.Storage ?? "N/A")</li>
+                        <li class="list-group-item"><strong>Hệ điều hành:</strong> @(Model.OperatingSystem ?? "N/A")</li>
+                        <li class="list-group-item"><strong>Thương hiệu:</strong> @(Model.Brand ?? "N/A")</li>
+                        <li class="list-group-item"><strong>Danh mục:</strong> @(Model.Category?.Name ?? "N/A")</li>
+                    </ul>
+
+                    <!-- Thông tin chi tiết -->
+                    @if (!string.IsNullOrEmpty(Model.DetailDescription))
+                    {
+                        <div class="mt-4">
+                            <h5 class="text-secondary mb-3">
+                                <a data-bs-toggle="collapse" href="#detailDescription" role="button" aria-expanded="false" aria-controls="detailDescription" class="text-decoration-none text-success">
+                                    <i class="fas fa-info-circle me-2"></i>Thông tin chi tiết
+                                </a>
+                            </h5>
+                            <div class="collapse" id="detailDescription">
+                                <div class="card card-body border-0 shadow-sm">
+                                    @Html.Raw(Model.DetailDescription)
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Đánh giá -->
+    <div class="mt-5">
+        <h4 class="text-dark mb-4"><i class="fas fa-comments me-2"></i>Đánh giá từ khách hàng</h4>
+        @if (Model.Reviews != null && Model.Reviews.Any())
+        {
+            <div class="list-group">
+                @foreach (var review in Model.Reviews)
+                {
+                    <div class="list-group-item border rounded-3 mb-3 shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <strong class="text-primary">@review.UserName</strong>
+                            <span class="review-stars">@string.Concat(Enumerable.Repeat("★", review.Rating))@string.Concat(Enumerable.Repeat("☆", 5 - review.Rating))</span>
+                        </div>
+                        <small class="text-muted">@review.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</small>
+                        <p class="mt-2 mb-0">@review.Comment</p>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info mt-3 rounded-3 shadow-sm">
+                <em>Chưa có đánh giá nào cho sản phẩm này.</em>
+            </div>
+        }
+    </div>
+
+    <!-- Gửi đánh giá -->
+    <div class="mt-5">
+        <h4 class="text-dark mb-4"><i class="fas fa-pen-square me-2"></i>Gửi đánh giá</h4>
+        <form asp-action="AddReview" method="post" class="mt-3" id="reviewForm">
+            <input type="hidden" name="productId" value="@Model.Id" />
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="userName" class="form-label fw-semibold">Tên của bạn</label>
+                    <input type="text" name="userName" class="form-control shadow-sm" placeholder="Nhập tên của bạn" required />
+                </div>
+                <div class="col-md-6">
+                    <label for="rating" class="form-label fw-semibold">Số sao</label>
+                    <select name="rating" class="form-select shadow-sm" required>
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <option value="@i">@i ★</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="comment" class="form-label fw-semibold">Nội dung đánh giá</label>
+                    <textarea name="comment" class="form-control shadow-sm" rows="4" placeholder="Viết cảm nhận của bạn..." required></textarea>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success fw-semibold shadow-sm">
+                    <i class="fas fa-paper-plane me-2"></i>Gửi đánh giá
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Nút quay lại -->
+    <div class="mt-4">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary fw-semibold shadow-sm">
+            <i class="fas fa-arrow-left me-2"></i>Quay lại trang chủ
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('#reviewForm').on('submit', function (e) {
+                let isValid = true;
+                $(this).find('[required]').each(function () {
+                    if (!$(this).val()) {
+                        isValid = false;
+                        $(this).addClass('is-invalid');
+                    } else {
+                        $(this).removeClass('is-invalid');
+                    }
+                });
+                if (!isValid) {
+                    e.preventDefault();
+                    alert('Vui lòng điền đầy đủ các trường bắt buộc!');
+                }
+            });
+        });
+    </script>
+}

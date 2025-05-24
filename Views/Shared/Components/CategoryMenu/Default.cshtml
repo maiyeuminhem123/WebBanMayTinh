@@ -1,0 +1,16 @@
+﻿@model IEnumerable<dynamic>
+
+<ul class="dropdown-menu dropdown-menu-end bg-light" aria-labelledby="categoryDropdown">
+    @foreach (var category in Model)
+    {
+        <li>
+            <a class="dropdown-item category-filter"
+               href="#"
+               data-category-id="@category.Id">
+                @category.Name
+            </a>
+        </li>
+    }
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#" data-category-id="accessories">Phụ kiện khác</a></li>
+</ul>

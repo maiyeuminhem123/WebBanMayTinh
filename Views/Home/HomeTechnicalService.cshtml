@@ -1,0 +1,252 @@
+﻿@{
+    ViewData["Title"] = "Dịch Vụ Kỹ Thuật Tại Nhà";
+}
+
+<div class="container my-5">
+    <h1>Dịch Vụ Kỹ Thuật Tại Nhà</h1>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .breadcrumb {
+            padding: 10px 0;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .breadcrumb-item {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .breadcrumb-separator {
+            color: #666;
+            margin: 0 5px;
+        }
+
+        .main-content {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            gap: 20px;
+        }
+
+        .sidebar {
+            width: 25%;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .sidebar-title {
+            color: #e60000;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+            .sidebar-menu li {
+                margin-bottom: 10px;
+            }
+
+                .sidebar-menu li a {
+                    color: #333;
+                    text-decoration: none;
+                    display: block;
+                    padding: 8px 10px;
+                    transition: all 0.3s ease;
+                }
+
+                    .sidebar-menu li a:hover {
+                        background-color: #f8f9fa;
+                        color: #e60000;
+                    }
+
+                .sidebar-menu li.active a {
+                    background-color: #f0f0f0;
+                    color: #e60000;
+                    border-left: 3px solid #e60000;
+                }
+
+        .content {
+            width: 75%;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-banner {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+            .service-banner img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+        .service-description, .guarantee-text {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .service-list-title, .contact-info-title, .work-hours-title, .response-time-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-list, .contact-list, .work-hours-list, .response-time-list {
+            list-style-type: none;
+            margin-bottom: 30px;
+        }
+
+            .service-list li, .contact-list li, .work-hours-list li, .response-time-list li {
+                padding: 8px 0 8px 25px;
+                position: relative;
+            }
+
+                .service-list li:before, .contact-list li:before, .work-hours-list li:before, .response-time-list li:before {
+                    content: "•";
+                    color: #e60000;
+                    font-weight: bold;
+                    position: absolute;
+                    left: 0;
+                }
+
+                .contact-list li a {
+                    color: #0366d6;
+                    text-decoration: none;
+                }
+
+                    .contact-list li a:hover {
+                        text-decoration: underline;
+                    }
+
+        .service-cta {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .cta-button:hover {
+                background-color: #0056b3;
+            }
+
+        .cta-hand {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+    </style>
+<div class="container my-5">
+   
+    <div class="main-content">
+        <!-- Main content -->
+        <div class="content">
+            <h1 class="page-title">Dịch Vụ Kỹ Thuật Tại Nhà</h1>
+
+            <div class="service-banner">
+                <img src="/images/home-support.jpg" alt="Dịch vụ kỹ thuật tại nhà">
+            </div>
+
+            <div class="service-description">
+                <p>Với mong muốn mang đến sự tiện lợi tối đa cho khách hàng, TTP triển khai dịch vụ kỹ thuật tại nhà nhằm hỗ trợ các vấn đề công nghệ một cách nhanh chóng, chuyên nghiệp và an toàn.</p>
+            </div>
+
+            <h2 class="service-list-title">Các dịch vụ kỹ thuật tại nhà bao gồm:</h2>
+            <ul class="service-list">
+                <li>Hỗ trợ cài đặt phần mềm, hệ điều hành, driver</li>
+                <li>Khắc phục sự cố mạng nội bộ, WiFi</li>
+                <li>Vệ sinh máy tính, laptop ngay tại nhà</li>
+                <li>Kiểm tra, chuẩn đoán lỗi phần cứng</li>
+                <li>Thay thế linh kiện đơn giản tại chỗ (RAM, ổ cứng, PSU...)</li>
+                <li>Thiết lập máy in, máy quét, thiết bị ngoại vi</li>
+                <li>Hướng dẫn sử dụng thiết bị, phần mềm cho người mới</li>
+            </ul>
+
+            <div class="contact-info">
+                <h2 class="contact-info-title">Thông tin liên hệ:</h2>
+                <ul class="contact-list">
+                    <li><strong>Địa chỉ:</strong> 123 Nguyễn Văn A, Phường B, Quận C, TP.HCM</li>
+                    <li><strong>Số điện thoại:</strong> 028xxxxxxxx</li>
+                    <li><strong>Email:</strong> <a href="mailto:support@ttp.vn">support@ttp.vn</a></li>
+                    <li><strong>Đăng ký dịch vụ:</strong> <a href="#">Yêu cầu hỗ trợ tại nhà</a></li>
+                </ul>
+            </div>
+
+            <div class="work-hours">
+                <h2 class="work-hours-title">Thời gian phục vụ:</h2>
+                <ul class="work-hours-list">
+                    <li><strong>Sáng:</strong> 08h00 - 12h00 (Thứ 2 - Chủ nhật)</li>
+                    <li><strong>Chiều:</strong> 13h00 - 18h00 (Thứ 2 - Chủ nhật)</li>
+                </ul>
+            </div>
+
+            <div class="service-cta">
+                <a href="#" class="cta-button">
+                    <span class="cta-hand">👉</span> ĐẶT LỊCH HỖ TRỢ
+                </a>
+            </div>
+
+            <div class="response-time">
+                <h3 class="response-time-title">Thời gian phản hồi:</h3>
+                <ul class="response-time-list">
+                    <li>Nhân viên sẽ liên hệ trong vòng 24 giờ sau khi tiếp nhận yêu cầu.</li>
+                    <li>Trường hợp khẩn cấp, vui lòng gọi trực tiếp hotline để được hỗ trợ nhanh hơn.</li>
+                </ul>
+            </div>
+
+            <div class="guarantee-text">
+                <p>Dịch vụ kỹ thuật tại nhà của TTP giúp bạn tiết kiệm thời gian, công sức và đảm bảo các vấn đề kỹ thuật được giải quyết đúng cách ngay tại chỗ. Đội ngũ kỹ thuật viên thân thiện, chuyên nghiệp và được đào tạo bài bản sẽ đem lại trải nghiệm hài lòng cho quý khách hàng.</p>
+            </div>
+
+            <div class="service-cta">
+                <a href="#" class="cta-button">
+                    <span class="cta-hand">👉</span> ĐẶT LỊCH HỖ TRỢ
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

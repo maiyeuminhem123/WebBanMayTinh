@@ -1,0 +1,59 @@
+﻿@model WebBanMayTinh.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Kết Quả Thanh Toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Kết Quả Thanh Toán</h2>
+
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="alert @(Model.Message.Contains("thành công") ? "alert-success" : "alert-danger") alert-dismissible fade show" role="alert">
+            @Model.Message
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (Model.OrderId > 0 && Model.Items != null && Model.Items.Any())
+    {
+        <div class="card shadow-sm p-4">
+            <h3 class="mb-4">Thông Tin Đơn Hàng</h3>
+            <p><strong>Mã đơn hàng:</strong> @Model.OrderId</p>
+            <p><strong>Tổng tiền:</strong> @Model.TotalAmount.ToString("N0")đ</p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sản Phẩm</th>
+                        <th>Số Lượng</th>
+                        <th>Đơn Giá</th>
+                        <th>Tổng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.UnitPrice.ToString("N0")đ</td>
+                            <td>@item.TotalPrice.ToString("N0")đ</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Quay về trang chủ</a>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <a href="@Url.Action("Checkout", "ShoppingCart")" class="btn btn-secondary">Quay lại thanh toán</a>
+        </div>
+    }
+</div>

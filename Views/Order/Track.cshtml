@@ -1,0 +1,367 @@
+﻿@model WebBanMayTinh.Models.Order
+
+@{
+    ViewData["Title"] = "Quá Trình Vận Chuyển";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid my-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow-sm">
+            <div class="position-sticky pt-3">
+                <h5 class="px-3 mb-3 fw-bold text-dark">Quản Lý Đơn Hàng</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Order" asp-action="Details" asp-route-id="@Model.Id">
+                            <i class="bi bi-file-text me-2"></i> Chi Tiết Đơn Hàng
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-controller="Order" asp-action="Track" asp-route-id="@Model.Id">
+                            <i class="bi bi-truck me-2"></i> Quá Trình Vận Chuyển
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <h2 class="text-center mb-4 fw-bold text-dark">Quá Trình Vận Chuyển - Mã Đơn: @Model.OrderCode</h2>
+
+            <!-- Timeline trạng thái vận chuyển -->
+            <div class="card shadow-sm p-4 mb-4 rounded-3">
+                <h4 class="mb-4 fw-bold">Trạng Thái Vận Chuyển</h4>
+                <div class="shipping-timeline position-relative mb-5 p-4 rounded-3">
+                    <div class="progress-line"></div>
+                    <div class="timeline-steps d-flex justify-content-between">
+                        <div class="timeline-step @(Model.Status == "Preparing" || Model.Status == "Shipping" || Model.Status == "Delivered" ? "active" : "")">
+                            <div class="timeline-icon">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+                            <p class="mb-0">Chuẩn bị hàng</p>
+                        </div>
+                        <div class="timeline-step @(Model.Status == "Shipping" || Model.Status == "Delivered" ? "active" : "")">
+                            <div class="timeline-icon">
+                                <i class="bi bi-truck"></i>
+                            </div>
+                            <p class="mb-0">Đang giao</p>
+                        </div>
+                        <div class="timeline-step @(Model.Status == "Delivered" ? "active" : "")">
+                            <div class="timeline-icon">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                            <p class="mb-0">Đã giao thành công</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lịch sử trạng thái -->
+                <h4 class="mb-3 fw-bold">Lịch Sử Trạng Thái</h4>
+                <div class="table-responsive shadow-sm rounded-3">
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Trạng thái</th>
+                                <th>Thời gian</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Hiển thị trạng thái "Chờ xử lý" dựa trên OrderDate -->
+                            <tr class="bg-white">
+                                <td><span class="badge bg-warning text-dark fw-normal">Chờ xử lý</span></td>
+                                <td>@Model.OrderDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                                <td class="text-muted">Đơn hàng đã được đặt</td>
+                            </tr>
+
+                            <!-- Hiển thị lịch sử trạng thái từ StatusHistory -->
+                            @if (Model.StatusHistory != null && Model.StatusHistory.Any())
+                            {
+                                foreach (var history in Model.StatusHistory.OrderBy(h => h.UpdatedAt))
+                                {
+                                    <tr class="bg-white">
+                                        <td>
+                                            @if (history.Status == "Confirmed")
+                                            {
+                                                <span class="badge bg-success fw-normal">Đã xác nhận</span>
+                                            }
+                                            else if (history.Status == "Cancelled")
+                                            {
+                                                <span class="badge bg-danger fw-normal">Đã hủy</span>
+                                            }
+                                            else if (history.Status == "Preparing")
+                                            {
+                                                <span class="badge bg-info fw-normal">Chuẩn bị hàng</span>
+                                            }
+                                            else if (history.Status == "Shipping")
+                                            {
+                                                <span class="badge bg-primary fw-normal">Đang giao</span>
+                                            }
+                                            else if (history.Status == "Delivered")
+                                            {
+                                                <span class="badge bg-success fw-normal">Đã giao thành công</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-secondary fw-normal">@history.Status</span>
+                                            }
+                                        </td>
+                                        <td>@history.UpdatedAt.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                                        <td class="text-muted">@(string.IsNullOrEmpty(history.Notes) ? "Không có" : history.Notes)</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="text-start">
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary shadow-sm">
+                    <i class="bi bi-arrow-left me-2"></i> Quay lại chi tiết đơn hàng
+                </a>
+            </div>
+        </main>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        /* Sidebar styling */
+        .sidebar {
+            border-radius: 8px;
+            background-color: #fff;
+            border-right: 1px solid #dee2e6;
+            min-height: 100vh;
+        }
+
+            .sidebar .nav-link {
+                color: #343a40;
+                padding: 10px 15px;
+                border-radius: 6px;
+                transition: all 0.2s ease;
+            }
+
+                .sidebar .nav-link:hover, .sidebar .nav-link.active {
+                    background-color: #f8f9fa;
+                    color: #007bff;
+                }
+
+            .sidebar h5 {
+                border-bottom: 1px solid #dee2e6;
+                padding-bottom: 10px;
+            }
+
+        /* Card styling */
+        .card {
+            border: none;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        /* Timeline styling */
+        .shipping-timeline {
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 30px;
+            left: 15%;
+            right: 15%;
+            height: 4px;
+            background: linear-gradient(to right, #28a745 @(Model.Status == "Preparing" ? "33%" : Model.Status == "Shipping" ? "66%" : Model.Status == "Delivered" ? "100%" : "0%"), #dee2e6 @(Model.Status == "Preparing" ? "33%" : Model.Status == "Shipping" ? "66%" : Model.Status == "Delivered" ? "100%" : "0%"), #dee2e6 100%);
+            z-index: 1;
+        }
+
+        .timeline-steps {
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-step {
+            text-align: center;
+            flex: 1;
+        }
+
+            .timeline-step.active .timeline-icon {
+                background-color: #28a745;
+                color: #fff;
+                border-color: #28a745;
+                transform: scale(1.1);
+            }
+
+            .timeline-step.active p {
+                color: #28a745;
+                font-weight: 500;
+            }
+
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 8px;
+            background-color: #fff;
+            border: 2px solid #e9ecef;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-step.active .timeline-icon i {
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Button styling */
+        .btn {
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #004085;
+            }
+
+        /* Badge styling */
+        .badge {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            border-radius: 12px;
+        }
+
+        /* Table styling */
+        .table {
+            border-radius: 8px;
+            overflow: hidden;
+            border: none;
+            background-color: #fff;
+        }
+
+            .table th, .table td {
+                padding: 12px;
+                vertical-align: middle;
+            }
+
+            .table thead th {
+                background-color: #343a40;
+                color: #fff;
+                border: none;
+                font-weight: 500;
+            }
+
+            .table tbody tr {
+                transition: background-color 0.2s ease;
+            }
+
+                .table tbody tr:hover {
+                    background-color: #f8f9fa;
+                }
+
+        /* Text and label styling */
+        .text-muted {
+            color: #6c757d !important;
+        }
+
+        /* Shadow and border */
+        .shadow-sm {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main content padding */
+        main {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        /* Pulse animation for active timeline icons */
+        @@keyframes pulse {
+            0%
+
+        {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+
+        }
+
+        /* Mobile sidebar toggle */
+        .sidebar-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+        }
+
+        @@media (max-width: 767.98px) {
+            .sidebar
+
+        {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: 999;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.show {
+            transform: translateX(0);
+        }
+
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Toggle sidebar trên thiết bị di động
+            const sidebarToggle = $('<button>').addClass('btn btn-primary d-md-none mb-3 sidebar-toggle')
+                .html('<i class="bi bi-list"></i>')
+                .attr('data-bs-toggle', 'collapse')
+                .attr('data-bs-target', '#sidebar');
+            $('.container-fluid').prepend(sidebarToggle);
+
+            // Cập nhật timeline dựa trên trạng thái ban đầu
+            updateTimeline('@Model.Status');
+
+            function updateTimeline(status) {
+                $('.timeline-step').removeClass('active');
+                if (status === "Preparing" || status === "Shipping" || status === "Delivered") {
+                    $('.timeline-step').eq(0).addClass('active');
+                }
+                if (status === "Shipping" || status === "Delivered") {
+                    $('.timeline-step').eq(1).addClass('active');
+                }
+                if (status === "Delivered") {
+                    $('.timeline-step').eq(2).addClass('active');
+                }
+            }
+        });
+    </script>
+}

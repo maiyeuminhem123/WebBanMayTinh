@@ -1,0 +1,162 @@
+﻿@model WebBanMayTinh.Models.Product
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Thêm Sản Phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="bg-white rounded-4 shadow-lg p-5">
+        <h2 class="text-center">
+            <i class="fas fa-plus-circle me-2" style="color: #228b22;"></i>
+            <span style="color: black;">Thêm Sản Phẩm Mới</span>
+        </h2>
+
+
+        <form asp-action="Add" enctype="multipart/form-data" id="addProductForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+            <div class="row gy-4">
+                <!-- Nhóm thông tin cơ bản -->
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Tên sản phẩm *</label>
+                    <input asp-for="Name" class="form-control shadow-sm" placeholder="VD: Laptop Gaming XYZ" required />
+                    <span asp-validation-for="Name" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Giá bán (VNĐ) *</label>
+                    <input asp-for="Price" type="number" step="0.01" class="form-control shadow-sm" placeholder="VD: 23990000" required />
+                    <span asp-validation-for="Price" class="text-danger small"></span>
+                </div>
+
+                <!-- Mô tả ngắn -->
+                <div class="col-md-12">
+                    <label class="form-label fw-semibold">Mô tả ngắn</label>
+                    <textarea asp-for="Description" class="form-control shadow-sm" rows="3" placeholder="Tóm tắt sản phẩm..."></textarea>
+                    <span asp-validation-for="Description" class="text-danger small"></span>
+                </div>
+
+                <!-- Mô tả chi tiết -->
+                <div class="col-md-12">
+                    <label class="form-label fw-semibold">Thông tin chi tiết</label>
+                    <textarea asp-for="DetailDescription" class="form-control shadow-sm" rows="6" placeholder="Đặc điểm nổi bật, thiết kế, cấu hình..."></textarea>
+                    <span asp-validation-for="DetailDescription" class="text-danger small"></span>
+                </div>
+
+                <!-- Ảnh -->
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Link ảnh (nếu có)</label>
+                    <input asp-for="ImageUrl" class="form-control shadow-sm" placeholder="https://..." />
+                    <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Hoặc tải ảnh lên</label>
+                    <input type="file" name="imageUpload" class="form-control shadow-sm" accept="image/*" />
+                </div>
+
+                <!-- Danh mục -->
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Danh mục *</label>
+                    <select asp-for="CategoryId" class="form-select shadow-sm" asp-items="ViewBag.Categories" required>
+                        <option value="">-- Chọn danh mục --</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                </div>
+
+                <!-- Cấu hình -->
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">CPU</label>
+                    <input asp-for="CPU" class="form-control shadow-sm" placeholder="VD: Intel Core i7-12700H" />
+                    <span asp-validation-for="CPU" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">GPU</label>
+                    <input asp-for="GPU" class="form-control shadow-sm" placeholder="VD: RTX 3060 6GB" />
+                    <span asp-validation-for="GPU" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">RAM</label>
+                    <input asp-for="RAM" class="form-control shadow-sm" placeholder="VD: 16GB DDR5 4800MHz" />
+                    <span asp-validation-for="RAM" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Ổ cứng</label>
+                    <input asp-for="Storage" class="form-control shadow-sm" placeholder="VD: 512GB SSD NVMe" />
+                    <span asp-validation-for="Storage" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Hệ điều hành</label>
+                    <input asp-for="OperatingSystem" class="form-control shadow-sm" placeholder="VD: Windows 11 Home SL" />
+                    <span asp-validation-for="OperatingSystem" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Thương hiệu</label>
+                    <input asp-for="Brand" class="form-control shadow-sm" placeholder="VD: ASUS, Dell, MSI..." />
+                    <span asp-validation-for="Brand" class="text-danger small"></span>
+                </div>
+                <!-- Mã Serial -->
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Mã Serial *</label>
+                    <input asp-for="SerialNumber" class="form-control shadow-sm" placeholder="VD: SN12345678XYZ" required />
+                    <span asp-validation-for="SerialNumber" class="text-danger small"></span>
+                </div>
+
+  
+
+                <!-- Thời gian bảo hành -->
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Thời hạn bảo hành (tháng) *</label>
+                    <input asp-for="WarrantyPeriodMonths" type="number" min="1" class="form-control shadow-sm" placeholder="VD: 24" required />
+                    <span asp-validation-for="WarrantyPeriodMonths" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <!-- Nút hành động -->
+            <div class="mt-5 d-flex justify-content-end gap-3">
+                <button type="submit" class="btn btn-dark py-2 fw-semibold shadow-sm">
+                    <i class="fas fa-check-circle me-2" style="color: #228b22;"></i>Thêm sản phẩm
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary px-5 py-2 fw-semibold shadow-sm">
+                    <i class="fas fa-arrow-left me-2"></i>Quay lại
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('.form-control, .form-select').on('focus', function () {
+                $(this).addClass('border-primary shadow');
+            }).on('blur', function () {
+                $(this).removeClass('border-primary shadow');
+            });
+
+            $('#addProductForm').on('submit', function (e) {
+                let isValid = true;
+                $('.form-control[required], .form-select[required]').each(function () {
+                    if (!$(this).val()) {
+                        isValid = false;
+                        $(this).addClass('is-invalid');
+                    } else {
+                        $(this).removeClass('is-invalid');
+                    }
+                });
+                if (!isValid) {
+                    e.preventDefault();
+                    alert('Vui lòng điền đầy đủ các trường bắt buộc!');
+                }
+            });
+        });
+    </script>
+}

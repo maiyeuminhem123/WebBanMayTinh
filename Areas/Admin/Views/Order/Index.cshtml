@@ -1,0 +1,333 @@
+﻿@model IEnumerable<WebBanMayTinh.Models.Order>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Main content -->
+<main class="col-md-9 col-lg-10 px-4">
+    <div class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-4 border-bottom">
+        <h2 class="fw-bold text-dark">Danh Sách Đơn Hàng</h2>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button id="confirmSelected" class="btn btn-success me-2 shadow-sm" disabled>
+                <i class="bi bi-check-circle"></i> Xác nhận đã chọn
+            </button>
+            <button id="cancelSelected" class="btn btn-danger me-2 shadow-sm" disabled>
+                <i class="bi bi-x-circle"></i> Hủy bỏ đã chọn
+            </button>
+            <button id="deleteSelected" class="btn btn-outline-danger shadow-sm" disabled>
+                <i class="bi bi-trash"></i> Xóa đã chọn
+            </button>
+        </div>
+    </div>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show rounded-3 shadow-sm" role="alert">
+            @TempData["Message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show rounded-3 shadow-sm" role="alert">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="table-responsive shadow-sm rounded-3">
+        <table class="table table-hover table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th class="text-center"><input type="checkbox" id="selectAll" /></th>
+                    <th class="text-center">ID Order</th>
+                    <th>Khách hàng</th>
+                    <th>Email</th>
+                    <th>Ngày đặt</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th class="text-center">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr class="bg-white">
+                        <td class="text-center"><input type="checkbox" class="select-order" value="@order.Id" /></td>
+                        <td class="text-center">@order.Id</td>
+                        <td>@order.CustomerName</td>
+                        <td>@order.Email</td>
+                        <td>@order.OrderDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                        <td>@order.TotalAmount.ToString("N0")</td>
+                        <td>
+                            @if (order.Status == "Pending")
+                            {
+                                <span class="badge bg-warning text-dark fw-normal">Chờ xử lý</span>
+                            }
+                            else if (order.Status == "Confirmed")
+                            {
+                                <span class="badge bg-success fw-normal">Đã xác nhận</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary fw-normal">@order.Status</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-info me-1 shadow-sm">
+                                <i class="bi bi-eye"></i> Xem Chi Tiết
+                            </a>
+                            @if (order.Status == "Pending")
+                            {
+                                <button class="btn btn-sm btn-success confirm-order me-1 shadow-sm" data-id="@order.Id">
+                                    <i class="bi bi-check-circle"></i> Xác nhận
+                                </button>
+                                <button class="btn btn-sm btn-danger cancel-order me-1 shadow-sm" data-id="@order.Id">
+                                    <i class="bi bi-x-circle"></i> Hủy bỏ
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>
+
+@section Styles {
+    <style>
+        /* Modern table styling */
+        .table {
+            border-radius: 8px;
+            overflow: hidden;
+            border: none;
+            background-color: #fff;
+        }
+
+            .table th, .table td {
+                padding: 12px;
+                vertical-align: middle;
+            }
+
+            .table thead th {
+                background-color: #343a40;
+                color: #fff;
+                border: none;
+                font-weight: 500;
+            }
+
+            .table tbody tr {
+                transition: background-color 0.2s ease;
+            }
+
+                .table tbody tr:hover {
+                    background-color: #f8f9fa;
+                }
+
+        /* Button styling */
+        .btn {
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+            .btn-success:hover {
+                background-color: #218838;
+                border-color: #1e7e34;
+            }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+            .btn-danger:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+
+        .btn-outline-danger {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+            .btn-outline-danger:hover {
+                background-color: #dc3545;
+                color: #fff;
+            }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+            .btn-info:hover {
+                background-color: #138496;
+                border-color: #117a8b;
+            }
+
+        /* Badge styling */
+        .badge {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            border-radius: 12px;
+        }
+
+        /* Alert styling */
+        .alert {
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: none;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: none;
+        }
+
+        /* Checkbox alignment */
+        .select-order, #selectAll {
+            cursor: pointer;
+        }
+
+        /* Shadow for depth */
+        .shadow-sm {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Border bottom for header */
+        .border-bottom {
+            border-bottom: 2px solid #dee2e6 !important;
+        }
+
+        /* Main content padding */
+        main {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Tích chọn tất cả
+            $('#selectAll').on('change', function () {
+                $('.select-order').prop('checked', this.checked);
+                toggleButtons();
+            });
+
+            // Tích chọn từng dòng
+            $('.select-order').on('change', function () {
+                toggleButtons();
+            });
+
+            function getSelectedIds() {
+                return $('.select-order:checked').map(function () {
+                    return $(this).val();
+                }).get();
+            }
+
+            // Xác nhận đã chọn
+            $('#confirmSelected').on('click', function () {
+                const selectedIds = getSelectedIds();
+                if (selectedIds.length === 0) {
+                    alert('Vui lòng chọn ít nhất một đơn hàng.');
+                    return;
+                }
+
+                if (confirm('Bạn có chắc chắn muốn xác nhận các đơn hàng đã chọn?')) {
+                    $.ajax({
+                        url: '@Url.Action("ConfirmSelected", "Order", new { area = "Admin" })',
+                        type: 'POST',
+                        traditional: true,
+                        data: { ids: selectedIds },
+                        success: function (response) {
+                            alert(response.message);
+                            if (response.success) location.reload();
+                        },
+                        error: function () {
+                            alert('Có lỗi xảy ra, vui lòng thử lại.');
+                        }
+                    });
+                }
+            });
+
+            // Hủy bỏ đã chọn
+            $('#cancelSelected').on('click', function () {
+                const selectedIds = getSelectedIds();
+                if (selectedIds.length === 0) {
+                    alert('Vui lòng chọn ít nhất một đơn hàng.');
+                    return;
+                }
+
+                if (confirm('Bạn có chắc chắn muốn hủy các đơn hàng đã chọn?')) {
+                    $.ajax({
+                        url: '@Url.Action("CancelSelected", "Order", new { area = "Admin" })',
+                        type: 'POST',
+                        traditional: true,
+                        data: { ids: selectedIds },
+                        success: function (response) {
+                            alert(response.message);
+                            if (response.success) location.reload();
+                        },
+                        error: function () {
+                            alert('Có lỗi xảy ra, vui lòng thử lại.');
+                        }
+                    });
+                }
+            });
+
+            // Xóa đã chọn
+            $('#deleteSelected').on('click', function () {
+                const selectedIds = getSelectedIds();
+                if (selectedIds.length === 0) {
+                    alert('Vui lòng chọn ít nhất một đơn hàng.');
+                    return;
+                }
+
+                if (confirm('Bạn có chắc chắn muốn xóa các đơn hàng đã chọn?')) {
+                    $.ajax({
+                        url: '@Url.Action("DeleteSelected", "Order", new { area = "Admin" })',
+                        type: 'POST',
+                        traditional: true,
+                        data: { ids: selectedIds },
+                        success: function (response) {
+                            alert(response.message);
+                            if (response.success) location.reload();
+                        },
+                        error: function () {
+                            alert('Có lỗi xảy ra, vui lòng thử lại.');
+                        }
+                    });
+                }
+            });
+
+            // Kích hoạt nút
+            function toggleButtons() {
+                const anyChecked = $('.select-order:checked').length > 0;
+                $('#confirmSelected').prop('disabled', !anyChecked);
+                $('#cancelSelected').prop('disabled', !anyChecked);
+                $('#deleteSelected').prop('disabled', !anyChecked);
+            }
+        });
+    </script>
+}

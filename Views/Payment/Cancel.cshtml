@@ -1,0 +1,39 @@
+﻿@model WebBanMayTinh.Models.OrderViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-4">
+    <h2>Thanh Toán Bị Hủy</h2>
+    <div class="alert alert-warning">
+        @Model.Message
+    </div>
+
+    @if (Model.Items.Any())
+    {
+        <h4>Giỏ hàng của bạn</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Tổng cộng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>$@item.UnitPrice.ToString("F2")</td>
+                        <td>$@item.TotalPrice.ToString("F2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Quay lại trang chủ</a>
+</div>

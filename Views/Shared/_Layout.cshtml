@@ -1,0 +1,1027 @@
+﻿@using WebBanMayTinh.Extensions
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebBanMayTinh</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebBanMayTinh.styles.css" asp-append-version="true" />
+    <style>
+        /* Mega Dropdown Menu Styles */
+        .mega-dropdown {
+            position: static !important;
+        }
+
+        .navbar-gradient {
+            background: linear-gradient(#9f0404, #b20404) !important;
+        }
+
+        .mega-dropdown-menu {
+            width: 100%;
+            border-radius: 0;
+            background-color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            border-top: 3px solid #ff4d4d;
+            padding: 15px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .mega-dropdown-menu.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mega-dropdown-menu:not(.show) {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .mega-dropdown-menu .dropdown-header {
+            color: #ff4d4d;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+
+        .mega-dropdown-menu .dropdown-menu {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .mega-dropdown-menu .dropdown-menu li {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .mega-dropdown-menu .dropdown-menu li:last-child {
+            margin-right: 0;
+        }
+
+        .mega-dropdown-menu .dropdown-item {
+            padding: 5px 10px;
+            color: #333;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .mega-dropdown-menu .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #ff4d4d;
+            padding-left: 15px;
+        }
+
+        .mega-dropdown-menu .dropdown-divider {
+            border-color: #eee;
+            margin: 10px 0;
+        }
+
+        .dropdown-promo {
+            max-width: 250px;
+        }
+
+        .navbar .nav-item:hover .nav-link {
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .navbar .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .navbar .nav-link:hover:after {
+            width: 70%;
+        }
+
+        /* Admin Sidebar Styles */
+        .admin-sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, #2c3238 0%, #343a40 100%);
+            min-height: calc(100vh - 116px);
+            position: fixed;
+            top: 116px;
+            left: 0;
+            padding: 20px 0;
+            overflow-y: auto;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            z-index: 1020;
+        }
+
+        .admin-sidebar .sidebar-menu {
+            padding: 0 10px;
+            list-style: none;
+        }
+
+        .admin-sidebar .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            margin: 5px 10px;
+            border-radius: 8px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .admin-sidebar .sidebar-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+
+        .admin-sidebar .sidebar-item.active {
+            background-color: #ff4d4d;
+            color: #ffffff;
+            box-shadow: 0 2px 5px rgba(255, 77, 77, 0.3);
+        }
+
+        .admin-sidebar .sidebar-item i {
+            font-size: 18px;
+            width: 24px;
+            margin-right: 12px;
+            text-align: center;
+        }
+
+        .admin-sidebar .sidebar-item span {
+            flex-grow: 1;
+        }
+
+        /* Service Sidebar Styles */
+        .service-sidebar {
+            width: 250px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: fixed;
+            top: 116px;
+            left: 0;
+            height: calc(100vh - 116px);
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .service-sidebar .sidebar-title {
+            color: #e60000;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-sidebar .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-sidebar .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+
+        .service-sidebar .sidebar-menu li a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .service-sidebar .sidebar-menu li a:hover {
+            background-color: #f8f9fa;
+            color: #e60000;
+        }
+
+        .service-sidebar .sidebar-menu li.active a {
+            background-color: #f0f0f0;
+            color: #e60000;
+            border-left: 3px solid #e60000;
+        }
+
+        /* Sidebar Toggle */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 130px;
+            left: 10px;
+            z-index: 1040;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 8px 12px;
+            color: #ffffff;
+            background-color: #e60000;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar-toggle:hover {
+            background-color: #cc0000;
+        }
+        /* Hero Carousel */
+        .hero-carousel {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .carousel-item img {
+            height: 450px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-caption {
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+            .carousel-caption h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+                margin-bottom: 15px;
+            }
+
+            .carousel-caption p {
+                font-size: 1.2rem;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            }
+
+        .btn-primary-custom {
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(178, 4, 4, 0.3);
+        }
+
+            .btn-primary-custom:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(178, 4, 4, 0.4);
+            }
+
+        /* Advertisement Banners */
+        .ad-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .ad-banner::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+                animation: shine 3s infinite;
+            }
+
+        @@keyframes shine {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .ad-banner h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .ad-banner-small {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+            .ad-banner-small:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-hover);
+            }
+
+        .promotion-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            animation: bounce 2s infinite;
+        }
+
+        @@keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Animations */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @@keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading Animation */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @@keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @@media (max-width: 992px) {
+            .mega-dropdown-menu {
+                padding: 15px;
+            }
+
+            .carousel-caption h2 {
+                font-size: 1.8rem;
+            }
+
+            .ad-banner {
+                padding: 25px;
+            }
+
+                .ad-banner h2 {
+                    font-size: 1.6rem;
+                }
+        }
+
+        @@media (max-width: 768px) {
+            .search-container {
+                margin: 15px 0;
+            }
+
+            .secondary-nav .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .secondary-nav .nav-item {
+                text-align: center;
+                padding: 10px;
+            }
+
+                .secondary-nav .nav-item:after {
+                    display: none;
+                }
+
+            .hero-carousel {
+                margin: 20px 0;
+            }
+
+            .carousel-item img {
+                height: 250px;
+            }
+
+            .carousel-caption {
+                padding: 15px;
+            }
+
+                .carousel-caption h2 {
+                    font-size: 1.4rem;
+                }
+
+                .carousel-caption p {
+                    font-size: 0.9rem;
+                }
+
+            .ad-banner {
+                padding: 20px;
+                margin: 20px 0;
+            }
+
+                .ad-banner h2 {
+                    font-size: 1.4rem;
+                }
+        }
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: 4px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--secondary-color);
+                /* Content Wrapper */
+        .content-wrapper {
+            margin-left: 250px;
+            padding: 20px;
+            min-height: calc(100vh - 116px);
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Ensure content wrapper respects sidebar in all cases */
+        .admin-sidebar + .content-wrapper {
+            margin-left: 250px !important;
+        }
+
+        .content-wrapper form {
+            margin-left: 10px;
+            width: calc(100% - 10px);
+        }
+
+        /* No Sidebar */
+        .no-sidebar .content-wrapper {
+            margin-left: 0;
+        }
+
+        /* Responsive without media */
+        .mobile-view .admin-sidebar,
+        .mobile-view .service-sidebar {
+            width: 250px;
+            transform: translateX(-250px);
+        }
+
+        .mobile-view .admin-sidebar.show,
+        .mobile-view .service-sidebar.show {
+            transform: translateX(0);
+        }
+
+        .mobile-view .content-wrapper {
+            margin-left: 0;
+        }
+
+        .mobile-view .content-wrapper.shifted {
+            margin-left: 250px;
+        }
+
+        .mobile-view .sidebar-toggle {
+            display: block;
+        }
+
+        /* Prevent content jumping */
+        body {
+            overflow-x: hidden;
+
+
+        }
+    </style>
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6821cdfbe098b41911af5054/1ir20p8g1';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-gradient text-white fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-desktop me-2"></i> <span style="font-weight: bold;">TTP Computer</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <form class="d-flex mx-3 flex-grow-1" asp-controller="Home" asp-action="Search" method="get">
+                        <div class="input-group">
+                            <input class="form-control" type="search" placeholder="BẠN CẦN TÌM GÌ?" aria-label="Search" name="query">
+                            <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item dropdown mx-2 mega-dropdown" id="categoryDropdownContainer">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bars me-1"></i> Danh mục
+                            </a>
+                            <div class="dropdown-menu mega-dropdown-menu p-3" aria-labelledby="categoryDropdown">
+                                @await Component.InvokeAsync("MegaCategoryMenu")
+                                <div class="dropdown-divider"></div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="text-decoration-none">Xem tất cả danh mục</a>
+                                    <div class="dropdown-promo">
+                                        <img src="/api/placeholder/400/150" alt="Khuyến mãi" class="img-fluid rounded">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-white" href="tel:19005301">
+                                <i class="fas fa-phone-alt me-1"></i> Hotline 1900.5301
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-white" asp-controller="Home" asp-action="Showroom">
+                                <i class="fas fa-map-marker-alt me-1"></i> Hệ thống Showroom
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-white" asp-controller="Order" asp-action="Track">
+                                <i class="fas fa-clipboard-check me-1"></i> Tra cứu đơn hàng
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-white position-relative" asp-controller="Cart" asp-action="Index">
+                                <i class="fas fa-shopping-cart me-1"></i> Giỏ hàng
+                                @{
+                                    var cart = Context.Session.GetObjectFromJson<ShoppingCart>("Cart") ?? new ShoppingCart();
+                                    cart.Items = cart.Items ?? new List<CartItem>();
+                                    int itemCount = cart.Items.Any() ? cart.Items.Sum(item => item.Quantity) : 0;
+                                }
+                                <span class="badge bg-warning text-dark rounded-circle position-absolute" style="top: 0; right: -10px;">@itemCount</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <partial name="_LoginPartial" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Secondary Navbar -->
+        <div style="background-color: white; border-bottom: 1px solid #eee; margin-top: 56px;">
+            <div class="container d-flex justify-content-center align-items-center py-2 gap-3 flex-wrap">
+                <div class="nav-item d-flex align-items-center gap-2 px-3 border-end">
+                    <i class="fas fa-tag"></i>
+                    <a asp-controller="Home" asp-action="BuildPcPromotion" class="text-decoration-none text-dark">
+                        <span>Xây dựng cấu hình</span>
+                    </a>
+                </div>
+                <div class="nav-item d-flex align-items-center gap-2 px-3 border-end">
+                    <i class="fas fa-newspaper"></i>
+                    <a asp-controller="Home" asp-action="TechNews" class="text-decoration-none text-dark">
+                        <span>Tin công nghệ</span>
+                    </a>
+                </div>
+                <div class="nav-item d-flex align-items-center gap-2 px-3 border-end">
+                    <i class="fas fa-tools"></i>
+                    <a asp-controller="Home" asp-action="RepairService" class="text-decoration-none text-dark">
+                        <span>Dịch vụ sửa chữa</span>
+                    </a>
+                </div>
+                <div class="nav-item d-flex align-items-center gap-2 px-3 border-end">
+                    <i class="fas fa-laptop-house"></i>
+                    <a asp-controller="Home" asp-action="HomeTechnicalService" class="text-decoration-none text-dark">
+                        <span>Dịch vụ kỹ thuật tại nhà</span>
+                    </a>
+                </div>
+                <div class="nav-item d-flex align-items-center gap-2 px-3 border-end">
+                    <i class="fas fa-exchange-alt"></i>
+                    <a asp-controller="Home" asp-action="TradeIn" class="text-decoration-none text-dark">
+                        <span>Thu cũ đổi mới</span>
+                    </a>
+                </div>
+                <div class="nav-item d-flex align-items-center gap-2 px-3">
+                    <i class="fas fa-shield-alt"></i>
+                    <a asp-controller="Home" asp-action="WarrantyCheck" class="text-decoration-none text-dark">
+                        <span>Tra cứu bảo hành</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Hero Carousel -->
+        <div class="container">
+            @{
+                var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+                var action = ViewContext.RouteData.Values["action"]?.ToString();
+            }
+
+            @if (controller == "Home" && action == "Index")
+            {
+                <!-- Hero Carousel -->
+                <div class="container">
+                    <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="5000">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://thanhnhancomputer.vn/uploads/images/5463491.jpg" class="d-block w-100" alt="Gaming Setup">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h2>GAMING SETUP ĐỈNH CAO</h2>
+                                    <p>Khuyến mãi lên đến 50% cho tất cả sản phẩm gaming</p>
+                                    <button class="btn btn-primary-custom btn-lg">
+                                        <i class="fas fa-shopping-cart me-2"></i>Mua ngay
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://www.techpowerup.com/img/djT8fZZvclTtu6Af.jpg" class="d-block w-100" alt="Laptop">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h2>LAPTOP THẾ HỆ MỚI</h2>
+                                    <p>Bộ sưu tập laptop 2024 với hiệu năng vượt trội</p>
+                                    <button class="btn btn-primary-custom btn-lg">
+                                        <i class="fas fa-eye me-2"></i>Khám phá
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://th.bing.com/th/id/OIP.1fxUUnID50sEpGY53tKadwHaDt?cb=iwc2&w=2100&h=1050&rs=1&pid=ImgDetMain" class="d-block w-100" alt="Components">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h2>LINH KIỆN CHÍNH HÃNG</h2>
+                                    <p>Đảm bảo chất lượng với giá tốt nhất thị trường</p>
+                                    <button class="btn btn-primary-custom btn-lg">
+                                        <i class="fas fa-info-circle me-2"></i>Xem thêm
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- Advertisement Banner -->
+                <div class="container">
+                    <div class="ad-banner fade-in-up">
+                        <h2><i class="fas fa-fire me-2"></i>FLASH SALE 12.12</h2>
+                        <p class="mb-4">Giảm giá sốc lên đến 70% - Chỉ trong hôm nay!</p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <button class="btn btn-warning btn-lg">
+                                <i class="fas fa-bolt me-2"></i>Mua ngay
+                            </button>
+                            <button class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-clock me-2"></i>Xem thêm
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Ads Row (Được bọc trong cùng điều kiện) -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="ad-banner-small">
+                                <h5><i class="fas fa-gift me-2"></i>QUÀ TẶNG HẤP DẪN</h5>
+                                <p class="mb-3">Mua laptop tặng ngay chuột gaming + bàn phím cơ</p>
+                                <button class="btn btn-light btn-sm">Xem ngay</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ad-banner-small" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                                <h5><i class="fas fa-shipping-fast me-2"></i>MIỄN PHÍ VẬN CHUYỂN</h5>
+                                <p class="mb-3">Giao hàng miễn phí toàn quốc cho đơn hàng từ 5 triệu</p>
+                                <button class="btn btn-dark btn-sm">Tìm hiểu</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ad-banner-small" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                                <h5><i class="fas fa-tools me-2"></i>BẢO HÀNH VIP</h5>
+                                <p class="mb-3">Bảo hành tận nơi - Đổi mới trong 30 ngày</p>
+                                <button class="btn btn-primary btn-sm">Chi tiết</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+    </header>
+
+    <!-- Main Content with Sidebar -->
+    @{
+        bool isServicePage = ViewContext.RouteData.Values["area"]?.ToString() != "Admin" &&
+                             ViewContext.RouteData.Values["controller"]?.ToString() == "Home" &&
+                             new[] { "TradeIn", "HomeTechnicalService", "RepairService" }.Contains(ViewContext.RouteData.Values["action"]?.ToString());
+    }
+    <div class="d-flex @(isServicePage ? "" : "no-sidebar")">
+        <!-- Admin Sidebar -->
+        @if (ViewContext.RouteData.Values["area"]?.ToString() == "Admin")
+        {
+            <div class="admin-sidebar">
+                <button class="sidebar-toggle d-mobile"><i class="fas fa-bars"></i></button>
+                <ul class="sidebar-menu list-unstyled ps-0">
+                    <li>
+                        <a class="sidebar-item text-white d-flex align-items-center gap-2 py-2 px-3" href="@Url.Action("Index", "Product", new { area = "Admin" })">
+                            <i class="bi bi-box-seam"></i>
+                            <span>Quản lý sản phẩm</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sidebar-item text-white d-flex align-items-center gap-2 py-2 px-3" href="@Url.Action("Index", "Order", new { area = "Admin" })">
+                            <i class="bi bi-cart-check"></i>
+                            <span>Quản lý đơn hàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sidebar-item text-white d-flex align-items-center gap-2 py-2 px-3" href="@Url.Action("Index", "Category", new { area = "Admin" })">
+                            <i class="bi bi-tags"></i>
+                            <span>Quản lý danh mục</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sidebar-item text-white d-flex align-items-center gap-2 py-2 px-3" href="@Url.Action("Index", "Warehouse", new { area = "Admin" })">
+                            <i class="bi bi-people"></i>
+                            <span>Quản lý kho</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sidebar-item text-white d-flex align-items-center gap-2 py-2 px-3" href="@Url.Action("Index", "Voucher", new { area = "Admin" })">
+                            <i class="bi bi-ticket-perforated"></i>
+                            <span>Quản lý voucher</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sidebar-item text-white d-flex align-items-center gap-2 py-2 px-3" href="@Url.Action("Index", "Shipping", new { area = "Admin" })">
+                            <i class="bi bi-truck"></i>
+                            <span>Quản lý đơn vị vận chuyển</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sidebar-item text-white d-flex align-items-center gap-2 py-2 px-3" href="@Url.Action("Dashboard", "Revenue", new { area = "Admin" })">
+                            <i class="bi bi-bar-chart-line"></i>
+                            <span>Báo cáo thống kê</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sidebar-item text-white d-flex align-items-center gap-2 py-2 px-3" href="@Url.Action("Logout", "Account", new { area = "" })">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Đăng xuất</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        }
+        <!-- Service Sidebar -->
+        @if (isServicePage)
+        {
+            <div class="service-sidebar">
+                <button class="sidebar-toggle d-mobile"><i class="fas fa-bars"></i></button>
+                <h3 class="sidebar-title">Danh mục dịch vụ</h3>
+                <ul class="sidebar-menu list-unstyled ps-0">
+                    <li><a href="/Home/BuildPcPromotion">Xây dựng cấu hình</a></li>
+                    <li><a href="/Home/TechNews">Tin công nghệ</a></li>
+                    <li><a href="/Home/RepairService">Dịch vụ sửa chữa</a></li>
+                    <li><a href="/Home/HomeTechnicalService">Dịch vụ kỹ thuật tại nhà</a></li>
+                    <li><a href="/Home/TradeIn">Thu cũ đổi mới</a></li>
+                    <li><a href="/Home/WarrantyCheck">Tra cứu bảo hành</a></li>
+                    <li><a href="/Home/WarrantyPolicy">Chính sách bảo hành</a></li>
+                    <li><a href="/Home/Payment">Thanh toán</a></li>
+                    <li><a href="/Home/Installment">Mua hàng trả góp</a></li>
+                    <li><a href="/Home/BuyGuide">Hướng dẫn mua hàng</a></li>
+                    <li><a href="/Home/PrivacyPolicy">Chính sách bảo mật</a></li>
+                    <li><a href="/Home/TermsOfService">Điều khoản dịch vụ</a></li>
+                    <li><a href="/Home/FreeCleaning">Dịch vụ vệ sinh miễn phí</a></li>
+                    <li><a href="/Home/Contact">Liên hệ</a></li>
+                </ul>
+            </div>
+        }
+
+        <div class="container content-wrapper">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            © 2025 - WebBanMayTinh - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script defer src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="~/js/site.js" asp-append-version="true"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Mega Dropdown
+            const dropdown = $('#categoryDropdownContainer');
+            const dropdownMenu = dropdown.find('.dropdown-menu');
+            const dropdownToggle = dropdown.find('.dropdown-toggle');
+            let dropdownTimeout;
+            let isDropdownOpen = false;
+
+            const openDropdown = () => {
+                clearTimeout(dropdownTimeout);
+                if (!isDropdownOpen) {
+                    dropdownMenu.addClass('show');
+                    dropdownToggle.attr('aria-expanded', 'true');
+                    isDropdownOpen = true;
+                }
+            };
+
+            const closeDropdown = () => {
+                clearTimeout(dropdownTimeout);
+                dropdownTimeout = setTimeout(() => {
+                    if (isDropdownOpen) {
+                        dropdownMenu.removeClass('show');
+                        dropdownToggle.attr('aria-expanded', 'false');
+                        isDropdownOpen = false;
+                    }
+                }, 200);
+            };
+
+            dropdown.on('mouseenter', openDropdown);
+            dropdown.on('mouseleave', closeDropdown);
+            dropdownMenu.on('mouseenter', () => clearTimeout(dropdownTimeout));
+            dropdownMenu.on('mouseleave', closeDropdown);
+            dropdownMenu.on('click', function (e) {
+                e.stopPropagation();
+            });
+
+            dropdownToggle.on('click', function () {
+                isDropdownOpen = dropdownToggle.attr('aria-expanded') === 'true';
+                if (isDropdownOpen) {
+                    clearTimeout(dropdownTimeout);
+                } else {
+                    closeDropdown();
+                }
+            });
+
+            $(document).on('click', function (e) {
+                if (isDropdownOpen && !dropdown[0].contains(e.target)) {
+                    closeDropdown();
+                }
+            });
+
+            $('.dropdown-item').on('mouseenter', function () {
+                $(this).css('transition', 'all 0.2s ease');
+            });
+
+            // Sidebar Toggle Logic
+            function toggleSidebar() {
+                $('.admin-sidebar, .service-sidebar').toggleClass('show');
+                $('.content-wrapper').toggleClass('shifted');
+            }
+
+            // Responsive Sidebar Behavior
+            function updateResponsive() {
+                if ($(window).width() <= 768) {
+                    $('body').addClass('mobile-view');
+                    $('.admin-sidebar, .service-sidebar').removeClass('show');
+                    $('.content-wrapper').removeClass('shifted');
+                } else {
+                    $('body').removeClass('mobile-view');
+                    $('.admin-sidebar, .service-sidebar').removeClass('show');
+                    $('.content-wrapper').removeClass('shifted');
+                    // Force margin-left for admin area in desktop view
+                    if ($('.admin-sidebar').length) {
+                        $('.content-wrapper').css('margin-left', '250px');
+                    }
+                }
+            }
+
+            // Initial call
+            updateResponsive();
+            $(window).on('resize', updateResponsive);
+
+            // Sidebar toggle button
+            $('.sidebar-toggle').on('click', function (e) {
+                e.stopPropagation();
+                toggleSidebar();
+            });
+
+            // Close sidebar when clicking outside in mobile view
+            $(document).on('click', function (e) {
+                if ($(window).width() <= 768 &&
+                    ($('.admin-sidebar').hasClass('show') || $('.service-sidebar').hasClass('show')) &&
+                    !$('.admin-sidebar').is(e.target) &&
+                    !$('.service-sidebar').is(e.target) &&
+                    $('.admin-sidebar').has(e.target).length === 0 &&
+                    $('.service-sidebar').has(e.target).length === 0 &&
+                    !$('.sidebar-toggle').is(e.target)) {
+                    $('.admin-sidebar, .service-sidebar').removeClass('show');
+                    $('.content-wrapper').removeClass('shifted');
+                }
+            });
+
+            // Set active sidebar item based on current URL
+            $('.admin-sidebar .sidebar-item').each(function () {
+                const href = $(this).attr('href');
+                if (window.location.pathname === href) {
+                    $(this).addClass('active');
+                } else {
+                    $(this).removeClass('active');
+                }
+            });
+
+            // Handle dynamic content loading and prevent overlap
+            const contentWrapper = document.querySelector('.content-wrapper');
+            if (contentWrapper) {
+                const resizeObserver = new ResizeObserver(() => {
+                    if ($(window).width() > 768 && !$('body').hasClass('mobile-view')) {
+                        if ($('.admin-sidebar').length) {
+                            $(contentWrapper).css('margin-left', '250px');
+                        } else {
+                            $(contentWrapper).css('margin-left', '0');
+                        }
+                    } else if ($('.admin-sidebar').hasClass('show')) {
+                        $(contentWrapper).css('margin-left', '250px');
+                    } else {
+                        $(contentWrapper).css('margin-left', '0');
+                    }
+                });
+                resizeObserver.observe(contentWrapper);
+            }
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

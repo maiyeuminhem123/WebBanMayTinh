@@ -1,0 +1,58 @@
+﻿@model WebBanMayTinh.Models.Voucher
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Xóa Voucher";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="alert alert-danger" role="alert">
+    Bạn có chắc chắn muốn xóa voucher này không?
+</div>
+
+<table class="table table-bordered w-50">
+    <tr>
+        <th>Mã voucher</th>
+        <td>@Model.Code</td>
+    </tr>
+    <tr>
+        <th>Giảm giá (VNĐ)</th>
+        <td>@(Model.DiscountAmount?.ToString("N0") ?? "-")</td>
+    </tr>
+    <tr>
+        <th>Giảm giá (%)</th>
+        <td>@(Model.DiscountPercent.HasValue ? Model.DiscountPercent.Value.ToString("P0") : "-")</td>
+    </tr>
+    <tr>
+        <th>Ngày hết hạn</th>
+        <td>@Model.ExpiryDate.ToString("dd/MM/yyyy")</td>
+    </tr>
+    <tr>
+        <th>Trạng thái</th>
+        <td>@(Model.IsActive ? "Hoạt động" : "Không hoạt động")</td>
+    </tr>
+    <tr>
+        <th>Số lượng</th>
+        <td>@(Model.Quantity.HasValue ? Model.Quantity.Value.ToString() : "Không giới hạn")</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+    <a asp-action="Index" class="btn btn-secondary ml-2">Hủy</a>
+</form>
+
+<style>
+    .btn {
+        min-width: 100px;
+    }
+
+    table {
+        margin-top: 1rem;
+        background: white;
+        box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
+        border-radius: 8px;
+    }
+</style>

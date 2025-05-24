@@ -1,0 +1,226 @@
+﻿@model WebBanMayTinh.Models.Product
+
+@{
+    ViewData["Title"] = "Update Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .gearvn-form-container {
+        max-width: 1000px;
+        margin: auto;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .gearvn-form-header {
+        background: #000;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        padding: 24px;
+        color: #fff;
+    }
+
+        .gearvn-form-header h2 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .gearvn-form-header i {
+            margin-right: 10px;
+        }
+
+    .gearvn-form-body .form-floating,
+    .gearvn-form-body .form-group,
+    .gearvn-form-body .form-select {
+        margin-bottom: 1.5rem;
+    }
+
+    .gearvn-form-body textarea {
+        resize: vertical;
+    }
+
+    .gearvn-btn {
+        padding: 10px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+        .gearvn-btn:hover {
+            transform: translateY(-2px);
+        }
+
+    .gearvn-btn-warning {
+        background-color: #006400;
+        border: none;
+        color: #fff;
+    }
+
+    .gearvn-btn-outline {
+        border: 2px solid #6c757d;
+        background: transparent;
+        color: #6c757d;
+    }
+
+        .gearvn-btn-outline:hover {
+            background: #6c757d;
+            color: black;
+        }
+</style>
+
+<div class="container py-5">
+    <div class="gearvn-form-container">
+        <div class="gearvn-form-header">
+            <h2><i class="fas fa-edit"></i> Cập Nhật Sản Phẩm</h2>
+        </div>
+        <div class="gearvn-form-body mt-4">
+            <form asp-action="Update" id="updateProductForm">
+                <input type="hidden" asp-for="Id" />
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                <div class="row">
+                    <!-- Tên + Giá -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Name" class="form-control" placeholder="Tên sản phẩm" required />
+                            <label asp-for="Name">Tên sản phẩm</label>
+                        </div>
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Price" class="form-control" type="number" step="0.01" placeholder="Giá" required />
+                            <label asp-for="Price">Giá (VNĐ)</label>
+                        </div>
+                        <span asp-validation-for="Price" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Mô tả ngắn -->
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <textarea asp-for="Description" class="form-control" placeholder="Mô tả" style="height: 100px"></textarea>
+                            <label asp-for="Description">Mô tả</label>
+                        </div>
+                        <span asp-validation-for="Description" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Mô tả chi tiết -->
+                    <div class="col-md-12">
+                        <label asp-for="DetailDescription" class="form-label fw-semibold">Thông tin chi tiết</label>
+                        <textarea asp-for="DetailDescription" class="form-control" rows="5" placeholder="Nhập thông tin chi tiết"></textarea>
+                        <span asp-validation-for="DetailDescription" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Ảnh & Danh mục -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="ImageUrl" class="form-control" placeholder="Link ảnh" />
+                            <label asp-for="ImageUrl">Link ảnh</label>
+                        </div>
+                        <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="CategoryId" class="form-label fw-semibold">Danh mục</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories" required>
+                            <option value="">-- Chọn danh mục --</option>
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Cấu hình phần cứng -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="CPU" class="form-control" placeholder="CPU" />
+                            <label asp-for="CPU">CPU</label>
+                        </div>
+                        <span asp-validation-for="CPU" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="GPU" class="form-control" placeholder="GPU" />
+                            <label asp-for="GPU">GPU</label>
+                        </div>
+                        <span asp-validation-for="GPU" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="RAM" class="form-control" placeholder="RAM" />
+                            <label asp-for="RAM">RAM</label>
+                        </div>
+                        <span asp-validation-for="RAM" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Storage" class="form-control" placeholder="Storage" />
+                            <label asp-for="Storage">Storage</label>
+                        </div>
+                        <span asp-validation-for="Storage" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="OperatingSystem" class="form-control" placeholder="Hệ điều hành" />
+                            <label asp-for="OperatingSystem">Hệ điều hành</label>
+                        </div>
+                        <span asp-validation-for="OperatingSystem" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Brand" class="form-control" placeholder="Thương hiệu" />
+                            <label asp-for="Brand">Thương hiệu</label>
+                        </div>
+                        <span asp-validation-for="Brand" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <!-- Nút -->
+                <div class="mt-4 d-flex justify-content-end gap-3">
+                    <button type="submit" class="gearvn-btn gearvn-btn-warning">
+                        <i class="fas fa-save me-2"></i>Lưu thay đổi
+                    </button>
+                    <a asp-action="Index" class="gearvn-btn gearvn-btn-outline">
+                        <i class="fas fa-arrow-left me-2"></i>Quay lại
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("updateProductForm");
+            form.addEventListener("submit", function (e) {
+                let valid = true;
+                form.querySelectorAll("[required]").forEach(input => {
+                    if (!input.value.trim()) {
+                        input.classList.add("is-invalid");
+                        valid = false;
+                    } else {
+                        input.classList.remove("is-invalid");
+                    }
+                });
+                if (!valid) {
+                    e.preventDefault();
+                    alert("Vui lòng điền đầy đủ các trường bắt buộc!");
+                }
+            });
+        });
+    </script>
+}

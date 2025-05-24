@@ -1,0 +1,102 @@
+﻿@model IEnumerable<WebBanMayTinh.Models.Product>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="py-2">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div id="filter-summary" class="mb-3">
+            @if (!string.IsNullOrEmpty(ViewBag.SearchQuery))
+            {
+                <p>Kết quả tìm kiếm cho "<strong>@ViewBag.SearchQuery</strong>"</p>
+            }
+            <p>Tổng cộng: <strong>@Model.Count()</strong> sản phẩm</p>
+        </div>
+        <div id="product-list">
+            @await Html.PartialAsync("_ProductList", Model)
+        </div>
+        <div id="pagination" class="mt-3">
+            @if (ViewBag.TotalPages > 1)
+            {
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                <a class="page-link" href="#" data-page="@i">@i</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            let currentSearchQuery = '@ViewBag.SearchQuery' || '';
+            let currentPage = @ViewBag.CurrentPage ?? 1;
+
+            // Lọc theo danh mục
+            $('.category-filter').click(function (e) {
+                e.preventDefault();
+                currentSearchQuery = $(this).data('search-query');
+                currentPage = 1; // Reset về trang 1
+                filterProducts(currentSearchQuery, currentPage);
+            });
+
+            // Tìm kiếm
+            $('#searchForm').submit(function (e) {
+                e.preventDefault();
+                currentSearchQuery = $('input[name="searchQuery"]').val();
+                currentPage = 1; // Reset về trang 1
+                filterProducts(currentSearchQuery, currentPage);
+            });
+
+            // Phân trang
+            $(document).on('click', '.page-link', function (e) {
+                e.preventDefault();
+                currentPage = $(this).data('page');
+                filterProducts(currentSearchQuery, currentPage);
+            });
+
+            // Hàm gọi AJAX
+            function filterProducts(searchQuery, page) {
+                $.ajax({
+                    url: '@Url.Action("FilterProducts", "Home")',
+                    type: 'GET',
+                    data: { searchQuery: searchQuery, page: page },
+                    success: function (result) {
+                        // Cập nhật danh sách sản phẩm
+                        $('#product-list').html(result.productList);
+
+                        // Cập nhật thông tin tổng quan
+                        var summaryHtml = '';
+                        if (result.summary.SearchQuery) {
+                            summaryHtml += '<p>Kết quả tìm kiếm cho "<strong>' + result.summary.SearchQuery + '</strong>"</p>';
+                        }
+                        summaryHtml += '<p>Tổng cộng: <strong>' + result.summary.TotalProducts + '</strong> sản phẩm</p>';
+                        $('#filter-summary').html(summaryHtml);
+
+                        // Cập nhật phân trang
+                        var paginationHtml = '';
+                        if (result.summary.TotalPages > 1) {
+                            paginationHtml = '<nav aria-label="Page navigation"><ul class="pagination justify-content-center">';
+                            for (var i = 1; i <= result.summary.TotalPages; i++) {
+                                paginationHtml += '<li class="page-item' + (i == result.summary.CurrentPage ? ' active' : '') + '"><a class="page-link" href="#" data-page="' + i + '">' + i + '</a></li>';
+                            }
+                            paginationHtml += '</ul></nav>';
+                        }
+                        $('#pagination').html(paginationHtml);
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra, thử lại sau!');
+                    }
+                });
+            }
+        });
+    </script>
+}

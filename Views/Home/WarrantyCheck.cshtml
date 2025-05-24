@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Tra cứu bảo hành";
+}
+
+<div class="container my-5">
+    <h1 class="mb-4">Tra cứu thông tin bảo hành</h1>
+
+    <div class="main-content">
+        <!-- Sidebar giữ nguyên nếu có -->
+        <!-- Main content -->
+        <div class="content">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+
+                    <h3 class="card-title mb-4 text-center text-success">
+                        🔍 Tra cứu thông tin bảo hành
+                    </h3>
+
+                    <!-- Form AJAX -->
+                    <form id="warrantyForm">
+                        <div class="mb-3">
+                            <label for="serialNumber" class="form-label">Mã serial sản phẩm</label>
+                            <input type="text" name="serialNumber" class="form-control" id="serialNumber"
+                                   placeholder="Nhập mã serial..." required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="purchaseDate" class="form-label">Ngày mua</label>
+                            <input type="date" name="purchaseDate" class="form-control" id="purchaseDate" required />
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Tra cứu</button>
+                        </div>
+                    </form>
+
+                    <!-- Hiển thị kết quả AJAX -->
+                    <div id="resultArea" class="alert mt-3 d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('warrantyForm').addEventListener('submit', async function (e) {
+            e.preventDefault(); // Chặn reload form
+
+            const serialNumber = document.getElementById('serialNumber').value;
+            const purchaseDate = document.getElementById('purchaseDate').value;
+            const resultArea = document.getElementById('resultArea');
+
+            try {
+                const response = await fetch('/Home/WarrantyCheckAjax', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
+                    },
+                    body: JSON.stringify({ serialNumber, purchaseDate })
+                });
+
+                const data = await response.json();
+
+                resultArea.classList.remove('d-none');
+
+                if (data.success) {
+                    resultArea.className = 'alert alert-success mt-3';
+                    resultArea.innerHTML = `
+                        <p><strong>Sản phẩm:</strong> ${data.productName}</p>
+                        <p><strong>Ngày mua:</strong> ${data.purchaseDate}</p>
+                        <p><strong>Hạn bảo hành:</strong> ${data.expiryDate}</p>
+                        <p><strong>Trạng thái:</strong> <span class="fw-bold">${data.status}</span></p>
+                    `;
+                } else {
+                    resultArea.className = 'alert alert-danger mt-3';
+                    resultArea.innerText = data.message || 'Không tìm thấy thông tin bảo hành.';
+                }
+
+            } catch (error) {
+                resultArea.className = 'alert alert-danger mt-3';
+                resultArea.innerText = 'Lỗi kết nối. Vui lòng thử lại sau.';
+            }
+        });
+    </script>
+}

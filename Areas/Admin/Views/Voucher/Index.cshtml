@@ -1,0 +1,245 @@
+﻿@model IEnumerable<WebBanMayTinh.Models.Voucher>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Biến màu chủ đạo */
+    :root {
+        --primary-color: #e52836;
+        --secondary-color: #f3f4f6;
+        --dark-color: #1e293b;
+        --light-color: #ffffff;
+        --text-dark: #1e293b;
+        --text-light: #64748b;
+        --border-color: #e2e8f0;
+        --hover-color: #f8fafc;
+    }
+
+    body {
+        background-color: #f5f5f5;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Main content */
+    .main-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+        overflow-y: auto;
+        background-color: var(--secondary-color);
+    }
+
+    .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .content-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin: 0;
+    }
+
+    .btn-add {
+        background-color: #228B22;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        transition: background-color 0.2s ease;
+        text-decoration: none;
+    }
+
+        .btn-add:hover {
+            background-color: #1e7b1e;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-add i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+    /* Search box */
+    .search-container {
+        margin-bottom: 1.5rem;
+    }
+
+    .search-input {
+        width: 100%;
+        max-width: 400px;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 0.25rem;
+        font-size: 1rem;
+    }
+
+    /* Table */
+    .table-container {
+        background-color: var(--light-color);
+        border-radius: 0.25rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    thead {
+        background-color: var(--dark-color);
+        color: var(--light-color);
+    }
+
+    th, td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        font-size: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        vertical-align: middle;
+    }
+
+    tbody tr:hover {
+        background-color: var(--hover-color);
+    }
+
+    /* Action buttons */
+    .actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .action-btn {
+        border: none;
+        padding: 0.3rem 0.7rem;
+        border-radius: 0.25rem;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        transition: background-color 0.2s ease;
+        color: white;
+        text-decoration: none;
+    }
+
+        .action-btn i {
+            margin-right: 0.3rem;
+            font-size: 1rem;
+        }
+
+    .btn-view {
+        background-color: #228B22;
+    }
+
+        .btn-view:hover {
+            background-color: #1e7b1e;
+        }
+
+    .btn-edit {
+        background-color: #f59e0b;
+    }
+
+        .btn-edit:hover {
+            background-color: #d97706;
+        }
+
+    .btn-delete {
+        background-color: #ef4444;
+    }
+
+        .btn-delete:hover {
+            background-color: #dc2626;
+        }
+</style>
+
+<main class="main-content">
+    <div class="content-header">
+        <h1 class="content-title">Quản lý Voucher</h1>
+        <a asp-area="Admin" asp-controller="Voucher" asp-action="Create" class="btn-add">
+            <i class="bi bi-plus-circle"></i> Thêm voucher mới
+        </a>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm voucher..." onkeyup="filterTable()" />
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã voucher</th>
+                    <th>Giảm giá (VNĐ)</th>
+                    <th>Giảm giá (%)</th>
+                    <th>Ngày hết hạn</th>
+                    <th>Trạng thái</th>
+                    <th>Số lượng</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="voucherTableBody">
+                @foreach (var voucher in Model)
+                {
+                    <tr>
+                        <td>@voucher.Code</td>
+                        <td>@(voucher.DiscountAmount?.ToString("N0") ?? "-")</td>
+                        <td>@(voucher.DiscountPercent.HasValue ? voucher.DiscountPercent.Value.ToString() : "-")</td>
+                        <td>@voucher.ExpiryDate.ToString("dd/MM/yyyy")</td>
+                        <td>@(voucher.IsActive ? "Hoạt động" : "Không hoạt động")</td>
+                        <td>@(voucher.Quantity.HasValue ? voucher.Quantity.Value.ToString() : "Không giới hạn")</td>
+                        <td class="actions">
+                            <a asp-area="Admin" asp-controller="Voucher" asp-action="Details" asp-route-id="@voucher.Id" class="action-btn btn-view" title="Xem chi tiết">
+                                <i class="bi bi-eye"></i> Xem
+                            </a>
+                            <a asp-area="Admin" asp-controller="Voucher" asp-action="Edit" asp-route-id="@voucher.Id" class="action-btn btn-edit" title="Chỉnh sửa">
+                                <i class="bi bi-pencil-square"></i> Sửa
+                            </a>
+                            <form asp-area="Admin" asp-controller="Voucher" asp-action="Delete" asp-route-id="@voucher.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa voucher này?');" style="display:inline;">
+                                <button type="submit" class="action-btn btn-delete" title="Xóa">
+                                    <i class="bi bi-trash"></i> Xóa
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script>
+    function filterTable() {
+        var input = document.getElementById("searchInput");
+        var filter = input.value.toLowerCase();
+        var tableBody = document.getElementById("voucherTableBody");
+        var rows = tableBody.getElementsByTagName("tr");
+
+        for (var i = 0; i < rows.length; i++) {
+            var codeCell = rows[i].getElementsByTagName("td")[0];
+            var statusCell = rows[i].getElementsByTagName("td")[4];
+
+            if (codeCell && statusCell) {
+                var codeText = codeCell.textContent || codeCell.innerText;
+                var statusText = statusCell.textContent || statusCell.innerText;
+                if (codeText.toLowerCase().indexOf(filter) > -1 || statusText.toLowerCase().indexOf(filter) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

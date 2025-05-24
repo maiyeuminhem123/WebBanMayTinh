@@ -1,0 +1,152 @@
+﻿@model WebBanMayTinh.Models.Order
+
+@{
+    ViewData["Title"] = "Hình Thức Thanh Toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Hình Thức Thanh Toán</h2>
+
+    <!-- Thanh trạng thái -->
+    <div class="d-flex justify-content-between align-items-center mb-5 p-3 rounded" style="background-color: #f8d7da;">
+        <div class="text-center">
+            <span class="badge bg-success rounded-circle p-2"><i class="fas fa-shopping-cart"></i></span>
+            <p class="mb-0">Giỏ hàng</p>
+        </div>
+        <div class="text-center">
+            <span class="badge bg-success rounded-circle p-2">2</span>
+            <p class="mb-0">Thông tin đặt hàng</p>
+        </div>
+        <div class="text-center">
+            <span class="badge bg-danger rounded-circle p-2"><i class="fas fa-credit-card"></i></span>
+            <p class="mb-0">Thanh toán</p>
+        </div>
+        <div class="text-center">
+            <span class="badge bg-light rounded-circle p-2 text-dark"><i class="fas fa-check"></i></span>
+            <p class="mb-0">Hoàn tất</p>
+        </div>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4 mb-4">
+                <h3 class="mb-4">Thông tin khách mua hàng</h3>
+
+                <div class="mb-3">
+                    <label class="form-label">Họ và tên</label>
+                    <p class="form-control">@Model.CustomerName</p>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <p class="form-control">@Model.PhoneNumber</p>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <p class="form-control">@Model.Email</p>
+                </div>
+
+                <h5 class="mb-3">Địa chỉ giao hàng</h5>
+                <div class="card p-3 mb-3">
+                    <p class="form-control mb-0">@Model.ShippingAddress</p>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Lưu ý, yêu cầu khác</label>
+                    <p class="form-control">@(string.IsNullOrEmpty(Model.Notes) ? "Không có" : Model.Notes)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4 mb-4">
+                <h3 class="mb-4">Thông tin đơn hàng</h3>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Cart.Items)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Quantity</td>
+                                <td>@(item.Price * item.Quantity) đ</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded">
+                    <h5 class="mb-0">Tổng tiền:</h5>
+                    <h5 class="text-danger mb-0">@Model.TotalAmount.ToString("N0")đ</h5>
+                </div>
+            </div>
+
+            <div class="card shadow-sm p-4">
+                <h5 class="mb-3">Chọn hình thức thanh toán</h5>
+                <form asp-action="PaymentMethod" method="post">
+                    <input type="hidden" asp-for="CustomerName" />
+                    <input type="hidden" asp-for="Email" />
+                    <input type="hidden" asp-for="PhoneNumber" />
+                    <input type="hidden" asp-for="ShippingAddress" />
+                    <input type="hidden" asp-for="Notes" />
+                    <input type="hidden" asp-for="OrderCode" />
+                    <input type="hidden" asp-for="TotalAmount" />
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="cod" checked>
+                        <label class="form-check-label" for="cod">
+                            <i class="fas fa-truck mr-2"></i> Thanh toán khi nhận hàng (COD)
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="paypal" value="paypal">
+                        <label class="form-check-label" for="paypal">
+                            <i class="fab fa-paypal mr-2"></i> Thanh toán qua PayPal
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger btn-lg w-100">ĐẶT HÀNG NGAY</button>
+                    <p class="text-center mt-2 text-muted payment-message">
+                        Đơn hàng sẽ được giao đến bạn và thanh toán khi nhận hàng.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Hiển thị thông báo phù hợp khi chọn hình thức thanh toán
+        document.querySelectorAll('input[name="paymentMethod"]').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                const message = document.querySelector('.payment-message');
+                if (this.value === 'paypal') {
+                    message.textContent = 'Bạn sẽ được chuyển hướng đến PayPal để hoàn tất thanh toán.';
+                } else {
+                    message.textContent = 'Đơn hàng sẽ được giao đến bạn và thanh toán khi nhận hàng.';
+                }
+            });
+        });
+    </script>
+}

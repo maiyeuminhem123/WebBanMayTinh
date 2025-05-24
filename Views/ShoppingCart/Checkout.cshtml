@@ -1,0 +1,232 @@
+﻿@model WebBanMayTinh.Models.Order
+
+@{
+    ViewData["Title"] = "Thông Tin Đặt Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Thông Tin Đặt Hàng</h2>
+
+    <!-- Thanh trạng thái -->
+    <div class="d-flex justify-content-between align-items-center mb-5 p-3 rounded" style="background-color: #f8d7da;">
+        <div class="text-center">
+            <span class="badge bg-success rounded-circle p-2"><i class="fas fa-shopping-cart"></i></span>
+            <p class="mb-0">Giỏ hàng</p>
+        </div>
+        <div class="text-center">
+            <span class="badge bg-danger rounded-circle p-2">2</span>
+            <p class="mb-0">Thông tin đặt hàng</p>
+        </div>
+        <div class="text-center">
+            <span class="badge bg-light rounded-circle p-2 text-dark"><i class="fas fa-credit-card"></i></span>
+            <p class="mb-0">Thanh toán</p>
+        </div>
+        <div class="text-center">
+            <span class="badge bg-light rounded-circle p-2 text-dark"><i class="fas fa-check"></i></span>
+            <p class="mb-0">Hoàn tất</p>
+        </div>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["ShowPayment"] == null)
+    {
+        <!-- Form nhập thông tin đặt hàng -->
+        <form asp-action="Checkout" asp-controller="ShoppingCart" method="post" id="checkoutForm">
+            <div class="card shadow-sm p-4 mb-4">
+                <h3 class="mb-4">Thông tin khách mua hàng</h3>
+
+                <!-- Thông tin khách hàng -->
+                <div class="mb-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="Anh" checked>
+                        <label class="form-check-label" for="male">Anh</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="Chị">
+                        <label class="form-check-label" for="female">Chị</label>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label asp-for="CustomerName" class="form-label">Họ và tên</label>
+                        <input asp-for="CustomerName" class="form-control" />
+                        <span asp-validation-for="CustomerName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="PhoneNumber" class="form-label">Số điện thoại</label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- Chọn cách nhận hàng -->
+                <h5 class="mb-3">Chọn cách nhận hàng</h5>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="deliveryMethod" id="homeDelivery" checked>
+                    <label class="form-check-label" for="homeDelivery">Giao hàng tận nơi</label>
+                </div>
+
+                <div class="card p-3 mb-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label">Chọn Tỉnh, Thành phố</label>
+                            <select name="province" class="form-control" onchange="updateDistricts()">
+                                <option value="Thành phố Hồ Chí Minh" selected>Thành phố Hồ Chí Minh</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Chọn Quận, Huyện</label>
+                            <select name="district" id="district" class="form-control" onchange="updateWards()">
+                                <option value="">Chọn Quận/Huyện</option>
+                                @foreach (var district in ViewBag.Districts)
+                                {
+                                    <option value="@district">@district</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Chọn Phường, Xã</label>
+                            <select name="ward" id="ward" class="form-control">
+                                <option value="">Chọn Phường/Xã</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Số nhà, tên đường</label>
+                            <input name="street" class="form-control" placeholder="Ví dụ: 123/45 Nguyễn Văn A" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ghi chú -->
+                <div class="mb-4">
+                    <label asp-for="Notes" class="form-label">Lưu ý, yêu cầu khác (Không bắt buộc)</label>
+                    <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Notes" class="text-danger"></span>
+                </div>
+
+                <!-- Xuất hóa đơn -->
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="invoice">
+                    <label class="form-check-label" for="invoice">Xuất hóa đơn cho đơn hàng</label>
+                </div>
+            </div>
+
+            <!-- Tổng tiền -->
+            <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded">
+                <h5 class="mb-0">Tổng tiền:</h5>
+                <h5 class="text-danger mb-0">@Model.TotalAmount.ToString("N0")đ</h5>
+            </div>
+
+            <!-- Nút đặt hàng -->
+            <button type="submit" class="btn btn-danger btn-lg w-100">ĐẶT HÀNG NGAY</button>
+        </form>
+    }
+    else
+    {
+        <!-- Bước xác nhận thanh toán -->
+        <div class="card shadow-sm p-4 mb-4">
+            <h3 class="mb-4">Xác Nhận Thanh Toán</h3>
+            <p>Đơn hàng của bạn đã được ghi nhận. Vui lòng thanh toán để hoàn tất.</p>
+            <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded">
+                <h5 class="mb-0">Tổng tiền:</h5>
+                <h5 class="text-danger mb-0">@Model.TotalAmount.ToString("N0")đ</h5>
+            </div>
+            <div id="paypal-button-container"></div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Danh sách Phường/Xã theo Quận/Huyện
+        const wards = @Html.Raw(Json.Serialize(ViewBag.Wards));
+
+        function updateDistricts() {
+            // Tỉnh/Thành phố hiện tại chỉ có TP.HCM, không cần cập nhật
+            updateWards();
+        }
+
+        function updateWards() {
+            const district = document.getElementById("district").value;
+            const wardSelect = document.getElementById("ward");
+            wardSelect.innerHTML = '<option value="">Chọn Phường/Xã</option>';
+
+            if (district && wards[district]) {
+                wards[district].forEach(ward => {
+                    const option = document.createElement("option");
+                    option.value = ward;
+                    option.text = ward;
+                    wardSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Gọi updateWards ngay khi trang tải
+        document.addEventListener("DOMContentLoaded", function () {
+            updateWards();
+        });
+
+        // Tích hợp PayPal JavaScript SDK
+        @if (TempData["ShowPayment"] != null)
+        {
+            <text>
+                    paypal.Buttons({
+                        createOrder: function(data, actions) {
+                            return fetch('/Payment/CreatePayment', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            }).then(res => res.json()).then(data => {
+                                if (data.success) {
+                                    console.log('Approval URL:', data.url);
+                                    console.log('Order ID:', data.orderId);
+                                    return data.orderId; // Trả về Order ID để PayPal xử lý
+                                } else {
+                                    throw new Error(data.message);
+                                }
+                            });
+                        },
+                        onApprove: function(data, actions) {
+                            return actions.order.capture().then(function(details) {
+                                console.log('Thanh toán thành công:', details);
+                                // Chuyển hướng về Success kèm token (Order ID)
+                                window.location.href = "/Payment/Success?token=" + data.orderID;
+                            });
+                        },
+                        onCancel: function(data) {
+                            console.log('Thanh toán bị hủy:', data);
+                            window.location.href = "/Payment/Cancel";
+                        },
+                        onError: function(err) {
+                            console.error('Lỗi thanh toán:', err);
+                            alert("Đã xảy ra lỗi khi thanh toán. Vui lòng thử lại.");
+                        }
+                    }).render('#paypal-button-container');
+            </text>
+        }
+    </script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AY1vfe4Il_19mna_VTc93RjyRRj4t7YHRJqawWEUtls4PUlOqw4J_SxkqTDAkv8C4K4gAQ1QTUws2sG_¤cy=USD"></script>
+}
