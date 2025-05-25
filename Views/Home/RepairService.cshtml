@@ -3,277 +3,9 @@
 }
 
 <div class="container my-5">
-    <h1>Dịch Vụ Sửa Chữa</h1>
-    <style>
-        body {
-            background-color: #f5f5f5;
-        }
+    <h1 class="visually-hidden">Dịch Vụ Sửa Chữa</h1> <!-- Ẩn tiêu đề để tránh lặp lại -->
 
-        .breadcrumb {
-            padding: 10px 0;
-            background-color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .breadcrumb-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .breadcrumb-item {
-            color: #666;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .breadcrumb-separator {
-            color: #666;
-            margin: 0 5px;
-        }
-
-        /* Main content styles */
-        .main-content {
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-            gap: 20px;
-        }
-
-        .sidebar {
-            width: 25%;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-
-        .sidebar-title {
-            color: #e60000;
-            font-size: 18px;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-        }
-
-            .sidebar-menu li {
-                margin-bottom: 10px;
-            }
-
-                .sidebar-menu li a {
-                    color: #333;
-                    text-decoration: none;
-                    display: block;
-                    padding: 8px 10px;
-                    transition: all 0.3s ease;
-                }
-
-                    .sidebar-menu li a:hover {
-                        background-color: #f8f9fa;
-                        color: #e60000;
-                    }
-
-                .sidebar-menu li.active a {
-                    background-color: #f0f0f0;
-                    color: #e60000;
-                    border-left: 3px solid #e60000;
-                }
-
-        .content {
-            width: 75%;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-
-        .page-title {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .service-banner {
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-            .service-banner img {
-                width: 100%;
-                height: auto;
-                display: block;
-            }
-
-        .service-description {
-            margin-bottom: 25px;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .service-list-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .service-list {
-            list-style-type: none;
-            margin-bottom: 30px;
-        }
-
-            .service-list li {
-                padding: 10px 0 10px 25px;
-                position: relative;
-                border-bottom: 1px solid #f0f0f0;
-            }
-
-                .service-list li:before {
-                    content: "•";
-                    color: #e60000;
-                    font-weight: bold;
-                    position: absolute;
-                    left: 0;
-                }
-
-        .contact-info {
-            margin-bottom: 30px;
-        }
-
-        .contact-info-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .contact-list {
-            list-style-type: none;
-        }
-
-            .contact-list li {
-                padding: 8px 0 8px 25px;
-                position: relative;
-            }
-
-                .contact-list li:before {
-                    content: "•";
-                    color: #e60000;
-                    font-weight: bold;
-                    position: absolute;
-                    left: 0;
-                }
-
-                .contact-list li a {
-                    color: #0366d6;
-                    text-decoration: none;
-                }
-
-                    .contact-list li a:hover {
-                        text-decoration: underline;
-                    }
-
-        .work-hours {
-            margin-bottom: 30px;
-        }
-
-        .work-hours-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .work-hours-list {
-            list-style-type: none;
-        }
-
-            .work-hours-list li {
-                padding: 8px 0 8px 25px;
-                position: relative;
-            }
-
-                .work-hours-list li:before {
-                    content: "•";
-                    color: #e60000;
-                    font-weight: bold;
-                    position: absolute;
-                    left: 0;
-                }
-
-        .service-cta {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 30px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-            .cta-button:hover {
-                background-color: #0056b3;
-            }
-
-        .cta-hand {
-            font-size: 24px;
-            margin-right: 10px;
-        }
-
-        .response-time {
-            margin-bottom: 30px;
-        }
-
-        .response-time-title {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .response-time-list {
-            list-style-type: none;
-        }
-
-            .response-time-list li {
-                padding: 8px 0 8px 25px;
-                position: relative;
-            }
-
-                .response-time-list li:before {
-                    content: "•";
-                    color: #e60000;
-                    font-weight: bold;
-                    position: absolute;
-                    left: 0;
-                }
-
-        .guarantee-text {
-            margin-bottom: 30px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-            line-height: 1.6;
-        }
-    </style>
-    <p>Chúng tôi cung cấp dịch vụ sửa chữa chuyên nghiệp cho máy tính, laptop, và các thiết bị công nghệ khác.</p>
     <div class="main-content">
-        </div>
-
         <!-- Main content -->
         <div class="content">
             <h1 class="page-title">Dịch Vụ Sửa Chữa</h1>
@@ -341,3 +73,190 @@
         </div>
     </div>
 </div>
+
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .main-content {
+        display: flex;
+        justify-content: center; /* Căn giữa nội dung */
+        max-width: 900px; /* Giảm chiều rộng để tránh bị che bởi sidebar */
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .content {
+        width: 100%; /* Chiếm toàn bộ chiều rộng của .main-content */
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .page-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+    }
+
+    .service-banner {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+
+        .service-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+    .service-description, .guarantee-text {
+        margin-bottom: 25px;
+        line-height: 1.6;
+        color: #333;
+        text-align: justify;
+    }
+
+    .service-list-title, .contact-info-title, .work-hours-title, .response-time-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: #333;
+        text-align: center;
+    }
+
+    .service-list, .contact-list, .work-hours-list, .response-time-list {
+        list-style-type: none;
+        margin-bottom: 30px;
+        padding: 0;
+    }
+
+        .service-list li, .contact-list li, .work-hours-list li, .response-time-list li {
+            padding: 10px 0 10px 25px;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+            .service-list li:before, .contact-list li:before, .work-hours-list li:before, .response-time-list li:before {
+                content: "•";
+                color: #e60000;
+                font-weight: bold;
+                position: absolute;
+                left: 0;
+            }
+
+            .contact-list li a {
+                color: #0366d6;
+                text-decoration: none;
+            }
+
+                .contact-list li a:hover {
+                    text-decoration: underline;
+                }
+
+    .service-cta {
+        text-align: center;
+        margin: 30px 0;
+    }
+
+    .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 30px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+    .cta-hand {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+    .guarantee-text {
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .main-content
+
+    {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .service-list-title, .contact-info-title, .work-hours-title, .response-time-title {
+        font-size: 18px;
+    }
+
+    .cta-button {
+        padding: 10px 25px;
+        font-size: 16px;
+    }
+
+    .cta-hand {
+        font-size: 20px;
+    }
+
+    }
+
+    @@media (max-width: 576px) {
+        .page-title
+
+    {
+        font-size: 18px;
+    }
+
+    .service-list-title, .contact-info-title, .work-hours-title, .response-time-title {
+        font-size: 16px;
+    }
+
+    .service-list li, .contact-list li, .work-hours-list li, .response-time-list li {
+        padding: 8px 0 8px 20px;
+        font-size: 14px;
+    }
+
+    .cta-button {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+
+    .cta-hand {
+        font-size: 18px;
+        margin-right: 8px;
+    }
+
+    }
+</style>
