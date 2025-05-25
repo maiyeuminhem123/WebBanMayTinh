@@ -1,22 +1,164 @@
 ﻿@model IEnumerable<WebBanMayTinh.Models.Product>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Trang Chủ";
 }
 
-<section class="py-2">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div id="filter-summary" class="mb-3">
-            @if (!string.IsNullOrEmpty(ViewBag.SearchQuery))
-            {
-                <p>Kết quả tìm kiếm cho "<strong>@ViewBag.SearchQuery</strong>"</p>
-            }
-            <p>Tổng cộng: <strong>@Model.Count()</strong> sản phẩm</p>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <!-- Main Carousel -->
+            <div class="col-lg-8">
+                <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="4000">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="hero-slide">
+                                <!-- Thay link hình ảnh tại đây -->
+                                <img src="https://static.wixstatic.com/media/a27d24_affeb14b88e140c28da40dce56a58bde~mv2.jpg" class="d-block w-100" alt="Gaming Setup">
+                                <div class="hero-content">
+                                    <button class="btn btn-hero">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="hero-slide">
+                                <!-- Thay link hình ảnh tại đây -->
+                                <img src="https://dlcdnwebimgs.asus.com/gain/d5efc44f-4cbc-41f7-8ea2-d10d26121000/" class="d-block w-100" alt="Laptop">
+                                <div class="hero-content">                                  
+                                    <button class="btn btn-hero">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="hero-slide">
+                                <!-- Thay link hình ảnh tại đây -->
+                                <img src="https://i.ytimg.com/vi/GejXnyse-b4/maxresdefault.jpg" class="d-block w-100" alt="Components">
+                                <div class="hero-content">                                  
+                                    <button class="btn btn-hero">                                       
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Side Banners -->
+            <div class="col-lg-4">
+                <div class="side-banners">
+                    <div class="side-banner mb-3">
+                        <div class="banner-card">
+                            <!-- Thay link hình ảnh tại đây -->
+                            <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-01.png" class="banner-bg" alt="Trade In">
+                            <div class="banner-info">
+                                <h4>THU CŨ ĐỔI MỚI</h4>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-banner mb-3">
+                        <div class="banner-card">
+                            <!-- Thay link hình ảnh tại đây -->
+                            <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-02.png" class="banner-bg" alt="Keyboard">
+                            <div class="banner-info">
+                                <h4>PHÍM CƠ KHÔNG DÂY</h4>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-banner">
+                        <div class="banner-card">
+                            <!-- Thay link hình ảnh tại đây -->
+                            <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-03.png" class="banner-bg" alt="PC">
+                            <div class="banner-info">
+                                <h4>PC I5 4060</h4>                              
+                                <small>🚚 Miễn phí giao hàng</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="product-list">
+    </div>
+</section>
+
+<!-- Product Categories Section -->
+<section class="product-categories">
+    <div class="container">
+        <h2 class="section-title">Danh Mục Sản Phẩm</h2>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="category-card">
+                    <!-- Thay link hình ảnh tại đây -->
+                    <img src="https://intphcm.com/data/upload/banner-la-gi.jpg" class="category-bg" alt="Laptop GearVN">
+                    <div class="category-content">                      
+                        <p>Trả góp 0%</p>
+                        <div class="price-display">Giá từ<br><strong>9.990.000đ</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="category-card">
+                    <!-- Thay link hình ảnh tại đây -->
+                    <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-04.png" class="category-bg" alt="Laptop Gaming">
+                    <div class="category-content">  
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="category-card">
+                    <!-- Thay link hình ảnh tại đây -->
+                    <img src="https://file.hstatic.net/200000722513/file/layout_web_-09_d2c2f20ee0af491b8bf40d032ff74dbf.png" class="category-bg" alt="Speakers">
+                    <div class="category-content">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="category-card">
+                    <!-- Thay link hình ảnh tại đây -->
+                    <img src="https://akauto.com.vn/wp-content/uploads/2025/03/Banner-trang-man-hinh-Safeview-Mobile.jpg" class="category-bg" alt="Monitors">
+                    <div class="category-content">              
+                        <small>🚚 Giao hàng toàn quốc</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section class="products-section py-5">
+    <div class="container">
+        <div class="section-header mb-4">
+            <h2 class="section-title">Danh sách sản phẩm </h2>
+            <div id="filter-summary" class="filter-summary">
+                @if (!string.IsNullOrEmpty(ViewBag.SearchQuery))
+                {
+                    <p>Kết quả tìm kiếm cho "<strong>@ViewBag.SearchQuery</strong>"</p>
+                }
+                <p>Tổng cộng: <strong>@Model.Count()</strong> sản phẩm</p>
+            </div>
+        </div>
+
+        <div id="product-list" class="row g-4">
             @await Html.PartialAsync("_ProductList", Model)
         </div>
-        <div id="pagination" class="mt-3">
+
+        <div id="pagination" class="pagination-wrapper mt-4">
             @if (ViewBag.TotalPages > 1)
             {
                 <nav aria-label="Page navigation">
@@ -34,54 +176,491 @@
     </div>
 </section>
 
+<style>
+    /* Biến CSS chung */
+    :root {
+        --primary-gradient: linear-gradient(45deg, #ff4757, #ff6b7a);
+        --accent-color: #ff4757;
+        --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        --shadow-hover: 0 8px 25px rgba(0,0,0,0.15);
+        --transition: all 0.3s ease;
+    }
+
+    /* Top Banner */
+    .top-banner {
+        background: var(--primary-gradient);
+        color: white;
+        padding: 10px 0;
+        font-size: 14px;
+        box-shadow: var(--shadow);
+    }
+
+    .banner-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .banner-icon {
+        width: 50px;
+        height: 30px;
+        border-radius: 5px;
+    }
+
+    .banner-text {
+        font-weight: 700;
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+
+    .banner-offers {
+        display: flex;
+        gap: 10px;
+    }
+
+    .offer-badge {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        transition: var(--transition);
+    }
+
+        .offer-badge:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+    /* Hero Section */
+    .hero-section {
+        padding: 30px 0;
+        background: #f9f9f9;
+    }
+
+    .hero-carousel {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        height: 350px;
+    }
+
+    .hero-slide {
+        position: relative;
+        height: 350px;
+    }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-slide:hover img {
+            transform: scale(1.05);
+        }
+
+    .hero-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7), rgba(0,0,0,0.85));
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+    .btn-hero {
+        background: var(--primary-gradient);
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 25px;
+        transition: var(--transition);
+        box-shadow: 0 3px 10px rgba(255,71,87,0.3);
+    }
+
+        .btn-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,71,87,0.4);
+        }
+
+    .carousel-indicators button {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin: 0 4px;
+        border: 2px solid rgba(255,255,255,0.5);
+        background: transparent;
+    }
+
+    .carousel-indicators .active {
+        background: white;
+        border-color: white;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 5%;
+        opacity: 0.7;
+        transition: opacity var(--transition);
+    }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 1;
+        }
+
+    /* Side Banners */
+    .side-banners {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        height: 100%;
+    }
+
+    .side-banner {
+        flex: 1;
+    }
+
+    .banner-card {
+        position: relative;
+        height: 110px;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: var(--transition);
+        cursor: pointer;
+    }
+
+        .banner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+    .banner-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: opacity var(--transition);
+    }
+
+    .banner-card:hover .banner-bg {
+        opacity: 1;
+    }
+
+    .banner-info {
+        position: relative;
+        z-index: 2;
+        padding: 15px;
+        color: white;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .banner-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .banner-info p {
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+
+    .price-tag {
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+
+        .price-tag strong {
+            font-size: 0.9rem;
+        }
+
+    .banner-info small {
+        font-size: 0.7rem;
+        opacity: 0.9;
+    }
+
+    /* Product Categories */
+    .product-categories {
+        padding: 40px 0;
+        background: white;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .category-card {
+        position: relative;
+        height: 150px;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+    }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+    .category-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        transition: opacity var(--transition);
+    }
+
+    .category-card:hover .category-bg {
+        opacity: 0.9;
+    }
+
+    .category-content {
+        position: relative;
+        z-index: 2;
+        padding: 15px;
+        color: white;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .category-content h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .category-content p {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+    .price-display {
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+
+        .price-display strong {
+            font-size: 0.9rem;
+        }
+
+    .category-content small {
+        font-size: 0.7rem;
+        opacity: 0.9;
+    }
+
+    /* Products Section */
+    .products-section {
+        background: white;
+    }
+
+    .section-header {
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .filter-summary {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 10px;
+    }
+
+        .filter-summary strong {
+            color: var(--accent-color);
+        }
+
+    .pagination-wrapper {
+        border-top: 1px solid #f0f0f0;
+        padding-top: 20px;
+    }
+
+    .pagination .page-link {
+        color: #666;
+        border: 1px solid #dee2e6;
+        padding: 8px 12px;
+        transition: var(--transition);
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+        color: white;
+    }
+
+    .pagination .page-link:hover {
+        color: var(--accent-color);
+        background-color: #f8f9fa;
+        border-color: var(--accent-color);
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 991px) {
+        .side-banners
+
+    {
+        margin-top: 20px;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .side-banner {
+        flex: 1;
+    }
+
+    }
+    @@media (max-width: 768px) {
+        .hero-carousel
+
+    {
+        height: 250px;
+    }
+
+    .hero-slide {
+        height: 250px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .btn-hero {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+
+    .banner-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .side-banners {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .category-card {
+        height: 120px;
+    }
+
+    }
+    @@media (max-width: 576px) {
+        .hero-content h2
+
+    {
+        font-size: 1.4rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .banner-text {
+        font-size: 14px;
+    }
+
+    .offer-badge {
+        font-size: 10px;
+    }
+
+    .category-content h5 {
+        font-size: 0.9rem;
+    }
+
+    .banner-info h4 {
+        font-size: 0.9rem;
+    }
+
+    }
+</style>
+
 @section Scripts {
     <script>
         $(document).ready(function () {
             let currentSearchQuery = '@ViewBag.SearchQuery' || '';
             let currentPage = @ViewBag.CurrentPage ?? 1;
 
-            // Lọc theo danh mục
+            // Category filter
             $('.category-filter').click(function (e) {
                 e.preventDefault();
                 currentSearchQuery = $(this).data('search-query');
-                currentPage = 1; // Reset về trang 1
+                currentPage = 1;
                 filterProducts(currentSearchQuery, currentPage);
             });
 
-            // Tìm kiếm
+            // Search form
             $('#searchForm').submit(function (e) {
                 e.preventDefault();
                 currentSearchQuery = $('input[name="searchQuery"]').val();
-                currentPage = 1; // Reset về trang 1
+                currentPage = 1;
                 filterProducts(currentSearchQuery, currentPage);
             });
 
-            // Phân trang
+            // Pagination
             $(document).on('click', '.page-link', function (e) {
                 e.preventDefault();
                 currentPage = $(this).data('page');
                 filterProducts(currentSearchQuery, currentPage);
             });
 
-            // Hàm gọi AJAX
+            // AJAX filter function
             function filterProducts(searchQuery, page) {
                 $.ajax({
                     url: '@Url.Action("FilterProducts", "Home")',
                     type: 'GET',
                     data: { searchQuery: searchQuery, page: page },
+                    beforeSend: function() {
+                        $('#product-list').html('<div class="text-center p-4"><i class="fas fa-spinner fa-spin fa-2x"></i></div>');
+                    },
                     success: function (result) {
-                        // Cập nhật danh sách sản phẩm
                         $('#product-list').html(result.productList);
-
-                        // Cập nhật thông tin tổng quan
                         var summaryHtml = '';
                         if (result.summary.SearchQuery) {
                             summaryHtml += '<p>Kết quả tìm kiếm cho "<strong>' + result.summary.SearchQuery + '</strong>"</p>';
                         }
                         summaryHtml += '<p>Tổng cộng: <strong>' + result.summary.TotalProducts + '</strong> sản phẩm</p>';
                         $('#filter-summary').html(summaryHtml);
-
-                        // Cập nhật phân trang
                         var paginationHtml = '';
                         if (result.summary.TotalPages > 1) {
                             paginationHtml = '<nav aria-label="Page navigation"><ul class="pagination justify-content-center">';
@@ -93,10 +672,21 @@
                         $('#pagination').html(paginationHtml);
                     },
                     error: function () {
-                        alert('Có lỗi xảy ra, thử lại sau!');
+                        $('#product-list').html('<div class="alert alert-danger text-center">Có lỗi xảy ra, thử lại sau!</div>');
                     }
                 });
             }
+
+            // Category card click handlers
+            $('.category-card').click(function() {
+                var categoryName = $(this).find('h5').text().trim();
+                currentSearchQuery = categoryName;
+                currentPage = 1;
+                filterProducts(currentSearchQuery, currentPage);
+                $('html, body').animate({
+                    scrollTop: $('.products-section').offset().top - 100
+                }, 600);
+            });
         });
     </script>
 }

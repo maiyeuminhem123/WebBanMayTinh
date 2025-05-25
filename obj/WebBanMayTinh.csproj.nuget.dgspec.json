@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Đồ Án Cơ Sở\\WebBanMayTinh_add_category_main.zip1\\WebBanMayTinh_add_category_main\\WebBanMayTinh_add_category\\WebBanMayTinh\\WebBanMayTinh\\WebBanMayTinh.csproj": {}
+    "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\WebBanMayTinh.csproj": {}
   },
   "projects": {
-    "D:\\Đồ Án Cơ Sở\\WebBanMayTinh_add_category_main.zip1\\WebBanMayTinh_add_category_main\\WebBanMayTinh_add_category\\WebBanMayTinh\\WebBanMayTinh\\WebBanMayTinh.csproj": {
+    "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\WebBanMayTinh.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Đồ Án Cơ Sở\\WebBanMayTinh_add_category_main.zip1\\WebBanMayTinh_add_category_main\\WebBanMayTinh_add_category\\WebBanMayTinh\\WebBanMayTinh\\WebBanMayTinh.csproj",
+        "projectUniqueName": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\WebBanMayTinh.csproj",
         "projectName": "WebBanMayTinh",
-        "projectPath": "D:\\Đồ Án Cơ Sở\\WebBanMayTinh_add_category_main.zip1\\WebBanMayTinh_add_category_main\\WebBanMayTinh_add_category\\WebBanMayTinh\\WebBanMayTinh\\WebBanMayTinh.csproj",
+        "projectPath": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\WebBanMayTinh.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Đồ Án Cơ Sở\\WebBanMayTinh_add_category_main.zip1\\WebBanMayTinh_add_category_main\\WebBanMayTinh_add_category\\WebBanMayTinh\\WebBanMayTinh\\obj\\",
+        "outputPath": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

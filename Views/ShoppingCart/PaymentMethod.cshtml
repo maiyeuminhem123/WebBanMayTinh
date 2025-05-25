@@ -88,7 +88,7 @@
                             <tr>
                                 <td>@item.Name</td>
                                 <td>@item.Quantity</td>
-                                <td>@(item.Price * item.Quantity) đ</td>
+                                <td>@string.Format("{0:N0} đ", item.Price * item.Quantity)</td>
                             </tr>
                         }
                     </tbody>
