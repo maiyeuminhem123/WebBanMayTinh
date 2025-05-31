@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.IO;
 using System.Threading.Tasks;
 
-public static class ControllerExtensions
+public static class HomeController
 {
     public static async Task<string> RenderViewToStringAsync(this Controller controller, string viewName, object model)
     {

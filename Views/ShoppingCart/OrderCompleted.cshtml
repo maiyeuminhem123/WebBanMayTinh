@@ -64,6 +64,35 @@
                 <p class="form-control">@Model.ShippingAddress</p>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">Hình thức thanh toán</label>
+                <p class="form-control">
+                    @switch (Model.PaymentMethod)
+                    {
+                        case "ThanhToanKhiNhanHang":
+                            <span>Thanh toán khi nhận hàng</span>
+                            break;
+                        case "ThanhToanTrucTuyen":
+                            <span>Thanh toán trực tuyến (PayPal)</span>
+                            break;
+                        case "TheTinDung":
+                            <span>Thẻ tín dụng</span>
+                            break;
+                        case "ChuyenKhoan":
+                            <span>Chuyển khoản ngân hàng</span>
+                            break;
+                        default:
+                            <span>Không xác định (@Model.PaymentMethod)</span>
+                            break;
+                    }
+                </p>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Trạng thái đơn hàng</label>
+                <p class="form-control">@Model.Status</p>
+            </div>
+        </div>
 
         <h5 class="mt-4 mb-3">Chi tiết đơn hàng</h5>
         <table class="table">
@@ -84,7 +113,6 @@
                         <td>@(detail.UnitPrice.ToString("N0")) đ</td>
                         <td>@((detail.UnitPrice * detail.Quantity).ToString("N0")) đ</td>
                     </tr>
-
                 }
             </tbody>
         </table>
@@ -93,9 +121,3 @@
             <h5 class="mb-0">Tổng tiền:</h5>
             <h5 class="text-danger mb-0">@Model.TotalAmount.ToString("N0")đ</h5>
         </div>
-    </div>
-
-    <div class="text-center">
-        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Tiếp tục mua sắm</a>
-    </div>
-</div>

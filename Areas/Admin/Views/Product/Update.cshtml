@@ -1,7 +1,8 @@
 ﻿@model WebBanMayTinh.Models.Product
+@using Microsoft.AspNetCore.Mvc.Rendering
 
 @{
-    ViewData["Title"] = "Update Product";
+    ViewData["Title"] = "Cập Nhật Sản Phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -74,6 +75,16 @@
             background: #6c757d;
             color: black;
         }
+
+    .text-danger ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 0.5rem;
+    }
+
+    .text-danger li {
+        font-size: 0.9rem;
+    }
 </style>
 
 <div class="container py-5">
@@ -82,9 +93,9 @@
             <h2><i class="fas fa-edit"></i> Cập Nhật Sản Phẩm</h2>
         </div>
         <div class="gearvn-form-body mt-4">
-            <form asp-action="Update" id="updateProductForm">
+            <form asp-action="Update" id="updateProductForm" method="post" enctype="multipart/form-data">
                 <input type="hidden" asp-for="Id" />
-                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+                <div asp-validation-summary="All" class="text-danger mb-4"></div>
 
                 <div class="row">
                     <!-- Tên + Giá -->
@@ -104,6 +115,41 @@
                         <span asp-validation-for="Price" class="text-danger small"></span>
                     </div>
 
+                    <!-- Serial Number -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="SerialNumber" class="form-control" placeholder="Serial Number" required />
+                            <label asp-for="SerialNumber">Serial Number</label>
+                        </div>
+                        <span asp-validation-for="SerialNumber" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Danh mục -->
+                    <div class="col-md-6">
+                        <label asp-for="CategoryId" class="form-label fw-semibold">Danh mục</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories" required>
+                            <option value="">-- Chọn danh mục --</option>
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Ngày mua + Bảo hành -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="PurchaseDate" class="form-control" type="date" placeholder="Ngày mua" />
+                            <label asp-for="PurchaseDate">Ngày mua</label>
+                        </div>
+                        <span asp-validation-for="PurchaseDate" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="WarrantyPeriodMonths" class="form-control" type="number" min="1" placeholder="Thời gian bảo hành" required />
+                            <label asp-for="WarrantyPeriodMonths">Thời gian bảo hành (tháng)</label>
+                        </div>
+                        <span asp-validation-for="WarrantyPeriodMonths" class="text-danger small"></span>
+                    </div>
+
                     <!-- Mô tả ngắn -->
                     <div class="col-md-12">
                         <div class="form-floating">
@@ -120,7 +166,7 @@
                         <span asp-validation-for="DetailDescription" class="text-danger small"></span>
                     </div>
 
-                    <!-- Ảnh & Danh mục -->
+                    <!-- Ảnh -->
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input asp-for="ImageUrl" class="form-control" placeholder="Link ảnh" />
@@ -130,11 +176,10 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label asp-for="CategoryId" class="form-label fw-semibold">Danh mục</label>
-                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories" required>
-                            <option value="">-- Chọn danh mục --</option>
-                        </select>
-                        <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                        <div class="form-group">
+                            <label class="form-label fw-semibold">Tải ảnh mới</label>
+                            <input type="file" name="imageUpload" class="form-control" accept="image/*" />
+                        </div>
                     </div>
 
                     <!-- Cấu hình phần cứng -->
@@ -202,23 +247,22 @@
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("updateProductForm");
-            form.addEventListener("submit", function (e) {
-                let valid = true;
-                form.querySelectorAll("[required]").forEach(input => {
-                    if (!input.value.trim()) {
-                        input.classList.add("is-invalid");
-                        valid = false;
-                    } else {
-                        input.classList.remove("is-invalid");
-                    }
-                });
-                if (!valid) {
-                    e.preventDefault();
-                    alert("Vui lòng điền đầy đủ các trường bắt buộc!");
+        $(document).ready(function () {
+            $("#updateProductForm").validate({
+                errorClass: "text-danger small",
+                errorElement: "span",
+                highlight: function (element) {
+                    $(this).addClass("is-invalid");
+                },
+                unhighlight: function (element) {
+                    $(this).removeClass("is-invalid");
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.closest(".form-floating, .form-group"));
                 }
             });
         });

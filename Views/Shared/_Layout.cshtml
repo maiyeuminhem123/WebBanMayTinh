@@ -117,7 +117,7 @@
 
         /* Admin Sidebar Styles */
         .admin-sidebar {
-            width: 250px;
+            width: 300px;
             background: linear-gradient(180deg, #2c3238 0%, #343a40 100%);
             min-height: calc(100vh - 116px);
             position: fixed;
@@ -597,9 +597,6 @@
                                 <div class="dropdown-divider"></div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <a href="#" class="text-decoration-none">Xem tất cả danh mục</a>
-                                    <div class="dropdown-promo">
-                                        <img src="/api/placeholder/400/150" alt="Khuyến mãi" class="img-fluid rounded">
-                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -782,11 +779,20 @@
         </div>
     </footer>
 
+    <!-- 1. jQuery (phải ở trên cùng) -->
     <script defer src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script defer src="~/js/site.js" asp-append-version="true"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <!-- 2. Bootstrap JS (phụ thuộc vào jQuery) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 3. jQuery Validate + Unobtrusive (phụ thuộc jQuery) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- 4. Resize Observer Polyfill (không liên quan jQuery, có thể sau) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/resize-observer-polyfill/1.5.1/ResizeObserver.global.js"></script>
+
+    <!-- 5. Script của bạn (site.js) nên để cuối cùng vì có thể phụ thuộc các thư viện trên -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
     <script>
         $(document).ready(function () {

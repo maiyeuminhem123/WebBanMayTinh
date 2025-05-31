@@ -130,6 +130,29 @@
                         <label class="form-label fw-bold">Tổng tiền:</label>
                         <p class="text-success fw-bold">@Model.TotalAmount.ToString("N0")đ</p>
                     </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Hình thức thanh toán:</label>
+                        <p class="text-muted">
+                            @switch (Model.PaymentMethod)
+                            {
+                                case "Thanh toán qua Paypal":
+                                    <span>Thanh toán trực tuyến</span>
+                                    break;
+                                case "Thanh toán COD":
+                                    <span>Thanh toán khi nhận hàng</span>
+                                    break;
+                                default:
+                                    <span>Không xác định</span>
+                                    break;
+                            }
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Mã giao dịch:</label>
+                        <p class="text-muted">@(string.IsNullOrEmpty(Model.TransactionId) ? "Không có" : Model.TransactionId)</p>
+                    </div>
                 </div>
 
                 <h4 class="mt-4 mb-3 fw-bold">Thông tin khách hàng</h4>
@@ -178,7 +201,7 @@
                                     <td>@detail.Product?.Name</td>
                                     <td class="text-center">@detail.Quantity</td>
                                     <td class="text-center">@detail.UnitPrice.ToString("N0")đ</td>
-                                    <td class="text-center fw-bold">@(detail.UnitPrice * detail.Quantity).ToString("N0")đ</td>
+                                    <td class="text-center fw-bold">@((detail.UnitPrice * detail.Quantity).ToString("N0")) đ</td>
                                 </tr>
                             }
                         </tbody>
@@ -423,20 +446,17 @@
 
         /* Pulse animation for active timeline icons */
         @@keyframes pulse {
-            0%
+            0% {
+                transform: scale(1);
+            }
 
-        {
-            transform: scale(1);
-        }
+            50% {
+                transform: scale(1.2);
+            }
 
-        50% {
-            transform: scale(1.2);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebBanMayTinh.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -235,7 +235,7 @@ namespace WebBanMayTinh.Migrations
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     DetailDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SerialNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SerialNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PurchaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     WarrantyPeriodMonths = table.Column<int>(type: "int", nullable: false),
                     CPU = table.Column<string>(type: "nvarchar(max)", nullable: true),

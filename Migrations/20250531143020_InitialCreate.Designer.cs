@@ -12,8 +12,8 @@ using WebBanMayTinh.Models;
 namespace WebBanMayTinh.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250524065032_Initial")]
-    partial class Initial
+    [Migration("20250531143020_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -411,7 +411,6 @@ namespace WebBanMayTinh.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SerialNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Storage")
