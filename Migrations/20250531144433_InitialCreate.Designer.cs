@@ -12,7 +12,7 @@ using WebBanMayTinh.Models;
 namespace WebBanMayTinh.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250531143020_InitialCreate")]
+    [Migration("20250531144433_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

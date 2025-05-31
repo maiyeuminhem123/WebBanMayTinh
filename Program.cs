@@ -120,7 +120,7 @@ app.UseAuthorization();
 
 
 
-
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
