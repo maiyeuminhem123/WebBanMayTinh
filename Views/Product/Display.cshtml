@@ -1,4 +1,5 @@
 ﻿@model WebBanMayTinh.Models.Product
+@using Microsoft.AspNetCore.Mvc.Rendering
 
 @{
     ViewData["Title"] = Model.Name;
@@ -44,6 +45,16 @@
         color: #ffc107;
         font-weight: bold;
     }
+
+    .btn-orange {
+        background-color: #ff6600;
+        color: white;
+        border: none;
+    }
+
+        .btn-orange:hover {
+            background-color: #e65c00;
+        }
 </style>
 
 <div class="container py-5">
@@ -77,42 +88,43 @@
                         <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-quantity="1" class="btn btn-success btn-lg fw-semibold shadow-sm">
                             <i class="fas fa-cart-plus me-2"></i>Thêm vào giỏ
                         </a>
-                        <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-quantity="1" asp-route-redirect="checkout" class="btn btn-warning btn-lg fw-semibold shadow-sm text-white">
+                        <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-quantity="1" asp-route-redirect="checkout" class="btn btn-orange btn-lg fw-semibold shadow-sm">
                             <i class="fas fa-bolt me-2"></i>Mua ngay
                         </a>
                     </div>
-
                 </div>
 
-                    <!-- Cấu hình -->
-                    <h5 class="text-secondary mb-3"><i class="fas fa-microchip me-2"></i>Cấu hình máy</h5>
-                    <ul class="list-group list-group-flush border rounded-3 mb-3">
-                        <li class="list-group-item"><strong>CPU:</strong> @(Model.CPU ?? "N/A")</li>
-                        <li class="list-group-item"><strong>GPU:</strong> @(Model.GPU ?? "N/A")</li>
-                        <li class="list-group-item"><strong>RAM:</strong> @(Model.RAM ?? "N/A")</li>
-                        <li class="list-group-item"><strong>Lưu trữ:</strong> @(Model.Storage ?? "N/A")</li>
-                        <li class="list-group-item"><strong>Hệ điều hành:</strong> @(Model.OperatingSystem ?? "N/A")</li>
-                        <li class="list-group-item"><strong>Thương hiệu:</strong> @(Model.Brand ?? "N/A")</li>
-                        <li class="list-group-item"><strong>Danh mục:</strong> @(Model.Category?.Name ?? "N/A")</li>
-                    </ul>
+                <!-- Cấu hình -->
+                <h5 class="text-secondary mb-3"><i class="fas fa-microchip me-2"></i>Cấu hình máy</h5>
+                <ul class="list-group list-group-flush border rounded-3 mb-3">
+                    <li class="list-group-item"><strong>CPU:</strong> @(Model.CPU ?? "N/A")</li>
+                    <li class="list-group-item"><strong>GPU:</strong> @(Model.GPU ?? "N/A")</li>
+                    <li class="list-group-item"><strong>RAM:</strong> @(Model.RAM ?? "N/A")</li>
+                    <li class="list-group-item"><strong>Lưu trữ:</strong> @(Model.Storage ?? "N/A")</li>
+                    <li class="list-group-item"><strong>Hệ điều hành:</strong> @(Model.OperatingSystem ?? "N/A")</li>
+                    <li class="list-group-item"><strong>Thương hiệu:</strong> @(Model.Brand ?? "N/A")</li>
+                    <li class="list-group-item"><strong>Danh mục:</strong> @(Model.Category?.Name ?? "N/A")</li>
+                    <li class="list-group-item"><strong>Serial Number:</strong> @(Model.SerialNumber ?? "N/A")</li>
+                    <li class="list-group-item"><strong>Ngày mua:</strong> @(Model.PurchaseDate == default ? "N/A" : Model.PurchaseDate.ToString("dd/MM/yyyy"))</li>
+                    <li class="list-group-item"><strong>Thời gian bảo hành:</strong> @(Model.WarrantyPeriodMonths > 0 ? $"{Model.WarrantyPeriodMonths} tháng" : "N/A")</li>
+                </ul>
 
-                    <!-- Thông tin chi tiết -->
-                    @if (!string.IsNullOrEmpty(Model.DetailDescription))
-                    {
-                        <div class="mt-4">
-                            <h5 class="text-secondary mb-3">
-                                <a data-bs-toggle="collapse" href="#detailDescription" role="button" aria-expanded="false" aria-controls="detailDescription" class="text-decoration-none text-success">
-                                    <i class="fas fa-info-circle me-2"></i>Thông tin chi tiết
-                                </a>
-                            </h5>
-                            <div class="collapse" id="detailDescription">
-                                <div class="card card-body border-0 shadow-sm">
-                                    @Html.Raw(Model.DetailDescription)
-                                </div>
+                <!-- Thông tin chi tiết -->
+                @if (!string.IsNullOrEmpty(Model.DetailDescription))
+                {
+                    <div class="mt-4">
+                        <h5 class="text-secondary mb-3">
+                            <a data-bs-toggle="collapse" href="#detailDescription" role="button" aria-expanded="false" aria-controls="detailDescription" class="text-decoration-none text-success">
+                                <i class="fas fa-info-circle me-2"></i>Thông tin chi tiết
+                            </a>
+                        </h5>
+                        <div class="collapse" id="detailDescription">
+                            <div class="card card-body border-0 shadow-sm">
+                                @Html.Raw(Model.DetailDescription)
                             </div>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
             </div>
         </div>
     </div>

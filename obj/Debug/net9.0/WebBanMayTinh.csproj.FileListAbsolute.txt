@@ -2202,6 +2202,16 @@ D:\Đồ Án Cơ Sở\WebBanMayTinh_add_category_main.zip1\WebBanMayTinh_add_cat
 D:\Đồ Án Cơ Sở\WebBanMayTinh_add_category_main.zip1\WebBanMayTinh_add_category_main\WebBanMayTinh_add_category\WebBanMayTinh\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.pdb
 D:\Đồ Án Cơ Sở\WebBanMayTinh_add_category_main.zip1\WebBanMayTinh_add_category_main\WebBanMayTinh_add_category\WebBanMayTinh\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.genruntimeconfig.cache
 D:\Đồ Án Cơ Sở\WebBanMayTinh_add_category_main.zip1\WebBanMayTinh_add_category_main\WebBanMayTinh_add_category\WebBanMayTinh\WebBanMayTinh\obj\Debug\net9.0\ref\WebBanMayTinh.dll
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.csproj.AssemblyReference.cache
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.GeneratedMSBuildEditorConfig.editorconfig
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.AssemblyInfoInputs.cache
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.AssemblyInfo.cs
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.csproj.CoreCompileInputs.cache
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.MvcApplicationPartsAssemblyInfo.cs
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.MvcApplicationPartsAssemblyInfo.cache
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.RazorAssemblyInfo.cache
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.RazorAssemblyInfo.cs
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.sourcelink.json
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\appsettings.Development.json
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\appsettings.json
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\WebBanMayTinh.staticwebassets.runtime.json
@@ -2213,6 +2223,7 @@ D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\WebBanMayTinh.d
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\WebBanMayTinh.pdb
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\Azure.Core.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\Azure.Identity.dll
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\FluentAssertions.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\Humanizer.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Google.dll
@@ -2290,8 +2301,6 @@ D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\NuGet.Packaging
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\NuGet.ProjectModel.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\NuGet.Protocol.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\NuGet.Versioning.dll
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\PayPalCheckoutSdk.dll
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\PayPalHttp-Dotnet.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\Pipelines.Sockets.Unofficial.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\SQLitePCLRaw.core.dll
@@ -2312,6 +2321,7 @@ D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\System.Reflecti
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\System.Runtime.Caching.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\System.Text.Json.dll
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\VNPAY.NET.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\af\Humanizer.resources.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\ar\Humanizer.resources.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\az\Humanizer.resources.dll
@@ -2492,16 +2502,6 @@ D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\runtimes\win-ar
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.csproj.AssemblyReference.cache
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.GeneratedMSBuildEditorConfig.editorconfig
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.AssemblyInfoInputs.cache
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.AssemblyInfo.cs
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.csproj.CoreCompileInputs.cache
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.MvcApplicationPartsAssemblyInfo.cs
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.MvcApplicationPartsAssemblyInfo.cache
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.RazorAssemblyInfo.cache
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.RazorAssemblyInfo.cs
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.sourcelink.json
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\scopedcss\bundle\WebBanMayTinh.styles.css
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\scopedcss\projectbundle\WebBanMayTinh.bundle.scp.css

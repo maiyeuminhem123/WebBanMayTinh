@@ -15,10 +15,6 @@
         {
             _revenueService = revenueService;
         }
-
-        /// <summary>
-        /// Dashboard Razor page (GET) – render với ViewModel.
-        /// </summary>
         public async Task<IActionResult> Dashboard(string reportType = "day", DateTime? startDate = null, DateTime? endDate = null, string category = "all")
         {
             var from = startDate ?? DateTime.Today.AddMonths(-1);
@@ -48,11 +44,6 @@
 
             return View(vm);
         }
-
-        /// <summary>
-        /// Ajax JSON – trả về dữ liệu (biểu đồ + pie + summary)
-        /// POST /Revenue/Data
-        /// </summary>
         [HttpPost]
         public async Task<IActionResult> Data([FromBody] RevenueQuery query)
         {

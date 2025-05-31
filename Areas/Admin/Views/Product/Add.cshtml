@@ -6,155 +6,262 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .gearvn-form-container {
+        max-width: 1000px;
+        margin: auto;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .gearvn-form-header {
+        background: #000;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        padding: 24px;
+        color: #fff;
+    }
+
+        .gearvn-form-header h2 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .gearvn-form-header i {
+            margin-right: 10px;
+        }
+
+    .gearvn-form-body .form-floating,
+    .gearvn-form-body .form-group,
+    .gearvn-form-body .form-select {
+        margin-bottom: 1.5rem;
+    }
+
+    .gearvn-form-body textarea {
+        resize: vertical;
+    }
+
+    .gearvn-btn {
+        padding: 10px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+        .gearvn-btn:hover {
+            transform: translateY(-2px);
+        }
+
+    .gearvn-btn-warning {
+        background-color: #006400;
+        border: none;
+        color: #fff;
+    }
+
+    .gearvn-btn-outline {
+        border: 2px solid #6c757d;
+        background: transparent;
+        color: #6c757d;
+    }
+
+        .gearvn-btn-outline:hover {
+            background: #6c757d;
+            color: black;
+        }
+
+    .text-danger ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 0.5rem;
+    }
+
+    .text-danger li {
+        font-size: 0.9rem;
+    }
+</style>
+
 <div class="container py-5">
-    <div class="bg-white rounded-4 shadow-lg p-5">
-        <h2 class="text-center">
-            <i class="fas fa-plus-circle me-2" style="color: #228b22;"></i>
-            <span style="color: black;">Thêm Sản Phẩm Mới</span>
-        </h2>
+    <div class="gearvn-form-container">
+        <div class="gearvn-form-header">
+            <h2><i class="fas fa-plus-circle"></i> Thêm Sản Phẩm Mới</h2>
+        </div>
+        <div class="gearvn-form-body mt-4">
+            <form asp-action="Add" id="addProductForm" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger mb-4"></div>
 
+                <div class="row">
+                    <!-- Tên + Giá -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Name" class="form-control" placeholder="Tên sản phẩm" required />
+                            <label asp-for="Name">Tên sản phẩm</label>
+                        </div>
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
 
-        <form asp-action="Add" enctype="multipart/form-data" id="addProductForm">
-            <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Price" class="form-control" type="number" step="0.01" placeholder="Giá" required />
+                            <label asp-for="Price">Giá (VNĐ)</label>
+                        </div>
+                        <span asp-validation-for="Price" class="text-danger small"></span>
+                    </div>
 
-            <div class="row gy-4">
-                <!-- Nhóm thông tin cơ bản -->
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">Tên sản phẩm *</label>
-                    <input asp-for="Name" class="form-control shadow-sm" placeholder="VD: Laptop Gaming XYZ" required />
-                    <span asp-validation-for="Name" class="text-danger small"></span>
+                    <!-- Serial Number -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="SerialNumber" class="form-control" placeholder="Serial Number" required />
+                            <label asp-for="SerialNumber">Serial Number</label>
+                        </div>
+                        <span asp-validation-for="SerialNumber" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Danh mục -->
+                    <div class="col-md-6">
+                        <label asp-for="CategoryId" class="form-label fw-semibold">Danh mục</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories" required>
+                            <option value="">-- Chọn danh mục --</option>
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Ngày mua + Bảo hành -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="PurchaseDate" class="form-control" type="date" placeholder="Ngày mua" />
+                            <label asp-for="PurchaseDate">Ngày mua</label>
+                        </div>
+                        <span asp-validation-for="PurchaseDate" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="WarrantyPeriodMonths" class="form-control" type="number" min="1" placeholder="Thời gian bảo hành" required />
+                            <label asp-for="WarrantyPeriodMonths">Thời gian bảo hành (tháng)</label>
+                        </div>
+                        <span asp-validation-for="WarrantyPeriodMonths" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Mô tả ngắn -->
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <textarea asp-for="Description" class="form-control" placeholder="Mô tả" style="height: 100px"></textarea>
+                            <label asp-for="Description">Mô tả</label>
+                        </div>
+                        <span asp-validation-for="Description" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Mô tả chi tiết -->
+                    <div class="col-md-12">
+                        <label asp-for="DetailDescription" class="form-label fw-semibold">Thông tin chi tiết</label>
+                        <textarea asp-for="DetailDescription" class="form-control" rows="5" placeholder="Nhập thông tin chi tiết"></textarea>
+                        <span asp-validation-for="DetailDescription" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Ảnh -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="ImageUrl" class="form-control" placeholder="Link ảnh" />
+                            <label asp-for="ImageUrl">Link ảnh</label>
+                        </div>
+                        <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label fw-semibold">Tải ảnh lên</label>
+                            <input type="file" name="imageUpload" class="form-control" accept="image/*" />
+                        </div>
+                    </div>
+
+                    <!-- Cấu hình phần cứng -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="CPU" class="form-control" placeholder="CPU" />
+                            <label asp-for="CPU">CPU</label>
+                        </div>
+                        <span asp-validation-for="CPU" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="GPU" class="form-control" placeholder="GPU" />
+                            <label asp-for="GPU">GPU</label>
+                        </div>
+                        <span asp-validation-for="GPU" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="RAM" class="form-control" placeholder="RAM" />
+                            <label asp-for="RAM">RAM</label>
+                        </div>
+                        <span asp-validation-for="RAM" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Storage" class="form-control" placeholder="Storage" />
+                            <label asp-for="Storage">Storage</label>
+                        </div>
+                        <span asp-validation-for="Storage" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="OperatingSystem" class="form-control" placeholder="Hệ điều hành" />
+                            <label asp-for="OperatingSystem">Hệ điều hành</label>
+                        </div>
+                        <span asp-validation-for="OperatingSystem" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="Brand" class="form-control" placeholder="Thương hiệu" />
+                            <label asp-for="Brand">Thương hiệu</label>
+                        </div>
+                        <span asp-validation-for="Brand" class="text-danger small"></span>
+                    </div>
                 </div>
 
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">Giá bán (VNĐ) *</label>
-                    <input asp-for="Price" type="number" step="0.01" class="form-control shadow-sm" placeholder="VD: 23990000" required />
-                    <span asp-validation-for="Price" class="text-danger small"></span>
+                <!-- Nút -->
+                <div class="mt-4 d-flex justify-content-end gap-3">
+                    <button type="submit" class="gearvn-btn gearvn-btn-warning">
+                        <i class="fas fa-save me-2"></i>Thêm sản phẩm
+                    </button>
+                    <a asp-action="Index" class="gearvn-btn gearvn-btn-outline">
+                        <i class="fas fa-arrow-left me-2"></i>Quay lại
+                    </a>
                 </div>
-
-                <!-- Mô tả ngắn -->
-                <div class="col-md-12">
-                    <label class="form-label fw-semibold">Mô tả ngắn</label>
-                    <textarea asp-for="Description" class="form-control shadow-sm" rows="3" placeholder="Tóm tắt sản phẩm..."></textarea>
-                    <span asp-validation-for="Description" class="text-danger small"></span>
-                </div>
-
-                <!-- Mô tả chi tiết -->
-                <div class="col-md-12">
-                    <label class="form-label fw-semibold">Thông tin chi tiết</label>
-                    <textarea asp-for="DetailDescription" class="form-control shadow-sm" rows="6" placeholder="Đặc điểm nổi bật, thiết kế, cấu hình..."></textarea>
-                    <span asp-validation-for="DetailDescription" class="text-danger small"></span>
-                </div>
-
-                <!-- Ảnh -->
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">Link ảnh (nếu có)</label>
-                    <input asp-for="ImageUrl" class="form-control shadow-sm" placeholder="https://..." />
-                    <span asp-validation-for="ImageUrl" class="text-danger small"></span>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">Hoặc tải ảnh lên</label>
-                    <input type="file" name="imageUpload" class="form-control shadow-sm" accept="image/*" />
-                </div>
-
-                <!-- Danh mục -->
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">Danh mục *</label>
-                    <select asp-for="CategoryId" class="form-select shadow-sm" asp-items="ViewBag.Categories" required>
-                        <option value="">-- Chọn danh mục --</option>
-                    </select>
-                    <span asp-validation-for="CategoryId" class="text-danger small"></span>
-                </div>
-
-                <!-- Cấu hình -->
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">CPU</label>
-                    <input asp-for="CPU" class="form-control shadow-sm" placeholder="VD: Intel Core i7-12700H" />
-                    <span asp-validation-for="CPU" class="text-danger small"></span>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">GPU</label>
-                    <input asp-for="GPU" class="form-control shadow-sm" placeholder="VD: RTX 3060 6GB" />
-                    <span asp-validation-for="GPU" class="text-danger small"></span>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">RAM</label>
-                    <input asp-for="RAM" class="form-control shadow-sm" placeholder="VD: 16GB DDR5 4800MHz" />
-                    <span asp-validation-for="RAM" class="text-danger small"></span>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">Ổ cứng</label>
-                    <input asp-for="Storage" class="form-control shadow-sm" placeholder="VD: 512GB SSD NVMe" />
-                    <span asp-validation-for="Storage" class="text-danger small"></span>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">Hệ điều hành</label>
-                    <input asp-for="OperatingSystem" class="form-control shadow-sm" placeholder="VD: Windows 11 Home SL" />
-                    <span asp-validation-for="OperatingSystem" class="text-danger small"></span>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">Thương hiệu</label>
-                    <input asp-for="Brand" class="form-control shadow-sm" placeholder="VD: ASUS, Dell, MSI..." />
-                    <span asp-validation-for="Brand" class="text-danger small"></span>
-                </div>
-                <!-- Mã Serial -->
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">Mã Serial *</label>
-                    <input asp-for="SerialNumber" class="form-control shadow-sm" placeholder="VD: SN12345678XYZ" required />
-                    <span asp-validation-for="SerialNumber" class="text-danger small"></span>
-                </div>
-
-  
-
-                <!-- Thời gian bảo hành -->
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold">Thời hạn bảo hành (tháng) *</label>
-                    <input asp-for="WarrantyPeriodMonths" type="number" min="1" class="form-control shadow-sm" placeholder="VD: 24" required />
-                    <span asp-validation-for="WarrantyPeriodMonths" class="text-danger small"></span>
-                </div>
-            </div>
-
-            <!-- Nút hành động -->
-            <div class="mt-5 d-flex justify-content-end gap-3">
-                <button type="submit" class="btn btn-dark py-2 fw-semibold shadow-sm">
-                    <i class="fas fa-check-circle me-2" style="color: #228b22;"></i>Thêm sản phẩm
-                </button>
-                <a asp-action="Index" class="btn btn-outline-secondary px-5 py-2 fw-semibold shadow-sm">
-                    <i class="fas fa-arrow-left me-2"></i>Quay lại
-                </a>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('.form-control, .form-select').on('focus', function () {
-                $(this).addClass('border-primary shadow');
-            }).on('blur', function () {
-                $(this).removeClass('border-primary shadow');
-            });
-
-            $('#addProductForm').on('submit', function (e) {
-                let isValid = true;
-                $('.form-control[required], .form-select[required]').each(function () {
-                    if (!$(this).val()) {
-                        isValid = false;
-                        $(this).addClass('is-invalid');
-                    } else {
-                        $(this).removeClass('is-invalid');
-                    }
-                });
-                if (!isValid) {
-                    e.preventDefault();
-                    alert('Vui lòng điền đầy đủ các trường bắt buộc!');
+            $("#addProductForm").validate({
+                errorClass: "text-danger small",
+                errorElement: "span",
+                highlight: function (element) {
+                    $(element).addClass("is-invalid");
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass("is-invalid");
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.closest(".form-floating, .form-group"));
                 }
             });
         });

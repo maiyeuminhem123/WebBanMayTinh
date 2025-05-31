@@ -1,692 +1,1418 @@
-﻿@model IEnumerable<WebBanMayTinh.Models.Product>
-
-@{
-    ViewData["Title"] = "Trang Chủ";
-}
-
-
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="container">
-        <div class="row">
-            <!-- Main Carousel -->
-            <div class="col-lg-8">
-                <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="4000">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="hero-slide">
-                                <!-- Thay link hình ảnh tại đây -->
-                                <img src="https://static.wixstatic.com/media/a27d24_affeb14b88e140c28da40dce56a58bde~mv2.jpg" class="d-block w-100" alt="Gaming Setup">
-                                <div class="hero-content">
-                                    <button class="btn btn-hero">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="hero-slide">
-                                <!-- Thay link hình ảnh tại đây -->
-                                <img src="https://dlcdnwebimgs.asus.com/gain/d5efc44f-4cbc-41f7-8ea2-d10d26121000/" class="d-block w-100" alt="Laptop">
-                                <div class="hero-content">                                  
-                                    <button class="btn btn-hero">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="hero-slide">
-                                <!-- Thay link hình ảnh tại đây -->
-                                <img src="https://i.ytimg.com/vi/GejXnyse-b4/maxresdefault.jpg" class="d-block w-100" alt="Components">
-                                <div class="hero-content">                                  
-                                    <button class="btn btn-hero">                                       
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Side Banners -->
-            <div class="col-lg-4">
-                <div class="side-banners">
-                    <div class="side-banner mb-3">
-                        <div class="banner-card">
-                            <!-- Thay link hình ảnh tại đây -->
-                            <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-01.png" class="banner-bg" alt="Trade In">
-                            <div class="banner-info">
-                                <h4>THU CŨ ĐỔI MỚI</h4>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="side-banner mb-3">
-                        <div class="banner-card">
-                            <!-- Thay link hình ảnh tại đây -->
-                            <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-02.png" class="banner-bg" alt="Keyboard">
-                            <div class="banner-info">
-                                <h4>PHÍM CƠ KHÔNG DÂY</h4>                              
-                            </div>
-                        </div>
-                    </div>
-                    <div class="side-banner">
-                        <div class="banner-card">
-                            <!-- Thay link hình ảnh tại đây -->
-                            <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-03.png" class="banner-bg" alt="PC">
-                            <div class="banner-info">
-                                <h4>PC I5 4060</h4>                              
-                                <small>🚚 Miễn phí giao hàng</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Product Categories Section -->
-<section class="product-categories">
-    <div class="container">
-        <h2 class="section-title">Danh Mục Sản Phẩm</h2>
-        <div class="row g-3">
-            <div class="col-md-3">
-                <div class="category-card">
-                    <!-- Thay link hình ảnh tại đây -->
-                    <img src="https://intphcm.com/data/upload/banner-la-gi.jpg" class="category-bg" alt="Laptop GearVN">
-                    <div class="category-content">                      
-                        <p>Trả góp 0%</p>
-                        <div class="price-display">Giá từ<br><strong>9.990.000đ</strong></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="category-card">
-                    <!-- Thay link hình ảnh tại đây -->
-                    <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-04.png" class="category-bg" alt="Laptop Gaming">
-                    <div class="category-content">  
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="category-card">
-                    <!-- Thay link hình ảnh tại đây -->
-                    <img src="https://file.hstatic.net/200000722513/file/layout_web_-09_d2c2f20ee0af491b8bf40d032ff74dbf.png" class="category-bg" alt="Speakers">
-                    <div class="category-content">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="category-card">
-                    <!-- Thay link hình ảnh tại đây -->
-                    <img src="https://akauto.com.vn/wp-content/uploads/2025/03/Banner-trang-man-hinh-Safeview-Mobile.jpg" class="category-bg" alt="Monitors">
-                    <div class="category-content">              
-                        <small>🚚 Giao hàng toàn quốc</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Products Section -->
-<section class="products-section py-5">
-    <div class="container">
-        <div class="section-header mb-4">
-            <h2 class="section-title">Danh sách sản phẩm </h2>
-            <div id="filter-summary" class="filter-summary">
-                @if (!string.IsNullOrEmpty(ViewBag.SearchQuery))
-                {
-                    <p>Kết quả tìm kiếm cho "<strong>@ViewBag.SearchQuery</strong>"</p>
-                }
-                <p>Tổng cộng: <strong>@Model.Count()</strong> sản phẩm</p>
-            </div>
-        </div>
-
-        <div id="product-list" class="row g-4">
-            @await Html.PartialAsync("_ProductList", Model)
-        </div>
-
-        <div id="pagination" class="pagination-wrapper mt-4">
-            @if (ViewBag.TotalPages > 1)
-            {
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                        {
-                            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                                <a class="page-link" href="#" data-page="@i">@i</a>
-                            </li>
-                        }
-                    </ul>
-                </nav>
-            }
-        </div>
-    </div>
-</section>
-
-<style>
-    /* Biến CSS chung */
-    :root {
-        --primary-gradient: linear-gradient(45deg, #ff4757, #ff6b7a);
-        --accent-color: #ff4757;
-        --shadow: 0 2px 10px rgba(0,0,0,0.1);
-        --shadow-hover: 0 8px 25px rgba(0,0,0,0.15);
-        --transition: all 0.3s ease;
-    }
-
-    /* Top Banner */
-    .top-banner {
-        background: var(--primary-gradient);
-        color: white;
-        padding: 10px 0;
-        font-size: 14px;
-        box-shadow: var(--shadow);
-    }
-
-    .banner-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    .banner-icon {
-        width: 50px;
-        height: 30px;
-        border-radius: 5px;
-    }
-
-    .banner-text {
-        font-weight: 700;
-        font-size: 16px;
-        text-transform: uppercase;
-    }
-
-    .banner-offers {
-        display: flex;
-        gap: 10px;
-    }
-
-    .offer-badge {
-        background: rgba(255, 255, 255, 0.2);
-        padding: 5px 10px;
-        border-radius: 15px;
-        font-size: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(10px);
-        transition: var(--transition);
-    }
-
-        .offer-badge:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Cửa hàng máy tính</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+    <style>
+        /* Biến CSS chung */
+        :root {
+            --primary-gradient: linear-gradient(45deg, #ff4757, #ff6b7a);
+            --accent-color: #ff4757;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 8px 25px rgba(0,0,0,0.15);
+            --transition: all 0.3s ease;
         }
 
-    /* Hero Section */
-    .hero-section {
-        padding: 30px 0;
-        background: #f9f9f9;
-    }
+        /* Top Banner */
+        .top-banner {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+            box-shadow: var(--shadow);
+        }
 
-    .hero-carousel {
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        height: 350px;
-    }
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-    .hero-slide {
-        position: relative;
-        height: 350px;
-    }
+        .banner-icon {
+            width: 50px;
+            height: 30px;
+            border-radius: 5px;
+        }
 
-        .hero-slide img {
+        .banner-text {
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .banner-offers {
+            display: flex;
+            gap: 10px;
+        }
+
+        .offer-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+            .offer-badge:hover {
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(1.05);
+            }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 30px 0;
+            background: #f9f9f9;
+        }
+
+        .hero-carousel {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 350px;
+        }
+
+        .hero-slide {
+            position: relative;
+            height: 350px;
+        }
+
+            .hero-slide img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+
+            .hero-slide:hover img {
+                transform: scale(1.05);
+            }
+
+        .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7), rgba(0,0,0,0.85));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+            .hero-content h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 15px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            }
+
+        .btn-hero {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: var(--transition);
+            box-shadow: 0 3px 10px rgba(255,71,87,0.3);
+        }
+
+            .btn-hero:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(255,71,87,0.4);
+            }
+
+        .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 4px;
+            border: 2px solid rgba(255,255,255,0.5);
+            background: transparent;
+        }
+
+        .carousel-indicators .active {
+            background: white;
+            border-color: white;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+            opacity: 0.7;
+            transition: opacity var(--transition);
+        }
+
+            .carousel-control-prev:hover,
+            .carousel-control-next:hover {
+                opacity: 1;
+            }
+
+        /* Side Banners */
+        .side-banners {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+        }
+
+        .side-banner {
+            flex: 1;
+        }
+
+        .banner-card {
+            position: relative;
+            height: 110px;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+            .banner-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-hover);
+            }
+
+        .banner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            opacity: 0.8;
+            transition: opacity var(--transition);
         }
 
-        .hero-slide:hover img {
-            transform: scale(1.05);
-        }
-
-    .hero-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0,0,0,0.7), rgba(0,0,0,0.85));
-        color: white;
-        padding: 20px;
-        text-align: center;
-    }
-
-        .hero-content h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-
-    .btn-hero {
-        background: var(--primary-gradient);
-        border: none;
-        color: white;
-        padding: 12px 30px;
-        font-weight: 600;
-        border-radius: 25px;
-        transition: var(--transition);
-        box-shadow: 0 3px 10px rgba(255,71,87,0.3);
-    }
-
-        .btn-hero:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,71,87,0.4);
-        }
-
-    .carousel-indicators button {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        margin: 0 4px;
-        border: 2px solid rgba(255,255,255,0.5);
-        background: transparent;
-    }
-
-    .carousel-indicators .active {
-        background: white;
-        border-color: white;
-    }
-
-    .carousel-control-prev,
-    .carousel-control-next {
-        width: 5%;
-        opacity: 0.7;
-        transition: opacity var(--transition);
-    }
-
-        .carousel-control-prev:hover,
-        .carousel-control-next:hover {
+        .banner-card:hover .banner-bg {
             opacity: 1;
         }
 
-    /* Side Banners */
-    .side-banners {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        height: 100%;
-    }
-
-    .side-banner {
-        flex: 1;
-    }
-
-    .banner-card {
-        position: relative;
-        height: 110px;
-        border-radius: 10px;
-        overflow: hidden;
-        transition: var(--transition);
-        cursor: pointer;
-    }
-
-        .banner-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+        .banner-info {
+            position: relative;
+            z-index: 2;
+            padding: 15px;
+            color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-    .banner-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.8;
-        transition: opacity var(--transition);
-    }
+            .banner-info h4 {
+                font-size: 1rem;
+                font-weight: 700;
+                margin-bottom: 5px;
+            }
 
-    .banner-card:hover .banner-bg {
-        opacity: 1;
-    }
+            .banner-info p {
+                font-size: 0.85rem;
+                margin-bottom: 5px;
+            }
 
-    .banner-info {
-        position: relative;
-        z-index: 2;
-        padding: 15px;
-        color: white;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+        .price-tag {
+            font-size: 0.75rem;
+            line-height: 1.2;
+        }
 
-        .banner-info h4 {
-            font-size: 1rem;
+            .price-tag strong {
+                font-size: 0.9rem;
+            }
+
+        .banner-info small {
+            font-size: 0.7rem;
+            opacity: 0.9;
+        }
+
+        /* Product Categories */
+        .product-categories {
+            padding: 40px 0;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        .banner-info p {
-            font-size: 0.85rem;
-            margin-bottom: 5px;
+        .category-card {
+            position: relative;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
 
-    .price-tag {
-        font-size: 0.75rem;
-        line-height: 1.2;
-    }
+            .category-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-hover);
+            }
 
-        .price-tag strong {
+        .category-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity var(--transition);
+        }
+
+        .category-card:hover .category-bg {
+            opacity: 0.9;
+        }
+
+        .category-content {
+            position: relative;
+            z-index: 2;
+            padding: 15px;
+            color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+            .category-content h5 {
+                font-size: 1rem;
+                font-weight: 700;
+                margin-bottom: 5px;
+            }
+
+            .category-content p {
+                font-size: 0.85rem;
+                margin-bottom: 8px;
+            }
+
+        .price-display {
+            font-size: 0.75rem;
+            line-height: 1.2;
+        }
+
+            .price-display strong {
+                font-size: 0.9rem;
+            }
+
+        .category-content small {
+            font-size: 0.7rem;
+            opacity: 0.9;
+        }
+
+        /* Filter Sidebar */
+        .filter-sidebar {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 20px;
+        }
+
+        .filter-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+            .filter-section:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+        .filter-section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .price-range-container {
+            margin: 15px 0;
+        }
+
+        .price-range-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .price-input {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            width: 100px;
+        }
+
+        .brand-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+            .brand-checkbox:hover {
+                background: rgba(255, 71, 87, 0.1);
+            }
+
+            .brand-checkbox input[type="checkbox"] {
+                width: 18px;
+                height: 18px;
+                accent-color: var(--accent-color);
+            }
+
+            .brand-checkbox label {
+                flex: 1;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        .product-count {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .sort-select {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 5px;
             font-size: 0.9rem;
         }
 
-    .banner-info small {
-        font-size: 0.7rem;
-        opacity: 0.9;
-    }
-
-    /* Product Categories */
-    .product-categories {
-        padding: 40px 0;
-        background: white;
-    }
-
-    .section-title {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #333;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .category-card {
-        position: relative;
-        height: 150px;
-        border-radius: 10px;
-        overflow: hidden;
-        transition: var(--transition);
-        box-shadow: var(--shadow);
-    }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+        .clear-filters-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            width: 100%;
         }
 
-    .category-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.7;
-        transition: opacity var(--transition);
-    }
+            .clear-filters-btn:hover {
+                background: #5a6268;
+            }
 
-    .category-card:hover .category-bg {
-        opacity: 0.9;
-    }
-
-    .category-content {
-        position: relative;
-        z-index: 2;
-        padding: 15px;
-        color: white;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-        .category-content h5 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 5px;
+        .apply-filters-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            width: 100%;
+            margin-top: 10px;
         }
 
-        .category-content p {
-            font-size: 0.85rem;
-            margin-bottom: 8px;
+            .apply-filters-btn:hover {
+                background: #e73c47;
+            }
+
+        /* Products Section */
+        .products-section {
+            background: white;
+            padding: 40px 0;
         }
 
-    .price-display {
-        font-size: 0.75rem;
-        line-height: 1.2;
-    }
+        .section-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
 
-        .price-display strong {
+        .filter-summary {
+            color: #666;
             font-size: 0.9rem;
         }
 
-    .category-content small {
-        font-size: 0.7rem;
-        opacity: 0.9;
-    }
+            .filter-summary strong {
+                color: var(--accent-color);
+            }
 
-    /* Products Section */
-    .products-section {
-        background: white;
-    }
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-    .section-header {
-        text-align: center;
-        padding-bottom: 20px;
-        border-bottom: 2px solid #f0f0f0;
-    }
+        .view-toggle {
+            display: flex;
+            gap: 5px;
+        }
 
-    .filter-summary {
-        color: #666;
-        font-size: 0.9rem;
-        margin-top: 10px;
-    }
+        .view-btn {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #666;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
 
-        .filter-summary strong {
+            .view-btn.active {
+                background: var(--accent-color);
+                color: white;
+                border-color: var(--accent-color);
+            }
+
+        /* Product Cards */
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+            .product-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-hover);
+            }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .product-image img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .current-price {
+            font-size: 1.2rem;
+            font-weight: 700;
             color: var(--accent-color);
         }
 
-    .pagination-wrapper {
-        border-top: 1px solid #f0f0f0;
-        padding-top: 20px;
-    }
+        .original-price {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+        }
 
-    .pagination .page-link {
-        color: #666;
-        border: 1px solid #dee2e6;
-        padding: 8px 12px;
-        transition: var(--transition);
-    }
+        .discount-badge {
+            background: #28a745;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
 
-    .pagination .page-item.active .page-link {
-        background-color: var(--accent-color);
-        border-color: var(--accent-color);
-        color: white;
-    }
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
 
-    .pagination .page-link:hover {
-        color: var(--accent-color);
-        background-color: #f8f9fa;
-        border-color: var(--accent-color);
-    }
+        .btn-add-cart {
+            flex: 1;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
 
-    /* Responsive Design */
-    @@media (max-width: 991px) {
-        .side-banners
-
-    {
-        margin-top: 20px;
-        flex-direction: row;
-        gap: 10px;
-    }
-
-    .side-banner {
-        flex: 1;
-    }
-
-    }
-    @@media (max-width: 768px) {
-        .hero-carousel
-
-    {
-        height: 250px;
-    }
-
-    .hero-slide {
-        height: 250px;
-    }
-
-    .hero-content h2 {
-        font-size: 1.8rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .btn-hero {
-        padding: 10px 25px;
-        font-size: 0.9rem;
-    }
-
-    .banner-content {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .side-banners {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .category-card {
-        height: 120px;
-    }
-
-    }
-    @@media (max-width: 576px) {
-        .hero-content h2
-
-    {
-        font-size: 1.4rem;
-    }
-
-    .hero-content p {
-        font-size: 0.9rem;
-    }
-
-    .banner-text {
-        font-size: 14px;
-    }
-
-    .offer-badge {
-        font-size: 10px;
-    }
-
-    .category-content h5 {
-        font-size: 0.9rem;
-    }
-
-    .banner-info h4 {
-        font-size: 0.9rem;
-    }
-
-    }
-</style>
-
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            let currentSearchQuery = '@ViewBag.SearchQuery' || '';
-            let currentPage = @ViewBag.CurrentPage ?? 1;
-
-            // Category filter
-            $('.category-filter').click(function (e) {
-                e.preventDefault();
-                currentSearchQuery = $(this).data('search-query');
-                currentPage = 1;
-                filterProducts(currentSearchQuery, currentPage);
-            });
-
-            // Search form
-            $('#searchForm').submit(function (e) {
-                e.preventDefault();
-                currentSearchQuery = $('input[name="searchQuery"]').val();
-                currentPage = 1;
-                filterProducts(currentSearchQuery, currentPage);
-            });
-
-            // Pagination
-            $(document).on('click', '.page-link', function (e) {
-                e.preventDefault();
-                currentPage = $(this).data('page');
-                filterProducts(currentSearchQuery, currentPage);
-            });
-
-            // AJAX filter function
-            function filterProducts(searchQuery, page) {
-                $.ajax({
-                    url: '@Url.Action("FilterProducts", "Home")',
-                    type: 'GET',
-                    data: { searchQuery: searchQuery, page: page },
-                    beforeSend: function() {
-                        $('#product-list').html('<div class="text-center p-4"><i class="fas fa-spinner fa-spin fa-2x"></i></div>');
-                    },
-                    success: function (result) {
-                        $('#product-list').html(result.productList);
-                        var summaryHtml = '';
-                        if (result.summary.SearchQuery) {
-                            summaryHtml += '<p>Kết quả tìm kiếm cho "<strong>' + result.summary.SearchQuery + '</strong>"</p>';
-                        }
-                        summaryHtml += '<p>Tổng cộng: <strong>' + result.summary.TotalProducts + '</strong> sản phẩm</p>';
-                        $('#filter-summary').html(summaryHtml);
-                        var paginationHtml = '';
-                        if (result.summary.TotalPages > 1) {
-                            paginationHtml = '<nav aria-label="Page navigation"><ul class="pagination justify-content-center">';
-                            for (var i = 1; i <= result.summary.TotalPages; i++) {
-                                paginationHtml += '<li class="page-item' + (i == result.summary.CurrentPage ? ' active' : '') + '"><a class="page-link" href="#" data-page="' + i + '">' + i + '</a></li>';
-                            }
-                            paginationHtml += '</ul></nav>';
-                        }
-                        $('#pagination').html(paginationHtml);
-                    },
-                    error: function () {
-                        $('#product-list').html('<div class="alert alert-danger text-center">Có lỗi xảy ra, thử lại sau!</div>');
-                    }
-                });
+            .btn-add-cart:hover {
+                background: #e73c47;
             }
 
-            // Category card click handlers
-            $('.category-card').click(function() {
-                var categoryName = $(this).find('h5').text().trim();
-                currentSearchQuery = categoryName;
+        .btn-view-detail {
+            background: white;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+            .btn-view-detail:hover {
+                background: var(--accent-color);
+                color: white;
+            }
+
+        /* Pagination */
+        .pagination-wrapper {
+            border-top: 1px solid #f0f0f0;
+            padding-top: 20px;
+            margin-top: 30px;
+        }
+
+        .pagination .page-link {
+            color: #666;
+            border: 1px solid #dee2e6;
+            padding: 8px 12px;
+            transition: var(--transition);
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+
+        .pagination .page-link:hover {
+            color: var(--accent-color);
+            background-color: #f8f9fa;
+            border-color: var(--accent-color);
+        }
+
+        /* NoUISlider Custom Styles */
+        .noUi-target {
+            background: #f1f1f1;
+            border-radius: 10px;
+            border: none;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .noUi-connect {
+            background: var(--primary-gradient);
+        }
+
+        .noUi-handle {
+            border: none;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+            .noUi-handle:before,
+            .noUi-handle:after {
+                display: none;
+            }
+
+        /* Loading */
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner-border {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @@media (max-width: 991px) {
+            .filter-sidebar {
+                position: static;
+                margin-bottom: 30px;
+            }
+
+            .side-banners {
+                margin-top: 20px;
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .side-banner {
+                flex: 1;
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .hero-carousel {
+                height: 250px;
+            }
+
+            .hero-slide {
+                height: 250px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .btn-hero {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+
+            .banner-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .side-banners {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .category-card {
+                height: 120px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .products-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @@media (max-width: 576px) {
+            .hero-content h2 {
+                font-size: 1.4rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .banner-text {
+                font-size: 14px;
+            }
+
+            .offer-badge {
+                font-size: 10px;
+            }
+
+            .category-content h5 {
+                font-size: 0.9rem;
+            }
+
+            .banner-info h4 {
+                font-size: 0.9rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="4000">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="hero-slide">
+                                    <img src="https://static.wixstatic.com/media/a27d24_affeb14b88e140c28da40dce56a58bde~mv2.jpg" class="d-block w-100" alt="Gaming Setup">
+                                    <div class="hero-content">
+                                        <button class="btn btn-hero">Khám phá ngay</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="hero-slide">
+                                    <img src="https://dlcdnwebimgs.asus.com/gain/d5efc44f-4cbc-41f7-8ea2-d10d26121000/" class="d-block w-100" alt="Laptop">
+                                    <div class="hero-content">
+                                        <button class="btn btn-hero">Xem laptop</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="hero-slide">
+                                    <img src="https://i.ytimg.com/vi/GejXnyse-b4/maxresdefault.jpg" class="d-d-block w-100" alt="Components">
+                                    <div class="hero-content">
+                                        <button class="btn btn-hero">Linh kiện PC</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="side-banners">
+                        <div class="side-banner mb-3">
+                            <div class="banner-card">
+                                <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-01.png" class="banner-bg" alt="Trade In">
+                                <div class="banner-info">
+                                    <h4>THU CŨ ĐỔI MỚI</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-banner mb-3">
+                            <div class="banner-card">
+                                <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-02.png" class="banner-bg" alt="Keyboard">
+                                <div class="banner-info">
+                                    <h4>PHÍM CƠ KHÔNG DÂY</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-banner">
+                            <div class="banner-card">
+                                <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-03.png" class="banner-bg" alt="PC">
+                                <div class="banner-info">
+                                    <h4>PC I5 4060</h4>
+                                    <small>🚚 Miễn phí giao hàng</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-categories">
+        <div class="container">
+            <h2 class="section-title">Danh Mục Sản Phẩm</h2>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <div class="category-card category-filter" data-category="laptop">
+                        <img src="https://intphcm.com/data/upload/banner-la-gi.jpg" class="category-bg" alt="Laptop GearVN">
+                        <div class="category-content">
+                            <h5>LAPTOP</h5>
+                            <p>Trả góp 0%</p>
+                            <div class="price-display">Giá từ<br><strong>9.990.000đ</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card category-filter" data-category="gaming">
+                        <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-04.png" class="category-bg" alt="Laptop Gaming">
+                        <div class="category-content">
+                            <h5>LAPTOP GAMING</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card category-filter" data-category="speakers">
+                        <img src="https://file.hstatic.net/200000722513/file/layout_web_-09_d2c2f20ee0af491b8bf40d032ff74dbf.png" class="category-bg" alt="Speakers">
+                        <div class="category-content">
+                            <h5>LOA & ÂM THANH</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card category-filter" data-category="monitor">
+                        <img src="https://akauto.com.vn/wp-content/uploads/2025/03/Banner-trang-man-hinh-Safeview-Mobile.jpg" class="category-bg" alt="Monitors">
+                        <div class="category-content">
+                            <h5>MÀN HÌNH</h5>
+                            <small>🚚 Giao hàng toàn quốc</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title mb-2">Danh sách sản phẩm</h2>
+                    <div id="filter-summary" class="filter-summary">
+                        <p>Tổng cộng: <strong id="product-count">24</strong> sản phẩm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="filter-sidebar">
+                        <div class="filter-title">
+                            <i class="bi bi-funnel"></i>
+                            Bộ lọc sản phẩm
+                        </div>
+
+                        <div class="filter-section">
+                            <div class="filter-section-title">
+                                <i class="bi bi-search"></i>
+                                Tìm kiếm
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="search-input" class="form-control" placeholder="Nhập tên sản phẩm...">
+                                <button class="btn btn-outline-secondary" type="button" id="search-btn">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <div class="filter-section-title">
+                                <i class="bi bi-cash"></i>
+                                Khoảng giá
+                            </div>
+                            <div class="price-range-container">
+                                <div id="price-slider"></div>
+                                <div class="price-range-values">
+                                    <input type="text" id="price-min" class="price-input" readonly>
+                                    <input type="text" id="price-max" class="price-input" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <div class="filter-section-title">
+                                <i class="bi bi-tags"></i>
+                                Thương hiệu
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="asus" value="asus">
+                                <label for="asus">
+                                    <span>ASUS</span>
+                                    <span class="product-count">(8)</span>
+                                </label>
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="acer" value="acer">
+                                <label for="acer">
+                                    <span>Acer</span>
+                                    <span class="product-count">(6)</span>
+                                </label>
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="hp" value="hp">
+                                <label for="hp">
+                                    <span>HP</span>
+                                    <span class="product-count">(5)</span>
+                                </label>
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="dell" value="dell">
+                                <label for="dell">
+                                    <span>Dell</span>
+                                    <span class="product-count">(4)</span>
+                                </label>
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="msi" value="msi">
+                                <label for="msi">
+                                    <span>MSI</span>
+                                    <span class="product-count">(3)</span>
+                                </label>
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="lenovo" value="lenovo">
+                                <label for="lenovo">
+                                    <span>Lenovo</span>
+                                    <span class="product-count">(7)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <div class="filter-section-title">
+                                <i class="bi bi-grid"></i>
+                                Danh mục
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="cat-laptop" value="laptop">
+                                <label for="cat-laptop">
+                                    <span>Laptop</span>
+                                    <span class="product-count">(15)</span>
+                                </label>
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="cat-gaming" value="gaming">
+                                <label for="cat-gaming">
+                                    <span>Laptop Gaming</span>
+                                    <span class="product-count">(8)</span>
+                                </label>
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="cat-speakers" value="speakers">
+                                <label for="cat-speakers">
+                                    <span>Loa & Âm thanh</span>
+                                    <span class="product-count">(4)</span>
+                                </label>
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="cat-monitor" value="monitor">
+                                <label for="cat-monitor">
+                                    <span>Màn hình</span>
+                                    <span class="product-count">(7)</span>
+                                </label>
+                            </div>
+                            <div class="brand-checkbox">
+                                <input type="checkbox" id="cat-accessories" value="accessories">
+                                <label for="cat-accessories">
+                                    <span>Phụ kiện</span>
+                                    <span class="product-count">(10)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="clear-filters-btn">Xóa bộ lọc</button>
+                        <button class="apply-filters-btn">Áp dụng</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="products-header">
+                        <div class="sort-by">
+                            Sắp xếp theo:
+                            <select id="sort-select" class="sort-select">
+                                <option value="default">Mặc định</option>
+                                <option value="price-asc">Giá: Thấp đến Cao</option>
+                                <option value="price-desc">Giá: Cao đến Thấp</option>
+                                <option value="name-asc">Tên: A-Z</option>
+                                <option value="name-desc">Tên: Z-A</option>
+                            </select>
+                        </div>
+                        <div class="view-toggle">
+                            <button class="btn view-btn active" id="grid-view"><i class="bi bi-grid-3x3-gap-fill"></i></button>
+                            <button class="btn view-btn" id="list-view"><i class="bi bi-list"></i></button>
+                        </div>
+                    </div>
+
+                    @model IEnumerable<WebBanMayTinh.Models.Product>
+
+                    <!-- ... phần HTML khác ... -->
+                    <div class="row g-4" id="product-list">
+                        @foreach (var product in Model)
+                        {
+                            <div class="col-md-4 col-sm-6 product-item"
+                                 data-price="@product.Price"
+                                 data-brand="@product.Brand?.ToLower()"
+                                 data-category="@product.Category?.Name?.ToLower()">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <a asp-controller="Product" asp-action="Display" asp-route-id="@product.Id">
+                                            <img src="@product.ImageUrl" alt="@product.Name" />
+                                        </a>
+                                        <span class="product-badge">Mới</span>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-title">@product.Name</h3>
+                                        <div class="product-price">
+                                            <span class="current-price">@product.Price.ToString("N0")đ</span>
+                                        </div>
+                                        <div class="product-actions d-flex gap-2">
+                                            <a asp-controller="ShoppingCart" asp-action="AddToCart"
+                                               asp-route-productId="@product.Id" asp-route-quantity="1"
+                                               class="btn btn-add-cart btn-outline-dark btn-sm">
+                                                <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                                            </a>
+                                            <a asp-controller="Product" asp-action="Display"
+                                               asp-route-id="@product.Id"
+                                               class="btn btn-view-detail btn-outline-primary btn-sm">
+                                                <i class="bi bi-info-circle"></i> Xem chi tiết
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <nav aria-label="Page navigation" class="pagination-wrapper">
+                        <ul class="pagination justify-content-center" id="pagination">
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ tiền.js / 2.0.0 / tien.min.js"></script>
+
+    <script>
+        const products = Array.from(document.querySelectorAll('.product-item'));
+        const productListContainer = document.getElementById('product-list');
+        const productCountElement = document.getElementById('product-count');
+        const priceSlider = document.getElementById('price-slider');
+        const priceMinInput = document.getElementById('price-min');
+        const priceMaxInput = document.getElementById('price-max');
+        const searchInput = document.getElementById('search-input');
+        const brandCheckboxes = document.querySelectorAll('.brand-checkbox input[type="checkbox"]');
+        const categoryCheckboxes = document.querySelectorAll('.filter-section input[id^="cat-"]');
+        const clearFiltersBtn = document.querySelector('.clear-filters-btn');
+        const applyFiltersBtn = document.querySelector('.apply-filters-btn');
+        const sortSelect = document.getElementById('sort-select');
+        const gridViewBtn = document.getElementById('grid-view');
+        const listViewBtn = document.getElementById('list-view');
+        const paginationContainer = document.getElementById('pagination');
+
+        const productsPerPage = 9;
+        let currentPage = 1;
+        let filteredProducts = [];
+
+        // Function to format currency
+        const formatCurrency = (value) => {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+        };
+
+        // Initialize price slider
+        noUiSlider.create(priceSlider, {
+            start: [0, 25000000],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 25000000
+            },
+            step: 500000,
+            format: {
+                to: function (value) {
+                    return Math.round(value);
+                },
+                from: function (value) {
+                    return Number(value);
+                }
+            }
+        });
+
+        priceSlider.noUiSlider.on('update', function (values, handle) {
+            if (handle === 0) {
+                priceMinInput.value = formatCurrency(values[0]);
+            } else {
+                priceMaxInput.value = formatCurrency(values[1]);
+            }
+        });
+
+        priceMinInput.addEventListener('change', function () {
+            priceSlider.noUiSlider.set([this.value, null]);
+        });
+
+        priceMaxInput.addEventListener('change', function () {
+            priceSlider.noUiSlider.set([null, this.value]);
+        });
+
+        // Function to apply filters and sort
+        const applyFiltersAndSort = () => {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const [minPrice, maxPrice] = priceSlider.noUiSlider.get().map(Number);
+            const selectedBrands = Array.from(brandCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+            const selectedCategories = Array.from(categoryCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+            const sortBy = sortSelect.value;
+
+            filteredProducts = products.filter(product => {
+                const price = parseInt(product.dataset.price);
+                const brand = product.dataset.brand;
+                const category = product.dataset.category;
+                const title = product.querySelector('.product-title').textContent.toLowerCase();
+
+                const matchesSearch = searchTerm === '' || title.includes(searchTerm);
+                const matchesPrice = price >= minPrice && price <= maxPrice;
+                const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(brand);
+                const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(category);
+
+                return matchesSearch && matchesPrice && matchesBrand && matchesCategory;
+            });
+
+            // Sort products
+            filteredProducts.sort((a, b) => {
+                const priceA = parseInt(a.dataset.price);
+                const priceB = parseInt(b.dataset.price);
+                const nameA = a.querySelector('.product-title').textContent.toLowerCase();
+                const nameB = b.querySelector('.product-title').textContent.toLowerCase();
+
+                if (sortBy === 'price-asc') {
+                    return priceA - priceB;
+                } else if (sortBy === 'price-desc') {
+                    return priceB - priceA;
+                } else if (sortBy === 'name-asc') {
+                    return nameA.localeCompare(nameB);
+                } else if (sortBy === 'name-desc') {
+                    return nameB.localeCompare(nameA);
+                }
+                return 0; // Default or no sorting
+            });
+
+            productCountElement.textContent = filteredProducts.length;
+            renderProducts(currentPage);
+            renderPagination();
+        };
+
+        // Function to render products for the current page
+        const renderProducts = (page) => {
+            productListContainer.innerHTML = ''; // Clear current products
+            const start = (page - 1) * productsPerPage;
+            const end = start + productsPerPage;
+            const paginatedProducts = filteredProducts.slice(start, end);
+
+            const isGridView = gridViewBtn.classList.contains('active');
+
+            paginatedProducts.forEach(product => {
+                const colClass = isGridView ? 'col-md-4 col-sm-6' : 'col-12';
+                const productCard = product.cloneNode(true); // Clone the product item
+                productCard.className = `${colClass} product-item`; // Update class for layout
+
+                if (!isGridView) {
+                    // Adjust structure for list view
+                    productCard.querySelector('.product-card').classList.add('d-flex', 'align-items-center');
+                    productCard.querySelector('.product-image').classList.add('w-25', 'flex-shrink-0');
+                    productCard.querySelector('.product-image img').style.height = '150px';
+                    productCard.querySelector('.product-info').classList.add('flex-grow-1', 'ms-3');
+                } else {
+                    // Reset to grid view specific classes if needed
+                    productCard.querySelector('.product-card').classList.remove('d-flex', 'align-items-center');
+                    productCard.querySelector('.product-image').classList.remove('w-25', 'flex-shrink-0');
+                    productCard.querySelector('.product-image img').style.height = '250px';
+                    productCard.querySelector('.product-info').classList.remove('flex-grow-1', 'ms-3');
+                }
+
+                productListContainer.appendChild(productCard);
+            });
+        };
+
+        // Function to render pagination links
+        const renderPagination = () => {
+            paginationContainer.innerHTML = '';
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+            if (totalPages <= 1) return; // No pagination needed for 1 or less pages
+
+            // Previous button
+            const prevItem = document.createElement('li');
+            prevItem.classList.add('page-item');
+            if (currentPage === 1) prevItem.classList.add('disabled');
+            const prevLink = document.createElement('a');
+            prevLink.classList.add('page-link');
+            prevLink.href = '#';
+            prevLink.innerHTML = '&laquo;';
+            prevLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderProducts(currentPage);
+                    renderPagination();
+                }
+            });
+            prevItem.appendChild(prevLink);
+            paginationContainer.appendChild(prevItem);
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const pageItem = document.createElement('li');
+                pageItem.classList.add('page-item');
+                if (i === currentPage) pageItem.classList.add('active');
+                const pageLink = document.createElement('a');
+                pageLink.classList.add('page-link');
+                pageLink.href = '#';
+                pageLink.textContent = i;
+                pageLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage = i;
+                    renderProducts(currentPage);
+                    renderPagination();
+                });
+                pageItem.appendChild(pageLink);
+                paginationContainer.appendChild(pageItem);
+            }
+
+            // Next button
+            const nextItem = document.createElement('li');
+            nextItem.classList.add('page-item');
+            if (currentPage === totalPages) nextItem.classList.add('disabled');
+            const nextLink = document.createElement('a');
+            nextLink.classList.add('page-link');
+            nextLink.href = '#';
+            nextLink.innerHTML = '&raquo;';
+            nextLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderProducts(currentPage);
+                    renderPagination();
+                }
+            });
+            nextItem.appendChild(nextLink);
+            paginationContainer.appendChild(nextItem);
+        };
+
+        // Event Listeners for Filters and Sort
+        applyFiltersBtn.addEventListener('click', () => {
+            currentPage = 1; // Reset to first page on new filter/sort
+            applyFiltersAndSort();
+        });
+
+        clearFiltersBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            priceSlider.noUiSlider.set([0, 25000000]);
+            brandCheckboxes.forEach(cb => cb.checked = false);
+            categoryCheckboxes.forEach(cb => cb.checked = false);
+            sortSelect.value = 'default';
+            currentPage = 1;
+            applyFiltersAndSort();
+        });
+
+        sortSelect.addEventListener('change', () => {
+            currentPage = 1;
+            applyFiltersAndSort();
+        });
+
+        // Initial render on page load
+        applyFiltersAndSort();
+
+        // View Toggle (Grid/List)
+        gridViewBtn.addEventListener('click', () => {
+            if (!gridViewBtn.classList.contains('active')) {
+                gridViewBtn.classList.add('active');
+                listViewBtn.classList.remove('active');
+                renderProducts(currentPage);
+            }
+        });
+
+        listViewBtn.addEventListener('click', () => {
+            if (!listViewBtn.classList.contains('active')) {
+                listViewBtn.classList.add('active');
+                gridViewBtn.classList.remove('active');
+                renderProducts(currentPage);
+            }
+        });
+
+        // Category card filters
+        document.querySelectorAll('.category-filter').forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.dataset.category;
+                categoryCheckboxes.forEach(cb => {
+                    if (cb.value === category) {
+                        cb.checked = true;
+                    } else {
+                        cb.checked = false;
+                    }
+                });
                 currentPage = 1;
-                filterProducts(currentSearchQuery, currentPage);
-                $('html, body').animate({
-                    scrollTop: $('.products-section').offset().top - 100
-                }, 600);
+                applyFiltersAndSort();
             });
         });
+
+        // Update product counts for brands and categories in the filter sidebar
+        const updateFilterCounts = () => {
+            const allProducts = Array.from(document.querySelectorAll('.product-item'));
+
+            const brandCounts = {};
+            const categoryCounts = {};
+
+            allProducts.forEach(product => {
+                const brand = product.dataset.brand;
+                const category = product.dataset.category;
+
+                brandCounts[brand] = (brandCounts[brand] || 0) + 1;
+                categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+            });
+
+            document.querySelectorAll('.brand-checkbox').forEach(checkboxDiv => {
+                const brandValue = checkboxDiv.querySelector('input').value;
+                const countSpan = checkboxDiv.querySelector('.product-count');
+                if (countSpan) {
+                    countSpan.textContent = `(${brandCounts[brandValue] || 0})`;
+                }
+            });
+
+            document.querySelectorAll('.filter-section input[id^="cat-"]').forEach(checkbox => {
+                const categoryValue = checkbox.value;
+                const countSpan = checkbox.nextElementSibling.querySelector('.product-count'); // Assuming label is next sibling and has span
+                if (countSpan) {
+                    countSpan.textContent = `(${categoryCounts[categoryValue] || 0})`;
+                }
+            });
+        };
+
+        // Call updateFilterCounts initially
+        updateFilterCounts();
+
     </script>
-}
+</body>
+</html>

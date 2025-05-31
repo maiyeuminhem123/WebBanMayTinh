@@ -15,7 +15,7 @@ namespace WebBanMayTinh.Models
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
         public string? DetailDescription { get; set; }
-        public string SerialNumber { get; set; }
+        public string? SerialNumber { get; set; }
         public DateTime PurchaseDate { get; set; }
         public int WarrantyPeriodMonths { get; set; }
 

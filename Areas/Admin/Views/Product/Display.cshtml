@@ -55,7 +55,6 @@
         .btn-orange:hover {
             background-color: #e65c00;
         }
-
 </style>
 
 <div class="container py-5">
@@ -93,7 +92,6 @@
                             <i class="fas fa-bolt me-2"></i>Mua ngay
                         </a>
                     </div>
-
                 </div>
 
                 <!-- Cấu hình -->
@@ -106,6 +104,9 @@
                     <li class="list-group-item"><strong>Hệ điều hành:</strong> @(Model.OperatingSystem ?? "N/A")</li>
                     <li class="list-group-item"><strong>Thương hiệu:</strong> @(Model.Brand ?? "N/A")</li>
                     <li class="list-group-item"><strong>Danh mục:</strong> @(Model.Category?.Name ?? "N/A")</li>
+                    <li class="list-group-item"><strong>Serial Number:</strong> @(Model.SerialNumber ?? "N/A")</li>
+                    <li class="list-group-item"><strong>Ngày mua:</strong> @(Model.PurchaseDate == default ? "N/A" : Model.PurchaseDate.ToString("dd/MM/yyyy"))</li>
+                    <li class="list-group-item"><strong>Thời gian bảo hành:</strong> @(Model.WarrantyPeriodMonths > 0 ? $"{Model.WarrantyPeriodMonths} tháng" : "N/A")</li>
                 </ul>
 
                 <!-- Thông tin chi tiết -->
@@ -194,7 +195,6 @@
         <i class="fas fa-arrow-left me-2"></i>Quay lại trang chủ
     </a>
 </div>
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

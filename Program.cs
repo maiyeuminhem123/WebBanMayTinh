@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using WebBanMayTinh.Models;
 using WebBanMayTinh.Repositories;
 using WebBanMayTinh.Services;
+using WebBanMayTinh.Models.VNPAY;
+using FluentAssertions.Common;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,7 +43,8 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.ExpireTimeSpan = TimeSpan.FromDays(30);
 });
-
+//dang ky vnpay
+builder.Services.AddSingleton<IVnPayService, VnPayService>();
 // Add Razor Pages for Identity UI
 builder.Services.AddRazorPages();
 
@@ -60,12 +63,7 @@ builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
 builder.Services.AddScoped<IReviewRepository, EFReviewRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-
-
-// Add HttpClient and PayPal Options
-builder.Services.AddHttpClient();
-builder.Services.AddOptions();
-builder.Services.Configure<PayPalOptions>(builder.Configuration.GetSection("PayPal"));
+builder.Services.AddScoped<IVnPayService, VnPayService>();
 
 // Thêm cấu hình Data Protection (loại bỏ cảnh báo)
 builder.Services.AddDataProtection()
@@ -122,12 +120,6 @@ app.UseAuthorization();
 
 
 
-// Map Routes
-app.MapRazorPages();
-//app.MapControllerRoute(
-//    name: "admin-warranty-check",
-//    pattern: "Warranty/Check",
-//    defaults: new { area = "Admin", controller = "Warranty", action = "Check" });
 
 app.MapControllerRoute(
     name: "areas",
