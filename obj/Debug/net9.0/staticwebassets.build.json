@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wv7hE4ivtQ7Zoyn3w4mkUB0DBLjsw2RMlOHF5YxZddc=",
+  "Hash": "QVFHrPQ1IBBdoraf47+gsW1SmwJbJPHLPGgK//St2jk=",
   "Source": "WebBanMayTinh",
   "BasePath": "_content/WebBanMayTinh",
   "Mode": "Default",
@@ -1466,12 +1466,12 @@
       "OriginalItemSpec": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\2mjo10yqv3-b9sayid5wm.gz",
+      "Identity": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\2mjo10yqv3-ktkj6bz9j4.gz",
       "SourceId": "WebBanMayTinh",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/WebBanMayTinh",
-      "RelativePath": "css/site#[.{fingerprint=b9sayid5wm}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=ktkj6bz9j4}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1480,8 +1480,8 @@
       "RelatedAsset": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "wf4wcyqcqt",
-      "Integrity": "fNKkLSNFLZMVTc2zVrpMXQqOwPU3sU4GWcfEbCR2V1I=",
+      "Fingerprint": "aa3fema9c2",
+      "Integrity": "nnuJhKE9GFugIPVV09mU0gqCcDA/l86WWeoSMCehjGs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\css\\site.css"
@@ -4042,8 +4042,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "b9sayid5wm",
-      "Integrity": "j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=",
+      "Fingerprint": "ktkj6bz9j4",
+      "Integrity": "KDK/RTPqR4hLwycxLX5n100Wz/5TZFL4L2KOXagZbAE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -4068,6 +4068,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\images\\2928f10f-c453-4817-a7fb-7a0d5af964dd.jpg",
+      "SourceId": "WebBanMayTinh",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\",
+      "BasePath": "_content/WebBanMayTinh",
+      "RelativePath": "images/2928f10f-c453-4817-a7fb-7a0d5af964dd#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6v0tpt6jbl",
+      "Integrity": "XuktH+5JOv2tN4qO4W1sAfpJ29zfdYJoH/cELpHL8Ko=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\2928f10f-c453-4817-a7fb-7a0d5af964dd.jpg"
     },
     {
       "Identity": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\images\\banner_rtx_50.jpg",
@@ -4152,6 +4173,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\doom-stand.jpg"
+    },
+    {
+      "Identity": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\images\\e42be1a8-baea-4b27-978e-3da9daa40df9.jpg",
+      "SourceId": "WebBanMayTinh",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\",
+      "BasePath": "_content/WebBanMayTinh",
+      "RelativePath": "images/e42be1a8-baea-4b27-978e-3da9daa40df9#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6v0tpt6jbl",
+      "Integrity": "XuktH+5JOv2tN4qO4W1sAfpJ29zfdYJoH/cELpHL8Ko=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\e42be1a8-baea-4b27-978e-3da9daa40df9.jpg"
     },
     {
       "Identity": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\js\\site.js",
@@ -5437,167 +5479,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.b9sayid5wm.css",
-      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\2mjo10yqv3-b9sayid5wm.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.003125000000"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "319"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"fNKkLSNFLZMVTc2zVrpMXQqOwPU3sU4GWcfEbCR2V1I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 25 May 2025 07:36:56 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "b9sayid5wm"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.b9sayid5wm.css",
-      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "667"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 25 May 2025 07:36:56 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "b9sayid5wm"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.b9sayid5wm.css.gz",
-      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\2mjo10yqv3-b9sayid5wm.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "319"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"fNKkLSNFLZMVTc2zVrpMXQqOwPU3sU4GWcfEbCR2V1I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 25 May 2025 07:36:56 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "b9sayid5wm"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-fNKkLSNFLZMVTc2zVrpMXQqOwPU3sU4GWcfEbCR2V1I="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\9.0.4\\staticwebassets\\css\\site.css",
       "Selectors": [],
@@ -5636,12 +5517,12 @@
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\2mjo10yqv3-b9sayid5wm.gz",
+      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\2mjo10yqv3-ktkj6bz9j4.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.003125000000"
+          "Quality": "0.003115264798"
         }
       ],
       "ResponseHeaders": [
@@ -5651,15 +5532,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "319"
+          "Value": "320"
         },
         {
           "Name": "ETag",
-          "Value": "\"fNKkLSNFLZMVTc2zVrpMXQqOwPU3sU4GWcfEbCR2V1I=\""
+          "Value": "\"nnuJhKE9GFugIPVV09mU0gqCcDA/l86WWeoSMCehjGs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 25 May 2025 07:36:56 GMT"
+          "Value": "Mon, 02 Jun 2025 08:38:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5679,13 +5560,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
+          "Value": "W/\"KDK/RTPqR4hLwycxLX5n100Wz/5TZFL4L2KOXagZbAE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+          "Value": "sha256-KDK/RTPqR4hLwycxLX5n100Wz/5TZFL4L2KOXagZbAE="
         }
       ]
     },
@@ -5700,7 +5581,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "667"
+          "Value": "671"
         },
         {
           "Name": "Content-Type",
@@ -5708,11 +5589,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
+          "Value": "\"KDK/RTPqR4hLwycxLX5n100Wz/5TZFL4L2KOXagZbAE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 25 May 2025 07:36:56 GMT"
+          "Value": "Mon, 02 Jun 2025 08:38:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5722,13 +5603,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+          "Value": "sha256-KDK/RTPqR4hLwycxLX5n100Wz/5TZFL4L2KOXagZbAE="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\2mjo10yqv3-b9sayid5wm.gz",
+      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\2mjo10yqv3-ktkj6bz9j4.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5737,7 +5618,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "319"
+          "Value": "320"
         },
         {
           "Name": "Content-Type",
@@ -5745,11 +5626,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fNKkLSNFLZMVTc2zVrpMXQqOwPU3sU4GWcfEbCR2V1I=\""
+          "Value": "\"nnuJhKE9GFugIPVV09mU0gqCcDA/l86WWeoSMCehjGs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 25 May 2025 07:36:56 GMT"
+          "Value": "Mon, 02 Jun 2025 08:38:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5767,7 +5648,168 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-fNKkLSNFLZMVTc2zVrpMXQqOwPU3sU4GWcfEbCR2V1I="
+          "Value": "sha256-nnuJhKE9GFugIPVV09mU0gqCcDA/l86WWeoSMCehjGs="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.ktkj6bz9j4.css",
+      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\2mjo10yqv3-ktkj6bz9j4.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003115264798"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "320"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nnuJhKE9GFugIPVV09mU0gqCcDA/l86WWeoSMCehjGs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Jun 2025 08:38:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"KDK/RTPqR4hLwycxLX5n100Wz/5TZFL4L2KOXagZbAE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ktkj6bz9j4"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KDK/RTPqR4hLwycxLX5n100Wz/5TZFL4L2KOXagZbAE="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.ktkj6bz9j4.css",
+      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "671"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KDK/RTPqR4hLwycxLX5n100Wz/5TZFL4L2KOXagZbAE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Jun 2025 08:38:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ktkj6bz9j4"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KDK/RTPqR4hLwycxLX5n100Wz/5TZFL4L2KOXagZbAE="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.ktkj6bz9j4.css.gz",
+      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\obj\\Debug\\net9.0\\compressed\\2mjo10yqv3-ktkj6bz9j4.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "320"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nnuJhKE9GFugIPVV09mU0gqCcDA/l86WWeoSMCehjGs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Jun 2025 08:38:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ktkj6bz9j4"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nnuJhKE9GFugIPVV09mU0gqCcDA/l86WWeoSMCehjGs="
         }
       ]
     },
@@ -14638,6 +14680,88 @@
       ]
     },
     {
+      "Route": "images/2928f10f-c453-4817-a7fb-7a0d5af964dd.6v0tpt6jbl.jpg",
+      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\images\\2928f10f-c453-4817-a7fb-7a0d5af964dd.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "213095"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XuktH+5JOv2tN4qO4W1sAfpJ29zfdYJoH/cELpHL8Ko=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Jun 2025 08:02:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6v0tpt6jbl"
+        },
+        {
+          "Name": "label",
+          "Value": "images/2928f10f-c453-4817-a7fb-7a0d5af964dd.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XuktH+5JOv2tN4qO4W1sAfpJ29zfdYJoH/cELpHL8Ko="
+        }
+      ]
+    },
+    {
+      "Route": "images/2928f10f-c453-4817-a7fb-7a0d5af964dd.jpg",
+      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\images\\2928f10f-c453-4817-a7fb-7a0d5af964dd.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "213095"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XuktH+5JOv2tN4qO4W1sAfpJ29zfdYJoH/cELpHL8Ko=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Jun 2025 08:02:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XuktH+5JOv2tN4qO4W1sAfpJ29zfdYJoH/cELpHL8Ko="
+        }
+      ]
+    },
+    {
       "Route": "images/banner_rtx_50.8pn8zg0nem.jpg",
       "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\images\\banner_rtx_50.jpg",
       "Selectors": [],
@@ -14962,6 +15086,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-p7H79kuu3weJYzuvJ5gnmViE3vzqEbW0/p9S2cOY6oA="
+        }
+      ]
+    },
+    {
+      "Route": "images/e42be1a8-baea-4b27-978e-3da9daa40df9.6v0tpt6jbl.jpg",
+      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\images\\e42be1a8-baea-4b27-978e-3da9daa40df9.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "213095"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XuktH+5JOv2tN4qO4W1sAfpJ29zfdYJoH/cELpHL8Ko=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Jun 2025 08:02:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6v0tpt6jbl"
+        },
+        {
+          "Name": "label",
+          "Value": "images/e42be1a8-baea-4b27-978e-3da9daa40df9.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XuktH+5JOv2tN4qO4W1sAfpJ29zfdYJoH/cELpHL8Ko="
+        }
+      ]
+    },
+    {
+      "Route": "images/e42be1a8-baea-4b27-978e-3da9daa40df9.jpg",
+      "AssetFile": "D:\\Đồ Án Cơ Sở\\DACS GITHUB\\WebBanMayTinh\\wwwroot\\images\\e42be1a8-baea-4b27-978e-3da9daa40df9.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "213095"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XuktH+5JOv2tN4qO4W1sAfpJ29zfdYJoH/cELpHL8Ko=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Jun 2025 08:02:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XuktH+5JOv2tN4qO4W1sAfpJ29zfdYJoH/cELpHL8Ko="
         }
       ]
     },

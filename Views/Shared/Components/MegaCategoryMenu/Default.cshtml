@@ -1,194 +1,74 @@
 ﻿@model IEnumerable<WebBanMayTinh.Models.Category>
 
-<div class="gearvn-mega-menu-wrapper">
-    <ul class="gearvn-mega-menu-parent">
-        @foreach (var parentCategory in Model)
+<style>
+    .sidebar-category-wrapper {
+        min-width: 220px; /* Slightly wider for better text fit */
+        background-color: #fff; /* White background for clarity */
+        border-radius: 8px; /* Softer corners */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow: visible;
+        padding: 10px 0; /* Add padding for better spacing */
+    }
+
+    .category-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .category-list li {
+            border-top: 1px solid #e5e5e5; /* Slightly darker border */
+        }
+
+            .category-list li:first-child {
+                border-top: none;
+            }
+
+    .category-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px; /* More padding for comfort */
+        text-decoration: none;
+        color: #2c3e50; /* Darker, modern color */
+        transition: all 0.3s ease; /* Smooth transition for all changes */
+        font-weight: 500;
+        font-size: 15px; /* Slightly larger text */
+        line-height: 1.5; /* Better line spacing */
+        white-space: normal; /* Allow text wrapping */
+        overflow: visible; /* Ensure full text visibility */
+        text-overflow: unset;
+    }
+
+        .category-item:hover {
+            background-color: #f8f9fa; /* Lighter hover background */
+            color: #c0392b; /* Richer red for hover */
+            transform: translateX(5px); /* Subtle shift on hover */
+        }
+
+        .category-item i {
+            margin-right: 12px; /* More space for icon */
+            width: 24px; /* Slightly larger icon area */
+            text-align: center;
+            color: #7f8c8d; /* Neutral icon color */
+            transition: color 0.3s ease;
+        }
+
+        .category-item:hover i {
+            color: #c0392b; /* Icon matches text color on hover */
+        }
+</style>
+
+<div class="sidebar-category-wrapper">
+    <ul class="category-list">
+        @foreach (var category in Model)
         {
-            <li class="gearvn-mega-menu-item">
-                <a href="@Url.Action("Index", "Home", new { searchQuery = parentCategory.Name })" class="gearvn-mega-menu-link category-filter" data-search-query="@parentCategory.Name">
-                    @parentCategory.Name
+            <li>
+                <a href="@Url.Action("Index", "Home", new { searchQuery = category.Name })" class="category-item">
+                    <i class="fas fa-laptop"></i>
+                    @category.Name
                 </a>
-                @if (parentCategory.SubCategories != null && parentCategory.SubCategories.Any())
-                {
-                    <div class="gearvn-mega-menu-child" data-parent-id="@parentCategory.CategoryID">
-                        <div class="gearvn-mega-menu-child-grid">
-                            @foreach (var childCategory in parentCategory.SubCategories)
-                            {
-                                <div class="gearvn-mega-menu-child-item">
-                                    <a href="@Url.Action("Index", "Home", new { searchQuery = childCategory.Name })" class="category-filter" data-search-query="@childCategory.Name">
-                                        @childCategory.Name
-                                    </a>
-                                    @if (childCategory.SubCategories != null && childCategory.SubCategories.Any())
-                                    {
-                                        <div class="gearvn-mega-menu-grandchild" data-child-id="@childCategory.CategoryID">
-                                            <h6 class="grandchild-title">Hãng</h6>
-                                            <div class="gearvn-mega-menu-grandchild-list">
-                                                @foreach (var grandChildCategory in childCategory.SubCategories)
-                                                {
-                                                    <div class="gearvn-mega-menu-grandchild-item">
-                                                        <a href="@Url.Action("Index", "Home", new { searchQuery = grandChildCategory.Name })" class="category-filter" data-search-query="@grandChildCategory.Name">
-                                                            @grandChildCategory.Name
-                                                        </a>
-                                                    </div>
-                                                }
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                            }
-                        </div>
-                    </div>
-                }
             </li>
         }
     </ul>
 </div>
-
-<style>
-    .gearvn-mega-menu-wrapper {
-        position: relative;
-        z-index: 999;
-        width: 250px;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
-
-    .gearvn-mega-menu-parent {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .gearvn-mega-menu-item {
-        position: relative;
-        border-bottom: 1px solid #eee;
-    }
-
-        .gearvn-mega-menu-item:last-child {
-            border-bottom: none;
-        }
-
-    .gearvn-mega-menu-link {
-        display: block;
-        padding: 12px 15px;
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        transition: all 0.2s ease;
-    }
-
-        .gearvn-mega-menu-link:hover {
-            background-color: #ffe6e6;
-            color: #ff4d4d;
-        }
-
-    .gearvn-mega-menu-child {
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 100%;
-        width: 600px;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 15px;
-        z-index: 1000;
-    }
-
-    .gearvn-mega-menu-child-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 10px;
-    }
-
-    .gearvn-mega-menu-child-item a {
-        display: block;
-        padding: 8px 10px;
-        text-decoration: none;
-        color: #555;
-        font-size: 14px;
-        transition: all 0.2s ease;
-    }
-
-        .gearvn-mega-menu-child-item a:hover {
-            color: #ff4d4d;
-            background-color: #f8f9fa;
-            border-radius: 4px;
-        }
-
-    .gearvn-mega-menu-grandchild {
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 100%;
-        width: 200px;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 10px;
-        z-index: 1000;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-    }
-
-    .gearvn-mega-menu-grandchild-list {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .gearvn-mega-menu-grandchild-item a {
-        display: block;
-        padding: 8px 10px;
-        text-decoration: none;
-        color: #555;
-        font-size: 14px;
-        transition: all 0.2s ease;
-    }
-
-        .gearvn-mega-menu-grandchild-item a:hover {
-            color: #ff4d4d;
-            background-color: #f8f9fa;
-            border-radius: 4px;
-        }
-
-    .grandchild-title {
-        font-size: 14px;
-        font-weight: bold;
-        color: #ff4d4d;
-        padding: 5px 10px;
-        border-bottom: 1px solid #eee;
-    }
-
-    .gearvn-mega-menu-item:hover .gearvn-mega-menu-child {
-        display: block;
-    }
-
-    .gearvn-mega-menu-child-item:hover .gearvn-mega-menu-grandchild {
-        display: block;
-        opacity: 1;
-    }
-
-    @@media (max-width: 767.98px) {
-        .gearvn-mega-menu-wrapper {
-            width: 100%;
-        }
-
-        .gearvn-mega-menu-child,
-        .gearvn-mega-menu-grandchild {
-            position: static;
-            width: 100%;
-            box-shadow: none;
-            border: 1px solid #eee;
-            border-top: none;
-            opacity: 1;
-        }
-
-        .gearvn-mega-menu-child-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>

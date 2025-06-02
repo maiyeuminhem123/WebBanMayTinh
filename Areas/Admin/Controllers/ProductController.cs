@@ -13,7 +13,8 @@ namespace WebBanMayTinh.Areas.Admin.Controllers
         private readonly ICategoryRepository _categoryRepository;
         private readonly IReviewRepository _reviewRepository;
 
-        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IReviewRepository reviewRepository)
+        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository,
+            IReviewRepository reviewRepository)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
@@ -27,20 +28,21 @@ namespace WebBanMayTinh.Areas.Admin.Controllers
             return View(products);
         }
 
-        [AllowAnonymous] 
+        [AllowAnonymous]
         public async Task<IActionResult> Display(int id)
         {
             var product = await _productRepository.GetByIdAsync(id);
             if (product == null) return NotFound();
             return View(product);
         }
-        [Authorize(Roles = "Admin ,Employee")]
+
+        [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> Add()
         {
             var categories = await _categoryRepository.GetAllAsync();
             if (!categories.Any())
             {
-                ModelState.AddModelError("", "No categories available. Please add categories first.");
+                ModelState.AddModelError("", "Chưa có danh mục nào. Vui lòng thêm danh mục trước.");
             }
             ViewBag.Categories = new SelectList(categories, "CategoryID", "Name");
             return View();
@@ -48,15 +50,10 @@ namespace WebBanMayTinh.Areas.Admin.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin,Employee")]
-        public async Task<IActionResult> Add(Product product, IFormFile? uploadedImage)
+        public async Task<IActionResult> Add(Product product)
         {
             if (ModelState.IsValid)
             {
-                if (uploadedImage != null)
-                {
-                    product.ImageUrl = await SaveImage(uploadedImage);
-                }
-
                 await _productRepository.AddAsync(product);
                 return RedirectToAction(nameof(Index));
             }
@@ -81,7 +78,6 @@ namespace WebBanMayTinh.Areas.Admin.Controllers
         [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> Update(int id, Product product)
         {
-            ModelState.Remove("ImageUrl"); // Bỏ validate ảnh nếu không bắt buộc
             if (id != product.Id) return NotFound();
 
             if (ModelState.IsValid)
@@ -89,12 +85,14 @@ namespace WebBanMayTinh.Areas.Admin.Controllers
                 var existingProduct = await _productRepository.GetByIdAsync(id);
                 if (existingProduct == null) return NotFound();
 
-                // Ánh xạ tất cả các thuộc tính
+                // Cập nhật tất cả các trường
                 existingProduct.Name = product.Name;
                 existingProduct.Price = product.Price;
                 existingProduct.Description = product.Description;
                 existingProduct.CategoryId = product.CategoryId;
-                existingProduct.ImageUrl = product.ImageUrl; // Sử dụng ImageUrl từ form
+                existingProduct.ImageUrl = product.ImageUrl;
+                existingProduct.ImageUrl2 = product.ImageUrl2;
+                existingProduct.ImageUrl3 = product.ImageUrl3;
                 existingProduct.DetailDescription = product.DetailDescription;
                 existingProduct.CPU = product.CPU;
                 existingProduct.GPU = product.GPU;
@@ -102,12 +100,14 @@ namespace WebBanMayTinh.Areas.Admin.Controllers
                 existingProduct.Storage = product.Storage;
                 existingProduct.OperatingSystem = product.OperatingSystem;
                 existingProduct.Brand = product.Brand;
+                existingProduct.SerialNumber = product.SerialNumber;
+                existingProduct.WarrantyPeriodMonths = product.WarrantyPeriodMonths;
+                existingProduct.PurchaseDate = product.PurchaseDate;
 
                 await _productRepository.UpdateAsync(existingProduct);
                 return RedirectToAction(nameof(Index));
             }
 
-            // Nếu ModelState không hợp lệ, trả lại View với danh sách danh mục
             var categories = await _categoryRepository.GetAllAsync();
             ViewBag.Categories = new SelectList(categories, "CategoryID", "Name", product.CategoryId);
             return View(product);
@@ -127,17 +127,6 @@ namespace WebBanMayTinh.Areas.Admin.Controllers
         {
             await _productRepository.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        // Lưu ảnh
-        private async Task<string> SaveImage(IFormFile image)
-        {
-            var filePath = Path.Combine("wwwroot/images", image.FileName);
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await image.CopyToAsync(stream);
-            }
-            return "/images/" + image.FileName;
         }
 
         [HttpPost]
@@ -162,6 +151,5 @@ namespace WebBanMayTinh.Areas.Admin.Controllers
             await _productRepository.UpdateAsync(product);
             return RedirectToAction(nameof(Display), new { id = productId });
         }
-
     }
 }

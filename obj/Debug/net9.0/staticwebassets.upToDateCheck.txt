@@ -62,10 +62,12 @@ D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\wwwroot\lib\bootstrap\dist\css\b
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\2928f10f-c453-4817-a7fb-7a0d5af964dd.jpg
 wwwroot\images\banner_rtx_50.jpg
 wwwroot\images\Chuong1_Motayeucau.docx
 wwwroot\images\doom-msi.jpg
 wwwroot\images\doom-stand.jpg
+wwwroot\images\e42be1a8-baea-4b27-978e-3da9daa40df9.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

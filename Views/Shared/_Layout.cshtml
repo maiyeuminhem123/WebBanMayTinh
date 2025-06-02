@@ -13,77 +13,76 @@
     <link rel="stylesheet" href="~/WebBanMayTinh.styles.css" asp-append-version="true" />
     <style>
         /* Mega Dropdown Menu Styles */
+        /* Dropdown container chỉnh đúng vị trí và overlay */
         .mega-dropdown {
-            position: static !important;
+            position: relative;
         }
 
+        /* Navbar gradient giữ nguyên */
         .navbar-gradient {
             background: linear-gradient(#9f0404, #b20404) !important;
         }
 
-        .mega-dropdown-menu {
-            width: 100%;
-            border-radius: 0;
-            background-color: #fff;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-            border-top: 3px solid #ff4d4d;
-            padding: 15px;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
+        /* Mega Dropdown Menu - chuẩn dạng overlay */
 
-        .mega-dropdown-menu.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+            /* Khi mở dropdown */
+            .mega-dropdown-menu.show {
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible;
+            }
 
-        .mega-dropdown-menu:not(.show) {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
+            /* Header trong mega menu */
+            .mega-dropdown-menu .dropdown-header {
+                color: #ff4d4d;
+                font-size: 16px;
+                font-weight: bold;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 8px;
+                margin-bottom: 8px;
+            }
 
-        .mega-dropdown-menu .dropdown-header {
-            color: #ff4d4d;
-            font-size: 16px;
-            font-weight: bold;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 8px;
-            margin-bottom: 8px;
-        }
+            /* Danh sách danh mục con */
+            .mega-dropdown-menu .dropdown-menu {
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0;
+                margin: 0;
+            }
 
-        .mega-dropdown-menu .dropdown-menu {
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
+                /* Item danh mục con */
+                .mega-dropdown-menu .dropdown-menu li {
+                    margin-right: 10px;
+                    margin-bottom: 8px;
+                }
 
-        .mega-dropdown-menu .dropdown-menu li {
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
+                    /* Item cuối không cần margin */
+                    .mega-dropdown-menu .dropdown-menu li:last-child {
+                        margin-right: 0;
+                    }
 
-        .mega-dropdown-menu .dropdown-menu li:last-child {
-            margin-right: 0;
-        }
+            /* Link danh mục */
+            .mega-dropdown-menu .dropdown-item {
+                padding: 6px 12px;
+                color: #333;
+                font-size: 14px;
+                border-radius: 4px;
+                transition: all 0.2s ease;
+            }
 
-        .mega-dropdown-menu .dropdown-item {
-            padding: 5px 10px;
-            color: #333;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
+                /* Hover item */
+                .mega-dropdown-menu .dropdown-item:hover {
+                    background-color: #f8f9fa;
+                    color: #ff4d4d;
+                    padding-left: 15px;
+                }
 
-        .mega-dropdown-menu .dropdown-item:hover {
-            background-color: #f8f9fa;
-            color: #ff4d4d;
-            padding-left: 15px;
-        }
+            /* Divider */
+            .mega-dropdown-menu .dropdown-divider {
+                border-color: #eee;
+                margin: 12px 0;
+            }
 
-        .mega-dropdown-menu .dropdown-divider {
-            border-color: #eee;
-            margin: 10px 0;
-        }
 
         .dropdown-promo {
             max-width: 250px;
@@ -502,57 +501,39 @@
             ::-webkit-scrollbar-thumb:hover {
                 background: var(--secondary-color);
                 /* Content Wrapper */
-        .content-wrapper {
-            margin-left: 250px;
+                /* Content Wrapper */
+                .content-wrapper
+
+        {
+            margin-left: 0; /* Mặc định không có sidebar */
             padding: 20px;
             min-height: calc(100vh - 116px);
             transition: margin-left 0.3s ease;
         }
 
-        /* Ensure content wrapper respects sidebar in all cases */
-        .admin-sidebar + .content-wrapper {
-            margin-left: 250px !important;
+        /* Khi có sidebar */
+        .admin-sidebar + .content-wrapper,
+        .service-sidebar + .content-wrapper {
+            margin-left: 300px !important; /* Phù hợp với admin-sidebar width: 300px */
         }
 
-        .content-wrapper form {
-            margin-left: 10px;
-            width: calc(100% - 10px);
-        }
-
-        /* No Sidebar */
+        /* Không có sidebar */
         .no-sidebar .content-wrapper {
-            margin-left: 0;
+            margin-left: 0 !important;
         }
 
-        /* Responsive without media */
-        .mobile-view .admin-sidebar,
-        .mobile-view .service-sidebar {
-            width: 250px;
-            transform: translateX(-250px);
-        }
-
-        .mobile-view .admin-sidebar.show,
-        .mobile-view .service-sidebar.show {
-            transform: translateX(0);
-        }
-
+        /* Mobile view */
         .mobile-view .content-wrapper {
-            margin-left: 0;
+            margin-left: 0 !important;
         }
 
-        .mobile-view .content-wrapper.shifted {
-            margin-left: 250px;
-        }
+            .mobile-view .content-wrapper.shifted {
+                margin-left: 250px !important; /* Khi sidebar mở trên mobile */
+            }
 
-        .mobile-view .sidebar-toggle {
-            display: block;
-        }
-
-        /* Prevent content jumping */
+        /* Đảm bảo không bị đẩy sang trái */
         body {
             overflow-x: hidden;
-
-
         }
     </style>
     @RenderSection("Styles", required: false)
@@ -595,9 +576,6 @@
                             <div class="dropdown-menu mega-dropdown-menu p-3" aria-labelledby="categoryDropdown">
                                 @await Component.InvokeAsync("MegaCategoryMenu")
                                 <div class="dropdown-divider"></div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="#" class="text-decoration-none">Xem tất cả danh mục</a>
-                                </div>
                             </div>
                         </li>
                         <li class="nav-item mx-2">
@@ -779,20 +757,19 @@
         </div>
     </footer>
 
-    <!-- 1. jQuery (phải ở trên cùng) -->
-    <script defer src="~/lib/jquery/dist/jquery.min.js"></script>
-    <!-- 2. Bootstrap JS (phụ thuộc vào jQuery) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- 3. jQuery Validate + Unobtrusive (phụ thuộc jQuery) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
-
-    <!-- 4. Resize Observer Polyfill (không liên quan jQuery, có thể sau) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/resize-observer-polyfill/1.5.1/ResizeObserver.global.js"></script>
-
-    <!-- 5. Script của bạn (site.js) nên để cuối cùng vì có thể phụ thuộc các thư viện trên -->
-    <script src="~/js/site.js" asp-append-version="true"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- noUiSlider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+<!-- accounting.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
+<!-- jQuery Validate -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+<!-- Script tùy chỉnh -->
+<script src="~/js/site.js" asp-append-version="true"></script>
 
     <script>
         $(document).ready(function () {
@@ -800,54 +777,12 @@
             const dropdown = $('#categoryDropdownContainer');
             const dropdownMenu = dropdown.find('.dropdown-menu');
             const dropdownToggle = dropdown.find('.dropdown-toggle');
-            let dropdownTimeout;
-            let isDropdownOpen = false;
 
-            const openDropdown = () => {
-                clearTimeout(dropdownTimeout);
-                if (!isDropdownOpen) {
-                    dropdownMenu.addClass('show');
-                    dropdownToggle.attr('aria-expanded', 'true');
-                    isDropdownOpen = true;
-                }
-            };
-
-            const closeDropdown = () => {
-                clearTimeout(dropdownTimeout);
-                dropdownTimeout = setTimeout(() => {
-                    if (isDropdownOpen) {
-                        dropdownMenu.removeClass('show');
-                        dropdownToggle.attr('aria-expanded', 'false');
-                        isDropdownOpen = false;
-                    }
-                }, 200);
-            };
-
-            dropdown.on('mouseenter', openDropdown);
-            dropdown.on('mouseleave', closeDropdown);
-            dropdownMenu.on('mouseenter', () => clearTimeout(dropdownTimeout));
-            dropdownMenu.on('mouseleave', closeDropdown);
-            dropdownMenu.on('click', function (e) {
-                e.stopPropagation();
-            });
-
-            dropdownToggle.on('click', function () {
-                isDropdownOpen = dropdownToggle.attr('aria-expanded') === 'true';
-                if (isDropdownOpen) {
-                    clearTimeout(dropdownTimeout);
-                } else {
-                    closeDropdown();
-                }
-            });
-
-            $(document).on('click', function (e) {
-                if (isDropdownOpen && !dropdown[0].contains(e.target)) {
-                    closeDropdown();
-                }
-            });
-
-            $('.dropdown-item').on('mouseenter', function () {
-                $(this).css('transition', 'all 0.2s ease');
+            // Dùng hành vi mặc định của Bootstrap, bỏ logic hover phức tạp
+            dropdownToggle.on('click', function (e) {
+                e.preventDefault();
+                dropdownMenu.toggleClass('show');
+                dropdownToggle.attr('aria-expanded', dropdownMenu.hasClass('show'));
             });
 
             // Sidebar Toggle Logic
@@ -861,21 +796,17 @@
                 if ($(window).width() <= 768) {
                     $('body').addClass('mobile-view');
                     $('.admin-sidebar, .service-sidebar').removeClass('show');
-                    $('.content-wrapper').removeClass('shifted');
+                    $('.content-wrapper').removeClass('shifted').css('margin-left', '0');
                 } else {
                     $('body').removeClass('mobile-view');
                     $('.admin-sidebar, .service-sidebar').removeClass('show');
                     $('.content-wrapper').removeClass('shifted');
-                    // Force margin-left for admin area in desktop view
-                    if ($('.admin-sidebar').length) {
-                        $('.content-wrapper').css('margin-left', '250px');
-                    }
+                    // Không set margin-left bằng JS, để CSS xử lý
                 }
             }
 
-            // Initial call
-            updateResponsive();
             $(window).on('resize', updateResponsive);
+            updateResponsive();
 
             // Sidebar toggle button
             $('.sidebar-toggle').on('click', function (e) {
@@ -907,25 +838,10 @@
                 }
             });
 
-            // Handle dynamic content loading and prevent overlap
-            const contentWrapper = document.querySelector('.content-wrapper');
-            if (contentWrapper) {
-                const resizeObserver = new ResizeObserver(() => {
-                    if ($(window).width() > 768 && !$('body').hasClass('mobile-view')) {
-                        if ($('.admin-sidebar').length) {
-                            $(contentWrapper).css('margin-left', '250px');
-                        } else {
-                            $(contentWrapper).css('margin-left', '0');
-                        }
-                    } else if ($('.admin-sidebar').hasClass('show')) {
-                        $(contentWrapper).css('margin-left', '250px');
-                    } else {
-                        $(contentWrapper).css('margin-left', '0');
-                    }
-                });
-                resizeObserver.observe(contentWrapper);
-            }
+            // Remove ResizeObserver to simplify
+            $('.content-wrapper').css('transition', 'margin-left 0.3s ease');
         });
+
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
