@@ -12,8 +12,8 @@ using WebBanMayTinh.Models;
 namespace WebBanMayTinh.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250531143020_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250602075431_AddImageUrl2AndImageUrl3")]
+    partial class AddImageUrl2AndImageUrl3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -391,6 +391,12 @@ namespace WebBanMayTinh.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl3")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

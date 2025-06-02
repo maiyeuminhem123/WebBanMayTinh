@@ -12,7 +12,6 @@ namespace WebBanMayTinh.Models.VNPAY
         }
         public string CreatePaymentUrl(HttpContext context, VnPaymentRequestModel model)
         {
-            var tick = DateTime.Now.Ticks.ToString();
             var vnpay = new VnPayLibrary();
             vnpay.AddRequestData("vnp_Version", _config["VnPay:Version"]);
             vnpay.AddRequestData("vnp_Command", _config["VnPay:Command"]);
@@ -22,12 +21,10 @@ namespace WebBanMayTinh.Models.VNPAY
             vnpay.AddRequestData("vnp_CurrCode", _config["VnPay:CurrCode"]);
             vnpay.AddRequestData("vnp_IpAddr", Utils.GetIpAddress(context));
             vnpay.AddRequestData("vnp_Locale", _config["VnPay:Locale"]);
-
             vnpay.AddRequestData("vnp_OrderInfo", "Thanh toan don hang:" + model.OrderId);
             vnpay.AddRequestData("vnp_OrderType", "other");
             vnpay.AddRequestData("vnp_ReturnUrl", _config["VnPay:ReturnUrl"]);
-
-            vnpay.AddRequestData("vnp_TxnRef", tick); // Mã tham chiếu của giao dịch tại hệ 
+            vnpay.AddRequestData("vnp_TxnRef", model.OrderId); // Sử dụng model.OrderId thay vì Ticks
 
             var paymentUrl = vnpay.CreateRequestUrl(_config["VnPay:BaseUrl"], _config["VnPay:HashSecret"]);
             return paymentUrl;
@@ -43,12 +40,15 @@ namespace WebBanMayTinh.Models.VNPAY
                     vnpay.AddResponseData(key, value.ToString());
                 }
             }
-            var vnp_oderId = Convert.ToInt64(vnpay.GetResponseData("vnp_TxnRef"));
-            var vnp_transactionId = Convert.ToInt64(vnpay.GetResponseData("vnp_TransactionNo"));
+            var vnp_orderId = vnpay.GetResponseData("vnp_TxnRef"); // Lấy vnp_TxnRef trực tiếp dưới dạng chuỗi
+            var vnp_transactionId = vnpay.GetResponseData("vnp_TransactionNo");
             var vnp_secureHash = colections.FirstOrDefault(p => p.Key == "vnp_SecureHash").Value.ToString();
             var vnp_ResponseCode = vnpay.GetResponseData("vnp_ResponseCode");
             var vnpayOrderInfo = vnpay.GetResponseData("vnp_OrderInfo");
             bool checkSignature = vnpay.ValidateSignature(vnp_secureHash, _config["VnPay:HashSecret"]);
+
+            Console.WriteLine($"PaymentExcute - vnp_TxnRef: {vnp_orderId}, vnp_ResponseCode: {vnp_ResponseCode}, checkSignature: {checkSignature}");
+
             if (!checkSignature)
             {
                 return new VnPaymentResponseModel
@@ -61,8 +61,8 @@ namespace WebBanMayTinh.Models.VNPAY
                 Success = true,
                 PaymentMethod = "VNPAY",
                 OrderDescription = vnpayOrderInfo,
-                OrderId = vnp_oderId.ToString(),
-                TransactionId = vnp_transactionId.ToString(),
+                OrderId = vnp_orderId, // Sử dụng vnp_TxnRef trực tiếp
+                TransactionId = vnp_transactionId,
                 Token = vnp_secureHash,
                 VnPayResponseCode = vnp_ResponseCode
             };

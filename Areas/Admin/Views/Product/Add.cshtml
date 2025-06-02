@@ -93,7 +93,7 @@
             <h2><i class="fas fa-plus-circle"></i> Thêm Sản Phẩm Mới</h2>
         </div>
         <div class="gearvn-form-body mt-4">
-            <form asp-action="Add" id="addProductForm" method="post" enctype="multipart/form-data">
+            <form asp-action="Add" id="addProductForm" method="post">
                 <div asp-validation-summary="All" class="text-danger mb-4"></div>
 
                 <div class="row">
@@ -105,7 +105,6 @@
                         </div>
                         <span asp-validation-for="Name" class="text-danger small"></span>
                     </div>
-
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input asp-for="Price" class="form-control" type="number" step="0.01" placeholder="Giá" required />
@@ -140,13 +139,39 @@
                         </div>
                         <span asp-validation-for="PurchaseDate" class="text-danger small"></span>
                     </div>
-
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input asp-for="WarrantyPeriodMonths" class="form-control" type="number" min="1" placeholder="Thời gian bảo hành" required />
                             <label asp-for="WarrantyPeriodMonths">Thời gian bảo hành (tháng)</label>
                         </div>
                         <span asp-validation-for="WarrantyPeriodMonths" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Ảnh chính -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="ImageUrl" class="form-control" placeholder="Link ảnh chính" />
+                            <label asp-for="ImageUrl">Link ảnh chính</label>
+                        </div>
+                        <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Ảnh phụ 1 -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="ImageUrl2" class="form-control" placeholder="Link ảnh phụ 1" />
+                            <label asp-for="ImageUrl2">Link ảnh phụ 1</label>
+                        </div>
+                        <span asp-validation-for="ImageUrl2" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Ảnh phụ 2 -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="ImageUrl3" class="form-control" placeholder="Link ảnh phụ 2" />
+                            <label asp-for="ImageUrl3">Link ảnh phụ 2</label>
+                        </div>
+                        <span asp-validation-for="ImageUrl3" class="text-danger small"></span>
                     </div>
 
                     <!-- Mô tả ngắn -->
@@ -165,22 +190,6 @@
                         <span asp-validation-for="DetailDescription" class="text-danger small"></span>
                     </div>
 
-                    <!-- Ảnh -->
-                    <div class="col-md-6">
-                        <div class="form-floating">
-                            <input asp-for="ImageUrl" class="form-control" placeholder="Link ảnh" />
-                            <label asp-for="ImageUrl">Link ảnh</label>
-                        </div>
-                        <span asp-validation-for="ImageUrl" class="text-danger small"></span>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="form-label fw-semibold">Tải ảnh lên</label>
-                            <input type="file" name="imageUpload" class="form-control" accept="image/*" />
-                        </div>
-                    </div>
-
                     <!-- Cấu hình phần cứng -->
                     <div class="col-md-6">
                         <div class="form-floating">
@@ -189,7 +198,6 @@
                         </div>
                         <span asp-validation-for="CPU" class="text-danger small"></span>
                     </div>
-
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input asp-for="GPU" class="form-control" placeholder="GPU" />
@@ -197,7 +205,6 @@
                         </div>
                         <span asp-validation-for="GPU" class="text-danger small"></span>
                     </div>
-
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input asp-for="RAM" class="form-control" placeholder="RAM" />
@@ -205,7 +212,6 @@
                         </div>
                         <span asp-validation-for="RAM" class="text-danger small"></span>
                     </div>
-
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input asp-for="Storage" class="form-control" placeholder="Storage" />
@@ -213,7 +219,6 @@
                         </div>
                         <span asp-validation-for="Storage" class="text-danger small"></span>
                     </div>
-
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input asp-for="OperatingSystem" class="form-control" placeholder="Hệ điều hành" />
@@ -221,7 +226,6 @@
                         </div>
                         <span asp-validation-for="OperatingSystem" class="text-danger small"></span>
                     </div>
-
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input asp-for="Brand" class="form-control" placeholder="Thương hiệu" />

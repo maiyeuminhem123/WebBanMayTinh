@@ -120,6 +120,7 @@ app.UseAuthorization();
 
 
 
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "areas",

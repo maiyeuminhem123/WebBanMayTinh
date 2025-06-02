@@ -861,49 +861,6 @@
         </div>
     </section>
 
-    <section class="product-categories">
-        <div class="container">
-            <h2 class="section-title">Danh Mục Sản Phẩm</h2>
-            <div class="row g-3">
-                <div class="col-md-3">
-                    <div class="category-card category-filter" data-category="laptop">
-                        <img src="https://intphcm.com/data/upload/banner-la-gi.jpg" class="category-bg" alt="Laptop GearVN">
-                        <div class="category-content">
-                            <h5>LAPTOP</h5>
-                            <p>Trả góp 0%</p>
-                            <div class="price-display">Giá từ<br><strong>9.990.000đ</strong></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card category-filter" data-category="gaming">
-                        <img src="https://file.hstatic.net/200000722513/file/thang_04_layout_web_-04.png" class="category-bg" alt="Laptop Gaming">
-                        <div class="category-content">
-                            <h5>LAPTOP GAMING</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card category-filter" data-category="speakers">
-                        <img src="https://file.hstatic.net/200000722513/file/layout_web_-09_d2c2f20ee0af491b8bf40d032ff74dbf.png" class="category-bg" alt="Speakers">
-                        <div class="category-content">
-                            <h5>LOA & ÂM THANH</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card category-filter" data-category="monitor">
-                        <img src="https://akauto.com.vn/wp-content/uploads/2025/03/Banner-trang-man-hinh-Safeview-Mobile.jpg" class="category-bg" alt="Monitors">
-                        <div class="category-content">
-                            <h5>MÀN HÌNH</h5>
-                            <small>🚚 Giao hàng toàn quốc</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="products-section">
         <div class="container">
             <div class="section-header">
@@ -1004,42 +961,9 @@
                                 <i class="bi bi-grid"></i>
                                 Danh mục
                             </div>
-                            <div class="brand-checkbox">
-                                <input type="checkbox" id="cat-laptop" value="laptop">
-                                <label for="cat-laptop">
-                                    <span>Laptop</span>
-                                    <span class="product-count">(15)</span>
-                                </label>
-                            </div>
-                            <div class="brand-checkbox">
-                                <input type="checkbox" id="cat-gaming" value="gaming">
-                                <label for="cat-gaming">
-                                    <span>Laptop Gaming</span>
-                                    <span class="product-count">(8)</span>
-                                </label>
-                            </div>
-                            <div class="brand-checkbox">
-                                <input type="checkbox" id="cat-speakers" value="speakers">
-                                <label for="cat-speakers">
-                                    <span>Loa & Âm thanh</span>
-                                    <span class="product-count">(4)</span>
-                                </label>
-                            </div>
-                            <div class="brand-checkbox">
-                                <input type="checkbox" id="cat-monitor" value="monitor">
-                                <label for="cat-monitor">
-                                    <span>Màn hình</span>
-                                    <span class="product-count">(7)</span>
-                                </label>
-                            </div>
-                            <div class="brand-checkbox">
-                                <input type="checkbox" id="cat-accessories" value="accessories">
-                                <label for="cat-accessories">
-                                    <span>Phụ kiện</span>
-                                    <span class="product-count">(10)</span>
-                                </label>
-                            </div>
+                            @await Component.InvokeAsync("MegaCategoryMenu")
                         </div>
+
 
                         <button class="clear-filters-btn">Xóa bộ lọc</button>
                         <button class="apply-filters-btn">Áp dụng</button>
@@ -1112,10 +1036,9 @@
             </div>
         </div>
     </section>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ tiền.js / 2.0.0 / tien.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
 
     <script>
         const products = Array.from(document.querySelectorAll('.product-item'));
@@ -1145,13 +1068,13 @@
 
         // Initialize price slider
         noUiSlider.create(priceSlider, {
-            start: [0, 25000000],
+            start: [0, 200000000],
             connect: true,
             range: {
                 'min': 0,
-                'max': 25000000
+                'max': 200000000
             },
-            step: 500000,
+            step: 1000000, // bước 1 triệu cho mượt
             format: {
                 to: function (value) {
                     return Math.round(value);
@@ -1161,6 +1084,23 @@
                 }
             }
         });
+
+                // Khi nhấn Enter trong ô tìm kiếm
+        searchInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                currentPage = 1;
+                applyFiltersAndSort();
+            }
+        });
+        // khi bấm vào kính lúp
+                // Khi bấm nút search
+        document.getElementById('search-btn').addEventListener('click', function () {
+            currentPage = 1;
+            applyFiltersAndSort();
+        });
+
+
 
         priceSlider.noUiSlider.on('update', function (values, handle) {
             if (handle === 0) {
@@ -1329,7 +1269,7 @@
 
         clearFiltersBtn.addEventListener('click', () => {
             searchInput.value = '';
-            priceSlider.noUiSlider.set([0, 25000000]);
+            priceSlider.noUiSlider.set([0, 200000000]);
             brandCheckboxes.forEach(cb => cb.checked = false);
             categoryCheckboxes.forEach(cb => cb.checked = false);
             sortSelect.value = 'default';

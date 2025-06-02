@@ -2567,7 +2567,6 @@ D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\compressed\a3yg
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
-D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\compressed\2mjo10yqv3-b9sayid5wm.gz
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\compressed\nqh81fay53-61n19gt1b8.gz
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\compressed\of5cpecc2g-xtxxf3hu2r.gz
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\compressed\o6savfpf1p-t1cqhe9u97.gz
@@ -2647,3 +2646,4 @@ D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.p
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\WebBanMayTinh.genruntimeconfig.cache
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\ref\WebBanMayTinh.dll
 D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\Đồ Án Cơ Sở\DACS GITHUB\WebBanMayTinh\obj\Debug\net9.0\compressed\2mjo10yqv3-ktkj6bz9j4.gz
